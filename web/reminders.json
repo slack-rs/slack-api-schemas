@@ -43,8 +43,14 @@
             },
             "reminder": {
               "$ref": "objects/reminder.json#/reminder"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -144,8 +150,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -233,8 +245,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -317,8 +335,14 @@
             },
             "reminder": {
               "$ref": "objects/reminder.json#/reminder"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -398,8 +422,14 @@
               "items": {
                 "$ref": "objects/reminder.json#/reminder"
               }
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

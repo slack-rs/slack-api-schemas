@@ -38,8 +38,14 @@
                 }
               },
               "additionalProperties": false
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

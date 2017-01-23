@@ -46,8 +46,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -267,8 +273,14 @@
             },
             "paging": {
               "$ref": "objects/paging.json#/paging"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -370,8 +382,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

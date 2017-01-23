@@ -28,8 +28,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -137,8 +143,14 @@
             },
             "paging": {
               "$ref": "objects/paging.json#/paging"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -263,8 +275,14 @@
             },
             "paging": {
               "$ref": "objects/paging.json#/paging"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -351,8 +369,14 @@
             },
             "file": {
               "$ref": "objects/file.json#/file"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -439,8 +463,14 @@
             },
             "file": {
               "$ref": "objects/file.json#/file"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -567,8 +597,14 @@
             },
             "file": {
               "$ref": "objects/file.json#/file"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

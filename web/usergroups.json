@@ -55,8 +55,14 @@
             },
             "usergroup": {
               "$ref": "objects/usergroup.json#/usergroup"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -145,8 +151,14 @@
             },
             "usergroup": {
               "$ref": "objects/usergroup.json#/usergroup"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -235,8 +247,14 @@
             },
             "usergroup": {
               "$ref": "objects/usergroup.json#/usergroup"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -334,8 +352,14 @@
               "items": {
                 "$ref": "objects/usergroup.json#/usergroup"
               }
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -448,8 +472,14 @@
             },
             "usergroup": {
               "$ref": "objects/usergroup.json#/usergroup"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

@@ -85,8 +85,14 @@
               "items": {
                 "$ref": "objects/bot.json#/bot"
               }
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

@@ -40,8 +40,14 @@
               "items": {
                 "type": "string"
               }
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -136,8 +142,14 @@
             },
             "usergroup": {
               "$ref": "objects/usergroup.json#/usergroup"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

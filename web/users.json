@@ -22,8 +22,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -102,8 +108,14 @@
             },
             "presence": {
               "type": "string"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -175,8 +187,14 @@
             },
             "team": {
               "$ref": "objects/team.json#/team"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -255,8 +273,14 @@
             },
             "user": {
               "$ref": "objects/user.json#/user"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -342,8 +366,14 @@
               "items": {
                 "$ref": "objects/user.json#/user"
               }
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -409,8 +439,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -500,8 +536,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -589,8 +631,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

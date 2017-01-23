@@ -43,8 +43,14 @@
             },
             "comment": {
               "$ref": "objects/file_comment.json#/file_comment"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -134,8 +140,14 @@
           "properties": {
             "ok": {
               "type": "boolean"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -234,8 +246,14 @@
             },
             "comment": {
               "$ref": "objects/file_comment.json#/file_comment"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

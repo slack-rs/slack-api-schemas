@@ -93,8 +93,14 @@
             },
             "paging": {
               "$ref": "objects/paging.json#/paging"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -188,8 +194,14 @@
                 }
               },
               "additionalProperties": false
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -266,8 +278,14 @@
             },
             "team": {
               "$ref": "objects/team.json#/team"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -423,8 +441,14 @@
             },
             "paging": {
               "$ref": "objects/paging.json#/paging"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [

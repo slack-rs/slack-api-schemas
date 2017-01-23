@@ -46,8 +46,14 @@
             },
             "ts": {
               "type": "string"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -147,8 +153,14 @@
             },
             "ts": {
               "type": "string"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -325,8 +337,14 @@
             },
             "message": {
               "$ref": "objects/message.json#/message"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
@@ -471,8 +489,14 @@
             },
             "text": {
               "type": "string"
+            },
+            "error": {
+              "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         }
       },
       "errors": [
