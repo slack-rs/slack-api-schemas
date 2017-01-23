@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "skype": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "image_24": {
+      "type": "string"
+    },
+    "image_32": {
+      "type": "string"
+    },
+    "image_48": {
+      "type": "string"
+    },
+    "image_72": {
+      "type": "string"
+    },
+    "image_192": {
+      "type": "string"
+    },
+    "image_512": {
+      "type": "string"
+    },
+    "image_1024": {
+      "type": "string"
+    },
+    "image_original": {
+      "type": "string"
+    },
+    "fields": {
+      "type": "object",
+      "properties": {},
+      "patternProperties": {
+        "^.+$": {
+          "type": "object",
+          "properties": {
+            "value": {
+                "type": "string"
+            },
+            "alt": {
+                "type": "string"
+            },
+            "label": {
+                "type": "string"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "id": "user_profile",
+  "required": [
+    "first_name",
+    "last_name",
+    "real_name",
+    "email",
+    "skype",
+    "phone",
+    "image_24",
+    "image_32",
+    "image_48",
+    "image_72",
+    "image_192",
+    "image_512",
+    "image_1024",
+    "image_original",
+    "fields"
+  ]
+}

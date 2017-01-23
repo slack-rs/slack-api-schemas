@@ -1,0 +1,453 @@
+{
+  "name": "reminders",
+  "description": "",
+  "methods": [
+    {
+      "name": "reminders.add",
+      "description": "Creates a reminder.",
+      "documentationUrl": "https://api.slack.com/methods/reminders.add",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: reminders:write"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "optional": false,
+          "description": "The content of the reminder"
+        },
+        {
+          "name": "time",
+          "type": "integer",
+          "optional": false,
+          "description": "When this reminder should happen: the Unix timestamp (up to five years from now), the number of seconds until the reminder (if within 24 hours), or a natural language description (Ex. \"in 15 minutes,\" or \"every Thursday\")"
+        },
+        {
+          "name": "user",
+          "type": "user_id",
+          "optional": true,
+          "description": "The user who will receive the reminder. If no user is specified, the reminder will go to user who created it."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"reminder\":{\"id\":\"Rm12345678\",\"creator\":\"U18888888\",\"user\":\"U18888888\",\"text\":\"eat a banana\",\"recurring\":false,\"time\":1602288000,\"complete_ts\":0}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "reminder": {
+              "$ref": "objects/reminder.json#/reminder"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "cannot_parse",
+          "description": "The phrasing of the timing for this reminder is unclear. You must include a complete time description. Some examples that work: 1458678068, 20, in 5 minutes, tomorrow, at 3:30pm, on Tuesday, or next week."
+        },
+        {
+          "name": "user_not_found",
+          "description": "That user can't be found."
+        },
+        {
+          "name": "cannot_add_bot",
+          "description": "Reminders can't be sent to bots."
+        },
+        {
+          "name": "cannot_add_slackbot",
+          "description": "Reminders can't be sent to Slackbot."
+        },
+        {
+          "name": "cannot_add_others",
+          "description": "Guests can't set reminders for other team members."
+        },
+        {
+          "name": "cannot_add_others_recurring",
+          "description": "Recurring reminders can't be set for other team members."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "reminders.complete",
+      "description": "Marks a reminder as complete.",
+      "documentationUrl": "https://api.slack.com/methods/reminders.complete",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: reminders:write"
+        },
+        {
+          "name": "reminder",
+          "type": "reminder_id",
+          "optional": false,
+          "description": "The ID of the reminder to be marked as complete"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_found",
+          "description": "That reminder can't be found."
+        },
+        {
+          "name": "cannot_complete_recurring",
+          "description": "Recurring reminders can't be marked complete."
+        },
+        {
+          "name": "cannot_complete_others",
+          "description": "Reminders for other team members can't be marked complete."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "reminders.delete",
+      "description": "Deletes a reminder.",
+      "documentationUrl": "https://api.slack.com/methods/reminders.delete",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: reminders:write"
+        },
+        {
+          "name": "reminder",
+          "type": "reminder_id",
+          "optional": false,
+          "description": "The ID of the reminder"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_found",
+          "description": "That reminder can't be found."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "reminders.info",
+      "description": "Gets information about a reminder.",
+      "documentationUrl": "https://api.slack.com/methods/reminders.info",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: reminders:read"
+        },
+        {
+          "name": "reminder",
+          "type": "reminder_id",
+          "optional": false,
+          "description": "The ID of the reminder"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"reminder\":{\"id\":\"Rm12345678\",\"creator\":\"U18888888\",\"user\":\"U18888888\",\"text\":\"eat a banana\",\"recurring\":false,\"time\":1458678068,\"complete_ts\":1458678200}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "reminder": {
+              "$ref": "objects/reminder.json#/reminder"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_found",
+          "description": "That reminder can't be found."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "reminders.list",
+      "description": "Lists all reminders created by or for a given user.",
+      "documentationUrl": "https://api.slack.com/methods/reminders.list",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: reminders:read"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"reminders\":[{\"id\":\"Rm12345678\",\"creator\":\"U18888888\",\"user\":\"U18888888\",\"text\":\"eat a banana\",\"recurring\":false,\"time\":1458678068,\"complete_ts\":0},{\"id\":\"Rm23456789\",\"creator\":\"U18888888\",\"user\":\"U18888888\",\"text\":\"drink water\",\"recurring\":true}]}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "reminders": {
+              "type": "array",
+              "items": {
+                "$ref": "objects/reminder.json#/reminder"
+              }
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    }
+  ]
+}

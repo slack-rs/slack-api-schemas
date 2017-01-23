@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "timestamp": {
+      "type": "integer",
+      "id": "timestamp"
+    },
+    "user": {
+      "type": "string",
+      "id": "user"
+    },
+    "comment": {
+      "type": "string",
+      "id": "comment"
+    },
+    "reactions": {
+      "type": "array",
+      "items": { "$ref": "reaction.json" }
+    }
+  },
+  "id": "file_comment",
+  "required": [
+    "id",
+    "timestamp",
+    "user",
+    "comment"
+  ]
+}

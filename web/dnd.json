@@ -1,0 +1,444 @@
+{
+  "name": "dnd",
+  "description": "Adjust and view Do Not Disturb settings for team members.",
+  "methods": [
+    {
+      "name": "dnd.endDnd",
+      "description": "Ends the current user's Do Not Disturb session immediately.",
+      "documentationUrl": "https://api.slack.com/methods/dnd.endDnd",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: dnd:write"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "unknown_error",
+          "description": "There was a mysterious problem ending the user's Do Not Disturb session"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "dnd.endSnooze",
+      "description": "Ends the current user's snooze mode immediately.",
+      "documentationUrl": "https://api.slack.com/methods/dnd.endSnooze",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: dnd:write"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"dnd_enabled\":true,\"next_dnd_start_ts\":1450418400,\"next_dnd_end_ts\":1450454400,\"snooze_enabled\":false}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "dnd_enabled": {
+              "type": "boolean"
+            },
+            "next_dnd_start_ts": {
+              "type": "number"
+            },
+            "next_dnd_end_ts": {
+              "type": "number"
+            },
+            "snooze_enabled": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "snooze_not_active",
+          "description": "Snooze is not active for this user and cannot be ended"
+        },
+        {
+          "name": "snooze_end_failed",
+          "description": "There was a problem setting the user's Do Not Disturb status"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "dnd.info",
+      "description": "Retrieves a user's current Do Not Disturb status.",
+      "documentationUrl": "https://api.slack.com/methods/dnd.info",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: dnd:read"
+        },
+        {
+          "name": "user",
+          "type": "user_id",
+          "optional": true,
+          "description": "User to fetch status for (defaults to current user)"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"dnd_enabled\":true,\"next_dnd_start_ts\":1450416600,\"next_dnd_end_ts\":1450452600,\"snooze_enabled\":true,\"snooze_endtime\":1450416600,\"snooze_remaining\":1196}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "dnd_enabled": {
+              "type": "boolean"
+            },
+            "next_dnd_start_ts": {
+              "type": "number"
+            },
+            "next_dnd_end_ts": {
+              "type": "number"
+            },
+            "snooze_enabled": {
+              "type": "boolean"
+            },
+            "snooze_endtime": {
+              "type": "number"
+            },
+            "snooze_remaining": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "user_not_found",
+          "description": "Value passed for user was invalid."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "dnd.setSnooze",
+      "description": "Turns on Do Not Disturb mode for the current user, or changes its duration.",
+      "documentationUrl": "https://api.slack.com/methods/dnd.setSnooze",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: dnd:write"
+        },
+        {
+          "name": "num_minutes",
+          "type": "integer",
+          "optional": false,
+          "description": "Number of minutes, from now, to snooze until."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"snooze_enabled\":true,\"snooze_endtime\":1450373897,\"snooze_remaining\":60}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "snooze_enabled": {
+              "type": "boolean"
+            },
+            "snooze_endtime": {
+              "type": "number"
+            },
+            "snooze_remaining": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "missing_duration",
+          "description": "No value provided for num_minutes"
+        },
+        {
+          "name": "snooze_failed",
+          "description": "There was a problem setting the user's Do Not Disturb status"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "dnd.teamInfo",
+      "description": "Retrieves the Do Not Disturb status for users on a team.",
+      "documentationUrl": "https://api.slack.com/methods/dnd.teamInfo",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: dnd:read"
+        },
+        {
+          "name": "users",
+          "type": "string",
+          "optional": true,
+          "description": "Comma-separated list of users to fetch Do Not Disturb status for"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"users\":{\"U023BECGF\":{\"dnd_enabled\":true,\"next_dnd_start_ts\":1450387800,\"next_dnd_end_ts\":1450423800},\"U058CJVAA\":{\"dnd_enabled\":false,\"next_dnd_start_ts\":1,\"next_dnd_end_ts\":1}}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "users": {
+              "type": "object",
+              "properties": {},
+              "patternProperties": {
+                "^.+$": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    }
+  ]
+}

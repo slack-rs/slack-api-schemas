@@ -1,0 +1,119 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "name": {
+      "type": "string",
+      "id": "name"
+    },
+    "is_group": {
+      "type": "string",
+      "id": "is_group"
+    },
+    "created": {
+      "type": "integer",
+      "id": "created"
+    },
+    "creator": {
+      "type": "string",
+      "id": "creator"
+    },
+    "is_archived": {
+      "type": "boolean",
+      "id": "is_archived"
+    },
+    "is_mpim": {
+      "type": "boolean",
+      "id": "is_mpim"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "id": "members"
+    },
+    "topic": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "id": "value"
+        },
+        "creator": {
+          "type": "string",
+          "id": "creator"
+        },
+        "last_set": {
+          "type": "integer",
+          "id": "last_set"
+        }
+      },
+      "id": "topic",
+      "required": [
+        "value",
+        "creator",
+        "last_set"
+      ]
+    },
+    "purpose": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "id": "value"
+        },
+        "creator": {
+          "type": "string",
+          "id": "creator"
+        },
+        "last_set": {
+          "type": "integer",
+          "id": "last_set"
+        }
+      },
+      "id": "purpose",
+      "required": [
+        "value",
+        "creator",
+        "last_set"
+      ]
+    },
+    "last_read": {
+      "type": "string",
+      "id": "last_read"
+    },
+    "latest": {
+      "$ref": "message.json"
+    },
+    "unread_count": {
+      "type": "integer",
+      "id": "unread_count"
+    },
+    "unread_count_display": {
+      "type": "integer",
+      "id": "unread_count_display"
+    }
+  },
+  "id": "group",
+  "required": [
+    "id",
+    "name",
+    "is_group",
+    "created",
+    "creator",
+    "is_archived",
+    "is_mpim",
+    "members",
+    "topic",
+    "purpose",
+    "last_read",
+    "latest",
+    "unread_count",
+    "unread_count_display"
+  ]
+}

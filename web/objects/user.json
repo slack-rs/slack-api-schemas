@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "name": {
+      "type": "string",
+      "id": "name"
+    },
+    "deleted": {
+      "type": "boolean",
+      "id": "deleted"
+    },
+    "color": {
+      "type": "string",
+      "id": "color"
+    },
+    "profile": {
+      "$ref": "user_profile.json"
+    },
+    "is_admin": {
+      "type": "boolean",
+      "id": "is_admin"
+    },
+    "is_owner": {
+      "type": "boolean",
+      "id": "is_owner"
+    },
+    "is_primary_owner": {
+      "type": "boolean",
+      "id": "is_primary_owner"
+    },
+    "is_restricted": {
+      "type": "boolean",
+      "id": "is_restricted"
+    },
+    "is_ultra_restricted": {
+      "type": "boolean",
+      "id": "is_ultra_restricted"
+    },
+    "has_2fa": {
+      "type": "boolean",
+      "id": "has_2fa"
+    },
+    "two_factor_type": {
+      "type": "string",
+      "id": "two_factor_type"
+    }
+  },
+  "id": "user",
+  "required": [
+    "id",
+    "name",
+    "deleted",
+    "color",
+    "profile",
+    "is_admin",
+    "is_owner",
+    "is_primary_owner",
+    "is_restricted",
+    "is_ultra_restricted",
+    "has_2fa",
+    "two_factor_type"
+  ]
+}

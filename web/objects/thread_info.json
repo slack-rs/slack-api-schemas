@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "count": { "type": "integer" },
+    "complete": { "type": "boolean" }
+  },
+  "id": "thread_info",
+  "required": [
+    "count",
+    "complete"
+  ]
+}

@@ -1,0 +1,478 @@
+{
+  "name": "team",
+  "description": "",
+  "methods": [
+    {
+      "name": "team.accessLogs",
+      "description": "Gets the access logs for the current team.",
+      "documentationUrl": "https://api.slack.com/methods/team.accessLogs",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: admin"
+        },
+        {
+          "name": "count",
+          "type": "integer",
+          "optional": true,
+          "description": "Number of items to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "optional": true,
+          "description": "Page number of results to return."
+        },
+        {
+          "name": "before",
+          "type": "integer",
+          "optional": true,
+          "description": "End of time range of logs to include in results (inclusive)."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"logins\":[{\"user_id\":\"U12345\",\"username\":\"bob\",\"date_first\":1422922864,\"date_last\":1422922864,\"count\":1,\"ip\":\"127.0.0.1\",\"user_agent\":\"SlackWeb Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.35 Safari/537.36\",\"isp\":\"BigCo ISP\",\"country\":\"US\",\"region\":\"CA\"},{\"user_id\":\"U45678\",\"username\":\"alice\",\"date_first\":1422922493,\"date_last\":1422922493,\"count\":1,\"ip\":\"127.0.0.1\",\"user_agent\":\"SlackWeb Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12B466 Safari/600.1.4\",\"isp\":\"BigCo ISP\",\"country\":\"US\",\"region\":\"CA\"}],\"paging\":{\"count\":100,\"total\":2,\"page\":1,\"pages\":1}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "logins": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "date_first": {
+                    "type": "number"
+                  },
+                  "date_last": {
+                    "type": "number"
+                  },
+                  "count": {
+                    "type": "number"
+                  },
+                  "ip": {
+                    "type": "string"
+                  },
+                  "user_agent": {
+                    "type": "string"
+                  },
+                  "isp": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string"
+                  },
+                  "region": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "user_id",
+                  "username",
+                  "date_first",
+                  "date_last",
+                  "count",
+                  "ip",
+                  "user_agent",
+                  "isp",
+                  "country",
+                  "region"
+                ]
+              }
+            },
+            "paging": {
+              "$ref": "objects/paging.json#/paging"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "paid_only",
+          "description": "This is only available to paid teams."
+        },
+        {
+          "name": "over_pagination_limit",
+          "description": "It is not possible to request more than 1000 items per page or more than 100 pages."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "team.billableInfo",
+      "description": "Gets billable users information for the current team.",
+      "documentationUrl": "https://api.slack.com/methods/team.billableInfo",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: admin"
+        },
+        {
+          "name": "user",
+          "type": "user_id",
+          "optional": true,
+          "description": "A user to retrieve the billable information for. Defaults to all users."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"billable_info\":{\"U0632EWRW\":{\"billing_active\":false},\"U02UCPE1R\":{\"billing_active\":true},\"U02UEBSD2\":{\"billing_active\":true}}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "billable_info": {
+              "type": "object",
+              "properties": {},
+              "patternProperties": {
+                "^.+$": {
+                  "type": "boolean"
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "user_not_found",
+          "description": "Unable to find the requested user."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "team.info",
+      "description": "Gets information about the current team.",
+      "documentationUrl": "https://api.slack.com/methods/team.info",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: team:read"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"team\":{\"id\":\"T12345\",\"name\":\"My Team\",\"domain\":\"example\",\"email_domain\":\"\",\"icon\":{\"image_34\":\"https://...\",\"image_44\":\"https://...\",\"image_68\":\"https://...\",\"image_88\":\"https://...\",\"image_102\":\"https://...\",\"image_132\":\"https://...\",\"image_default\":true}}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "team": {
+              "$ref": "objects/team.json#/team"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "team.integrationLogs",
+      "description": "Gets the integration logs for the current team.",
+      "documentationUrl": "https://api.slack.com/methods/team.integrationLogs",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: admin"
+        },
+        {
+          "name": "service_id",
+          "type": "string",
+          "optional": true,
+          "description": "Filter logs to this service. Defaults to all logs."
+        },
+        {
+          "name": "app_id",
+          "type": "string",
+          "optional": true,
+          "description": "Filter logs to this Slack app. Defaults to all logs."
+        },
+        {
+          "name": "user",
+          "type": "user_id",
+          "optional": true,
+          "description": "Filter logs generated by this user’s actions. Defaults to all logs."
+        },
+        {
+          "name": "change_type",
+          "type": "string",
+          "optional": true,
+          "description": "Filter logs with this change type. Defaults to all logs."
+        },
+        {
+          "name": "count",
+          "type": "integer",
+          "optional": true,
+          "description": "Number of items to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "optional": true,
+          "description": "Page number of results to return."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"logs\":[{\"service_id\":\"1234567890\",\"service_type\":\"Google Calendar\",\"user_id\":\"U1234ABCD\",\"user_name\":\"Johnny\",\"channel\":\"C1234567890\",\"date\":\"1392163200\",\"change_type\":\"enabled\",\"scope\":\"incoming-webhook\"},{\"app_id\":\"2345678901\",\"app_type\":\"Johnny App\",\"user_id\":\"U2345BCDE\",\"user_name\":\"Billy\",\"date\":\"1392163201\",\"change_type\":\"added\",\"scope\":\"chat:write:user,channels:read\"},{\"service_id\":\"3456789012\",\"service_type\":\"Airbrake\",\"user_id\":\"U3456CDEF\",\"user_name\":\"Joey\",\"channel\":\"C1234567890\",\"date\":\"1392163202\",\"change_type\":\"disabled\",\"reason\":\"user\",\"scope\":\"incoming-webhook\"}],\"paging\":{\"count\":3,\"total\":3,\"page\":1,\"pages\":1}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "logs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "service_id": {
+                    "type": "string"
+                  },
+                  "service_type": {
+                    "type": "string"
+                  },
+                  "user_id": {
+                    "type": "string"
+                  },
+                  "user_name": {
+                    "type": "string"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "date": {
+                    "type": "string"
+                  },
+                  "change_type": {
+                    "type": "string"
+                  },
+                  "scope": {
+                    "type": "string"
+                  },
+                  "app_id": {
+                    "type": "string"
+                  },
+                  "app_type": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "user_id",
+                  "user_name",
+                  "date",
+                  "change_type",
+                  "scope",
+                  "service_id",
+                  "service_type",
+                  "channel"
+                ]
+              }
+            },
+            "paging": {
+              "$ref": "objects/paging.json#/paging"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    }
+  ]
+}

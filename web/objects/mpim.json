@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "name": {
+      "type": "string",
+      "id": "name"
+    },
+    "is_mpim": {
+      "type": "boolean",
+      "id": "is_mpim"
+    },
+    "is_group": {
+      "type": "boolean",
+      "id": "is_group"
+    },
+    "created": {
+      "type": "integer",
+      "id": "created"
+    },
+    "creator": {
+      "type": "string",
+      "id": "creator"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "id": "members"
+    },
+    "last_read": {
+      "type": "string",
+      "id": "last_read"
+    },
+    "latest": {
+      "$ref": "message.json"
+    },
+    "unread_count": {
+      "type": "integer",
+      "id": "unread_count"
+    },
+    "unread_count_display": {
+      "type": "integer",
+      "id": "unread_count_display"
+    }
+  },
+  "id": "mpim",
+  "required": [
+    "id",
+    "name",
+    "is_mpim",
+    "is_group",
+    "created",
+    "creator",
+    "members",
+    "last_read",
+    "latest",
+    "unread_count",
+    "unread_count_display"
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "name": "usergroups.users",
+  "description": "",
+  "methods": [
+    {
+      "name": "usergroups.users.list",
+      "description": "List all users in a User Group",
+      "documentationUrl": "https://api.slack.com/methods/usergroups.users.list",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: usergroups:read"
+        },
+        {
+          "name": "usergroup",
+          "type": "usergroup_id",
+          "optional": false,
+          "description": "The encoded ID of the User Group to update."
+        },
+        {
+          "name": "include_disabled",
+          "type": "boolean",
+          "optional": true,
+          "description": "Allow results that involve disabled User Groups."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"users\":[\"U060R4BJ4\"]}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "users": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "user_is_restricted",
+          "description": "This method cannot be called by a restricted user or single channel guest."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "usergroups.users.update",
+      "description": "Update the list of users for a User Group",
+      "documentationUrl": "https://api.slack.com/methods/usergroups.users.update",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: usergroups:write"
+        },
+        {
+          "name": "usergroup",
+          "type": "usergroup_id",
+          "optional": false,
+          "description": "The encoded ID of the User Group to update."
+        },
+        {
+          "name": "users",
+          "type": "string",
+          "optional": false,
+          "description": "A comma separated string of encoded user IDs that represent the entire list of users for the User Group."
+        },
+        {
+          "name": "include_count",
+          "type": "boolean",
+          "optional": true,
+          "description": "Include the number of users in the User Group."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"usergroup\":{\"id\":\"S0616NG6M\",\"team_id\":\"T060R4BHN\",\"is_usergroup\":true,\"name\":\"Marketing Team\",\"description\":\"Marketing gurus, PR experts and product advocates.\",\"handle\":\"marketing-team\",\"is_external\":false,\"date_create\":1447096577,\"date_update\":1447102109,\"date_delete\":0,\"auto_type\":null,\"created_by\":\"U060R4BJ4\",\"updated_by\":\"U060R4BJ4\",\"deleted_by\":null,\"prefs\":{\"channels\":[],\"groups\":[]},\"users\":[\"U060R4BJ4\",\"U060RNRCZ\"],\"user_count\":1}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "usergroup": {
+              "$ref": "objects/usergroup.json#/usergroup"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "user_is_restricted",
+          "description": "This method cannot be called by a restricted user or single channel guest."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    }
+  ]
+}

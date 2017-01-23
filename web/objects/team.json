@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "domain": {
+      "type": "string"
+    },
+    "email_domain": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "object",
+      "properties": {
+        "image_34": {
+          "type": "string"
+        },
+        "image_44": {
+          "type": "string"
+        },
+        "image_68": {
+          "type": "string"
+        },
+        "image_88": {
+          "type": "string"
+        },
+        "image_102": {
+          "type": "string"
+        },
+        "image_132": {
+          "type": "string"
+        },
+        "image_default": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "id": "team",
+  "required": [
+    "id",
+    "name",
+    "domain",
+    "email_domain",
+    "icon"
+  ]
+}

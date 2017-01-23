@@ -1,0 +1,626 @@
+{
+  "name": "files",
+  "description": "Get info on files uploaded to Slack, upload new files to Slack.",
+  "methods": [
+    {
+      "name": "files.delete",
+      "description": "Deletes a file.",
+      "documentationUrl": "https://api.slack.com/methods/files.delete",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: files:write:user"
+        },
+        {
+          "name": "file",
+          "type": "file_id",
+          "optional": false,
+          "description": "ID of file to delete."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "file_not_found",
+          "description": "The file does not exist, or is not visible to the calling user."
+        },
+        {
+          "name": "file_deleted",
+          "description": "The file has already been deleted."
+        },
+        {
+          "name": "cant_delete_file",
+          "description": "Authenticated user does not have permission to delete this file."
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "files.info",
+      "description": "Gets information about a team file.",
+      "documentationUrl": "https://api.slack.com/methods/files.info",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: files:read"
+        },
+        {
+          "name": "file",
+          "type": "file_id",
+          "optional": false,
+          "description": "Specify a file by providing its ID."
+        },
+        {
+          "name": "count",
+          "type": "integer",
+          "optional": true,
+          "description": "Number of items to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "optional": true,
+          "description": "Page number of results to return."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"file\":{\"id\":\"F2147483862\",\"timestamp\":1356032811,\"name\":\"file.htm\",\"title\":\"My HTML file\",\"mimetype\":\"text/plain\",\"filetype\":\"text\",\"pretty_type\":\"Text\",\"user\":\"U2147483697\",\"mode\":\"hosted\",\"editable\":true,\"is_external\":false,\"external_type\":\"\",\"size\":12345,\"url\":\"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/1.png\",\"url_download\":\"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/download/1.png\",\"url_private\":\"https://slack.com/files-pri/T024BE7LD-F024BERPE/1.png\",\"url_private_download\":\"https://slack.com/files-pri/T024BE7LD-F024BERPE/download/1.png\",\"thumb_64\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_64.png\",\"thumb_80\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_80.png\",\"thumb_360\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.png\",\"thumb_360_gif\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.gif\",\"thumb_360_w\":100,\"thumb_360_h\":100,\"permalink\":\"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png\",\"edit_link\":\"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png/edit\",\"preview\":\"&lt;!DOCTYPE html&gt;\\n&lt;html&gt;\\n&lt;meta charset='utf-8'&gt;\",\"preview_highlight\":\"&lt;div class=\\\"sssh-code\\\"&gt;&lt;div class=\\\"sssh-line\\\"&gt;&lt;pre&gt;&lt;!DOCTYPE html...\",\"lines\":123,\"lines_more\":118,\"is_public\":true,\"public_url_shared\":false,\"channels\":[\"C024BE7LT\"],\"groups\":[\"G12345\"],\"initial_comment\":{},\"num_stars\":7,\"is_starred\":true},\"comments\":[{\"id\":\"Fc027BN9L9\",\"timestamp\":1356032811,\"user\":\"U2147483697\",\"comment\":\"This is a comment\"}],\"paging\":{\"count\":100,\"total\":2,\"page\":1,\"pages\":0}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "file": {
+              "$ref": "objects/file.json#/file"
+            },
+            "comments": {
+              "type": "array",
+              "items": {
+                "$ref": "objects/file_comment.json#/file_comment"
+              }
+            },
+            "paging": {
+              "$ref": "objects/paging.json#/paging"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "file_not_found",
+          "description": "Value passed for file was invalid"
+        },
+        {
+          "name": "file_deleted",
+          "description": "The requested file has been deleted"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "files.list",
+      "description": "Lists & filters team files.",
+      "documentationUrl": "https://api.slack.com/methods/files.list",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: files:read"
+        },
+        {
+          "name": "user",
+          "type": "user_id",
+          "optional": true,
+          "description": "Filter files created by a single user."
+        },
+        {
+          "name": "channel",
+          "type": "channel_id",
+          "optional": true,
+          "description": "Filter files appearing in a specific channel, indicated by its ID."
+        },
+        {
+          "name": "ts_from",
+          "type": "integer",
+          "optional": true,
+          "description": "Filter files created after this timestamp (inclusive)."
+        },
+        {
+          "name": "ts_to",
+          "type": "integer",
+          "optional": true,
+          "description": "Filter files created before this timestamp (inclusive)."
+        },
+        {
+          "name": "types",
+          "type": "string",
+          "optional": true,
+          "description": "Filter files by type:\n\n\nall - All files\nspaces - Posts\nsnippets - Snippets\nimages - Image files\ngdocs - Google docs\nzips - Zip files\npdfs - PDF files\n\n\nYou can pass multiple values in the types argument, like types=spaces,snippets.The default value is all, which does not filter the list."
+        },
+        {
+          "name": "count",
+          "type": "integer",
+          "optional": true,
+          "description": "Number of items to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "optional": true,
+          "description": "Page number of results to return."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"files\":[{},{},{}],\"paging\":{\"count\":100,\"total\":295,\"page\":1,\"pages\":3}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "$ref": "objects/file.json#/file"
+              }
+            },
+            "paging": {
+              "$ref": "objects/paging.json#/paging"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "user_not_found",
+          "description": "Value passed for user was invalid"
+        },
+        {
+          "name": "unknown_type",
+          "description": "Value passed for types was invalid"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "files.revokePublicURL",
+      "description": "Revokes public/external sharing access for a file",
+      "documentationUrl": "https://api.slack.com/methods/files.revokePublicURL",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: files:write:user"
+        },
+        {
+          "name": "file",
+          "type": "file_id",
+          "optional": false,
+          "description": "File to revoke"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"file\":{\"id\":\"F2147483862\",\"timestamp\":1356032811,\"name\":\"file.htm\",\"title\":\"My HTML file\",\"mimetype\":\"text/plain\",\"filetype\":\"text\",\"pretty_type\":\"Text\",\"user\":\"U2147483697\",\"mode\":\"hosted\",\"editable\":true,\"is_external\":false,\"external_type\":\"\",\"size\":12345,\"url\":\"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/1.png\",\"url_download\":\"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/download/1.png\",\"url_private\":\"https://slack.com/files-pri/T024BE7LD-F024BERPE/1.png\",\"url_private_download\":\"https://slack.com/files-pri/T024BE7LD-F024BERPE/download/1.png\",\"thumb_64\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_64.png\",\"thumb_80\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_80.png\",\"thumb_360\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.png\",\"thumb_360_gif\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.gif\",\"thumb_360_w\":100,\"thumb_360_h\":100,\"permalink\":\"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png\",\"permalink_public\":\"https://slack-files.com/T024BE7LD-F024BERPE-8004f909b1\",\"edit_link\":\"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png/edit\",\"preview\":\"&lt;!DOCTYPE html&gt;\\n&lt;html&gt;\\n&lt;meta charset='utf-8'&gt;\",\"preview_highlight\":\"&lt;div class=\\\"sssh-code\\\"&gt;&lt;div class=\\\"sssh-line\\\"&gt;&lt;pre&gt;&lt;!DOCTYPE html\",\"lines\":123,\"lines_more\":118,\"is_public\":false,\"public_url_shared\":false,\"channels\":[\"C024BE7LT\"],\"groups\":[\"G12345\"],\"initial_comment\":{},\"num_stars\":7,\"is_starred\":true}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "file": {
+              "$ref": "objects/file.json#/file"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "file_not_found",
+          "description": "Value passed for file was invalid"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "user_is_restricted",
+          "description": "This method cannot be called by a restricted user or single channel guest."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "files.sharedPublicURL",
+      "description": "Enables a file for public/external sharing.",
+      "documentationUrl": "https://api.slack.com/methods/files.sharedPublicURL",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: files:write:user"
+        },
+        {
+          "name": "file",
+          "type": "file_id",
+          "optional": false,
+          "description": "File to share"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"file\":{\"id\":\"F2147483862\",\"timestamp\":1356032811,\"name\":\"file.htm\",\"title\":\"My HTML file\",\"mimetype\":\"text/plain\",\"filetype\":\"text\",\"pretty_type\":\"Text\",\"user\":\"U2147483697\",\"mode\":\"hosted\",\"editable\":true,\"is_external\":false,\"external_type\":\"\",\"size\":12345,\"url\":\"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/1.png\",\"url_download\":\"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/download/1.png\",\"url_private\":\"https://slack.com/files-pri/T024BE7LD-F024BERPE/1.png\",\"url_private_download\":\"https://slack.com/files-pri/T024BE7LD-F024BERPE/download/1.png\",\"thumb_64\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_64.png\",\"thumb_80\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_80.png\",\"thumb_360\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.png\",\"thumb_360_gif\":\"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.gif\",\"thumb_360_w\":100,\"thumb_360_h\":100,\"permalink\":\"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png\",\"permalink_public\":\"https://slack-files.com/T024BE7LD-F024BERPE-8004f909b1\",\"edit_link\":\"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png/edit\",\"preview\":\"&lt;!DOCTYPE html&gt;\\n&lt;html&gt;\\n&lt;meta charset='utf-8'&gt;\",\"preview_highlight\":\"&lt;div class=\\\"sssh-code\\\"&gt;&lt;div class=\\\"sssh-line\\\"&gt;&lt;pre&gt;&lt;!DOCTYPE html\",\"lines\":123,\"lines_more\":118,\"is_public\":false,\"public_url_shared\":false,\"channels\":[\"C024BE7LT\"],\"groups\":[\"G12345\"],\"initial_comment\":{},\"num_stars\":7,\"is_starred\":true}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "file": {
+              "$ref": "objects/file.json#/file"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "file_not_found",
+          "description": "Value passed for file was invalid"
+        },
+        {
+          "name": "not_allowed",
+          "description": "Public sharing has been disabled for this team"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "user_is_restricted",
+          "description": "This method cannot be called by a restricted user or single channel guest."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "files.upload",
+      "description": "Uploads or creates a file.",
+      "documentationUrl": "https://api.slack.com/methods/files.upload",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: files:write:user"
+        },
+        {
+          "name": "file",
+          "type": "string",
+          "optional": true,
+          "description": "File contents via multipart/form-data. If omitting this parameter, you must submit content."
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "optional": true,
+          "description": "File contents via a POST variable. If omitting this parameter, you must provide a file."
+        },
+        {
+          "name": "filetype",
+          "type": "string",
+          "optional": true,
+          "description": "A file type identifier."
+        },
+        {
+          "name": "filename",
+          "type": "string",
+          "optional": false,
+          "description": "Filename of file."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "optional": true,
+          "description": "Title of file."
+        },
+        {
+          "name": "initial_comment",
+          "type": "string",
+          "optional": true,
+          "description": "Initial comment to add to file."
+        },
+        {
+          "name": "channels",
+          "type": "channel_id",
+          "optional": true,
+          "description": "Comma-separated list of channel names or IDs where the file will be shared."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"file\":{}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "file": {
+              "$ref": "objects/file.json#/file"
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "posting_to_general_channel_denied",
+          "description": "An admin has restricted posting to the #general channel."
+        },
+        {
+          "name": "invalid_channel",
+          "description": "One or more channels supplied are invalid"
+        },
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    }
+  ]
+}

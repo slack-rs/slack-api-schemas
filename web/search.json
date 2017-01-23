@@ -1,0 +1,410 @@
+{
+  "name": "search",
+  "description": "Search your team's files and messages.",
+  "methods": [
+    {
+      "name": "search.all",
+      "description": "Searches for messages and files matching a query.",
+      "documentationUrl": "https://api.slack.com/methods/search.all",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: search:read"
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "optional": false,
+          "description": "Search query. May contains booleans, etc."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "optional": true,
+          "description": "Return matches sorted by either score or timestamp."
+        },
+        {
+          "name": "sort_dir",
+          "type": "string",
+          "optional": true,
+          "description": "Change sort direction to ascending (asc) or descending (desc)."
+        },
+        {
+          "name": "highlight",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass a value of 1 to enable query highlight markers (see below)."
+        },
+        {
+          "name": "count",
+          "type": "integer",
+          "optional": true,
+          "description": "Number of items to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "optional": true,
+          "description": "Page number of results to return."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"query\":\"Best Pickles\",\"messages\":{},\"files\":{}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "query": {
+              "type": "string"
+            },
+            "messages": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "matches": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "objects/message.json#/message"
+                  }
+                },
+                "paging": {
+                  "$ref": "objects/paging.json#/paging"
+                }
+              },
+              "id": "messages",
+              "required": [
+                "matches",
+                "paging"
+              ]
+            },
+            "files": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "matches": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "objects/file.json#/file"
+                  }
+                },
+                "paging": {
+                  "$ref": "objects/paging.json#/paging"
+                }
+              },
+              "id": "files",
+              "required": [
+                "matches",
+                "paging"
+              ]
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "search.files",
+      "description": "Searches for files matching a query.",
+      "documentationUrl": "https://api.slack.com/methods/search.files",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: search:read"
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "optional": false,
+          "description": "Search query. May contain booleans, etc."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "optional": true,
+          "description": "Return matches sorted by either score or timestamp."
+        },
+        {
+          "name": "sort_dir",
+          "type": "string",
+          "optional": true,
+          "description": "Change sort direction to ascending (asc) or descending (desc)."
+        },
+        {
+          "name": "highlight",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass a value of 1 to enable query highlight markers (see below)."
+        },
+        {
+          "name": "count",
+          "type": "integer",
+          "optional": true,
+          "description": "Number of items to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "optional": true,
+          "description": "Page number of results to return."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"query\":\"test\",\"files\":{\"total\":829,\"paging\":{\"count\":20,\"total\":829,\"page\":1,\"pages\":42},\"matches\":[{},{},{}]}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "query": {
+              "type": "string"
+            },
+            "files": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "paging": {
+                  "$ref": "objects/paging.json#/paging"
+                },
+                "matches": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "objects/file.json#/file"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    },
+    {
+      "name": "search.messages",
+      "description": "Searches for messages matching a query.",
+      "documentationUrl": "https://api.slack.com/methods/search.messages",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: search:read"
+        },
+        {
+          "name": "query",
+          "type": "string",
+          "optional": false,
+          "description": "Search query. May contains booleans, etc."
+        },
+        {
+          "name": "sort",
+          "type": "string",
+          "optional": true,
+          "description": "Return matches sorted by either score or timestamp."
+        },
+        {
+          "name": "sort_dir",
+          "type": "string",
+          "optional": true,
+          "description": "Change sort direction to ascending (asc) or descending (desc)."
+        },
+        {
+          "name": "highlight",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass a value of 1 to enable query highlight markers (see below)."
+        },
+        {
+          "name": "count",
+          "type": "integer",
+          "optional": true,
+          "description": "Number of items to return per page."
+        },
+        {
+          "name": "page",
+          "type": "integer",
+          "optional": true,
+          "description": "Page number of results to return."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"query\":\"test\",\"messages\":{\"total\":829,\"paging\":{\"count\":20,\"total\":829,\"page\":1,\"pages\":42},\"matches\":[{},{},{}]}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "query": {
+              "type": "string"
+            },
+            "messages": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number"
+                },
+                "paging": {
+                  "$ref": "objects/paging.json#/paging"
+                },
+                "matches": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "objects/message.json#/message"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "deleted": {
+      "type": "boolean",
+      "id": "deleted"
+    },
+    "name": {
+      "type": "string",
+      "id": "name"
+    },
+    "app_id": {
+      "type": "string",
+      "id": "app_id"
+    },
+    "icons": {
+      "type": "object",
+      "properties": {
+        "image_36": {
+          "type": "string",
+          "id": "image_36"
+        },
+        "image_48": {
+          "type": "string",
+          "id": "image_48"
+        },
+        "image_72": {
+          "type": "string",
+          "id": "image_72"
+        }
+      },
+      "id": "icons",
+      "required": [
+        "image_36",
+        "image_48",
+        "image_72"
+      ]
+    }
+  },
+  "id": "bot",
+  "required": [
+    "id",
+    "deleted",
+    "name",
+    "app_id",
+    "icons"
+  ]
+}

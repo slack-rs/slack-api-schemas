@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "count": { "type": "integer" },
+    "total": { "type": "integer" },
+    "page": { "type": "integer" },
+    "pages": { "type": "integer" }
+  },
+  "id": "paging",
+  "required": [
+    "count",
+    "total",
+    "page",
+    "pages"
+  ]
+}

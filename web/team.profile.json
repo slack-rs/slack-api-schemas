@@ -1,0 +1,139 @@
+{
+  "name": "team.profile",
+  "description": "",
+  "methods": [
+    {
+      "name": "team.profile.get",
+      "description": "Retrieve a team's profile.",
+      "documentationUrl": "https://api.slack.com/methods/team.profile.get",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires scope: users.profile:read"
+        },
+        {
+          "name": "visibility",
+          "type": "string",
+          "optional": true,
+          "description": "Filter by visibility."
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"profile\":{\"fields\":[{\"id\":\"Xf06054AAA\",\"ordering\":0,\"label\":\"Phone extension\",\"hint\":\"Enter the extension to reach your desk\",\"type\":\"text\",\"possible_values\":null,\"options\":null,\"is_hidden\":1},{\"id\":\"Xf06054BBB\",\"ordering\":1,\"label\":\"Date of birth\",\"hint\":\"When you were born\",\"type\":\"date\",\"possible_values\":null,\"options\":null},{\"id\":\"Xf06054CCC\",\"ordering\":2,\"label\":\"Facebook\",\"hint\":\"Enter a link to your Facebook profile\",\"type\":\"link\",\"possible_values\":null,\"options\":null},{\"id\":\"Xf06054DDD\",\"ordering\":3,\"label\":\"House\",\"hint\":\"Hogwarts, obviously\",\"type\":\"options_list\",\"possible_values\":[\"Gryffindor\",\"Hufflepuff\",\"Ravenclaw\",\"Slytherin\"],\"options\":null},{\"id\":\"Xf06054EEE\",\"ordering\":4,\"label\":\"Location\",\"hint\":\"Office location (LDAP)\",\"type\":\"text\",\"possible_values\":null,\"options\":{\"is_protected\":1}},{\"id\":\"Xf06054FFF\",\"ordering\":5,\"label\":\"Manager\",\"hint\":\"The boss\",\"type\":\"user\",\"possible_values\":null,\"options\":null}]}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "profile": {
+              "type": "object",
+              "properties": {
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "ordering": {
+                        "type": "number"
+                      },
+                      "label": {
+                        "type": "string"
+                      },
+                      "hint": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "possible_values": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "options": {
+                        "type": "object",
+                        "patternProperties": {
+                          "^.+$": {
+                            "type": "string"
+                          }
+                        },
+                        "properties": {},
+                        "additionalProperties": false
+                      },
+                      "is_hidden": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "ordering",
+                      "label",
+                      "hint",
+                      "type",
+                      "possible_values",
+                      "options"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "errors": [
+        {
+          "name": "not_authed",
+          "description": "No authentication token provided."
+        },
+        {
+          "name": "invalid_auth",
+          "description": "Invalid authentication token."
+        },
+        {
+          "name": "account_inactive",
+          "description": "Authentication token is for a deleted user or team."
+        },
+        {
+          "name": "user_is_bot",
+          "description": "This method cannot be called by a bot user."
+        },
+        {
+          "name": "invalid_arg_name",
+          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+        },
+        {
+          "name": "invalid_array_arg",
+          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+        },
+        {
+          "name": "invalid_charset",
+          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+        },
+        {
+          "name": "invalid_form_data",
+          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+        },
+        {
+          "name": "invalid_post_type",
+          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+        },
+        {
+          "name": "missing_post_type",
+          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+        },
+        {
+          "name": "request_timeout",
+          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "created": {
+      "type": "integer",
+      "id": "created"
+    },
+    "timestamp": {
+      "type": "integer",
+      "id": "timestamp"
+    },
+    "name": {
+      "type": "string",
+      "id": "name"
+    },
+    "title": {
+      "type": "string",
+      "id": "title"
+    },
+    "mimetype": {
+      "type": "string",
+      "id": "mimetype"
+    },
+    "filetype": {
+      "type": "string",
+      "id": "filetype"
+    },
+    "pretty_type": {
+      "type": "string",
+      "id": "pretty_type"
+    },
+    "user": {
+      "type": "string",
+      "id": "user"
+    },
+    "mode": {
+      "type": "string",
+      "id": "mode"
+    },
+    "editable": {
+      "type": "boolean",
+      "id": "editable"
+    },
+    "is_external": {
+      "type": "boolean",
+      "id": "is_external"
+    },
+    "external_type": {
+      "type": "string",
+      "id": "external_type"
+    },
+    "username": {
+      "type": "string",
+      "id": "username"
+    },
+    "size": {
+      "type": "integer",
+      "id": "size"
+    },
+    "url_private": {
+      "type": "string",
+      "id": "url_private"
+    },
+    "url_private_download": {
+      "type": "string",
+      "id": "url_private_download"
+    },
+    "thumb_64": {
+      "type": "string",
+      "id": "thumb_64"
+    },
+    "thumb_80": {
+      "type": "string",
+      "id": "thumb_80"
+    },
+    "thumb_360": {
+      "type": "string",
+      "id": "thumb_360"
+    },
+    "thumb_360_gif": {
+      "type": "string",
+      "id": "thumb_360_gif"
+    },
+    "thumb_360_w": {
+      "type": "integer",
+      "id": "thumb_360_w"
+    },
+    "thumb_360_h": {
+      "type": "integer",
+      "id": "thumb_360_h"
+    },
+    "thumb_480": {
+      "type": "string",
+      "id": "thumb_480"
+    },
+    "thumb_480_w": {
+      "type": "integer",
+      "id": "thumb_480_w"
+    },
+    "thumb_480_h": {
+      "type": "integer",
+      "id": "thumb_480_h"
+    },
+    "thumb_160": {
+      "type": "string",
+      "id": "thumb_160"
+    },
+    "permalink": {
+      "type": "string",
+      "id": "permalink"
+    },
+    "permalink_public": {
+      "type": "string",
+      "id": "permalink_public"
+    },
+    "edit_link": {
+      "type": "string",
+      "id": "edit_link"
+    },
+    "preview": {
+      "type": "string",
+      "id": "preview"
+    },
+    "preview_highlight": {
+      "type": "string",
+      "id": "preview_highlight"
+    },
+    "lines": {
+      "type": "integer",
+      "id": "lines"
+    },
+    "lines_more": {
+      "type": "integer",
+      "id": "lines_more"
+    },
+    "is_public": {
+      "type": "boolean",
+      "id": "is_public"
+    },
+    "public_url_shared": {
+      "type": "boolean",
+      "id": "public_url_shared"
+    },
+    "display_as_bot": {
+      "type": "boolean",
+      "id": "display_as_bot"
+    },
+    "channels": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "id": "channels"
+    },
+    "groups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "id": "groups"
+    },
+    "ims": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "id": "ims"
+    },
+    "initial_comment": {
+      "$ref": "file_comment.json"
+    },
+    "num_stars": {
+      "type": "integer",
+      "id": "num_stars"
+    },
+    "is_starred": {
+      "type": "boolean",
+      "id": "is_starred"
+    },
+    "pinned_to": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "id": "pinned_to"
+    },
+    "reactions": {
+      "type": "array",
+      "items": { "$ref": "reaction.json#/reaction" },
+      "id": "reactions"
+    },
+    "comments_count": {
+      "type": "integer",
+      "id": "comments_count"
+    }
+  },
+  "id": "file",
+  "required": [
+    "id",
+    "created",
+    "timestamp",
+    "name",
+    "title",
+    "mimetype",
+    "filetype",
+    "pretty_type",
+    "user",
+    "mode",
+    "editable",
+    "is_external",
+    "external_type",
+    "username",
+    "size",
+    "url_private",
+    "url_private_download",
+    "thumb_64",
+    "thumb_80",
+    "thumb_360",
+    "thumb_360_gif",
+    "thumb_360_w",
+    "thumb_360_h",
+    "thumb_480",
+    "thumb_480_w",
+    "thumb_480_h",
+    "thumb_160",
+    "permalink",
+    "permalink_public",
+    "edit_link",
+    "preview",
+    "preview_highlight",
+    "lines",
+    "lines_more",
+    "is_public",
+    "public_url_shared",
+    "display_as_bot",
+    "channels",
+    "groups",
+    "ims",
+    "initial_comment",
+    "num_stars",
+    "is_starred",
+    "pinned_to",
+    "reactions",
+    "comments_count"
+  ]
+}

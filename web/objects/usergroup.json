@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": "id"
+    },
+    "team_id": {
+      "type": "string",
+      "id": "team_id"
+    },
+    "is_usergroup": {
+      "type": "boolean",
+      "id": "is_usergroup"
+    },
+    "name": {
+      "type": "string",
+      "id": "name"
+    },
+    "description": {
+      "type": "string",
+      "id": "description"
+    },
+    "handle": {
+      "type": "string",
+      "id": "handle"
+    },
+    "is_external": {
+      "type": "boolean",
+      "id": "is_external"
+    },
+    "date_create": {
+      "type": "integer",
+      "id": "date_create"
+    },
+    "date_update": {
+      "type": "integer",
+      "id": "date_update"
+    },
+    "date_delete": {
+      "type": "integer",
+      "id": "date_delete"
+    },
+    "auto_type": {
+      "type": "string",
+      "id": "auto_type"
+    },
+    "created_by": {
+      "type": "string",
+      "id": "created_by"
+    },
+    "updated_by": {
+      "type": "string",
+      "id": "updated_by"
+    },
+    "deleted_by": {
+      "type": "string",
+      "id": "deleted_by"
+    },
+    "prefs": {
+      "type": "object",
+      "properties": {
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "id": "channels"
+        },
+        "groups": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "id": "groups"
+        }
+      },
+      "id": "prefs",
+      "required": [
+        "channels",
+        "groups"
+      ]
+    },
+    "user_count": {
+      "type": "string",
+      "id": "user_count"
+    }
+  },
+  "id": "usergroup",
+  "required": [
+    "id",
+    "team_id",
+    "is_usergroup",
+    "name",
+    "description",
+    "handle",
+    "is_external",
+    "date_create",
+    "date_update",
+    "date_delete",
+    "created_by",
+    "updated_by",
+    "prefs",
+    "user_count"
+  ]
+}
