@@ -193,6 +193,9 @@
                 "ok": {
                   "type": "boolean"
                 },
+                "error": {
+                  "type": "string"
+                },
                 "type": {
                   "type": "string"
                 },
@@ -217,6 +220,9 @@
                 "ok": {
                   "type": "boolean"
                 },
+                "error": {
+                  "type": "string"
+                },
                 "type": {
                   "type": "string"
                 },
@@ -236,6 +242,9 @@
               "properties": {
                 "ok": {
                   "type": "boolean"
+                },
+                "error": {
+                  "type": "string"
                 },
                 "type": {
                   "type": "string"
