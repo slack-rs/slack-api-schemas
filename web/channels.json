@@ -36,78 +36,78 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "already_archived",
-          "description": "Channel has already been archived."
-        },
-        {
-          "name": "cant_archive_general",
-          "description": "You cannot archive the general channel"
-        },
-        {
-          "name": "last_ra_channel",
-          "description": "You cannot archive the last channel for a multi-channel guest"
-        },
-        {
-          "name": "restricted_action",
-          "description": "A team preference prevents the authenticated user from archiving."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "already_archived",
+            "description": "Channel has already been archived."
+          },
+          {
+            "name": "cant_archive_general",
+            "description": "You cannot archive the general channel"
+          },
+          {
+            "name": "last_ra_channel",
+            "description": "You cannot archive the last channel for a multi-channel guest"
+          },
+          {
+            "name": "restricted_action",
+            "description": "A team preference prevents the authenticated user from archiving."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.create",
@@ -146,70 +146,70 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "name_taken",
-          "description": "A channel cannot be created with the given name."
         },
-        {
-          "name": "restricted_action",
-          "description": "A team preference prevents the authenticated user from creating channels."
-        },
-        {
-          "name": "no_channel",
-          "description": "Value passed for name was empty."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "name_taken",
+            "description": "A channel cannot be created with the given name."
+          },
+          {
+            "name": "restricted_action",
+            "description": "A team preference prevents the authenticated user from creating channels."
+          },
+          {
+            "name": "no_channel",
+            "description": "Value passed for name was empty."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.history",
@@ -287,62 +287,62 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "invalid_ts_latest",
-          "description": "Value passed for latest was invalid"
-        },
-        {
-          "name": "invalid_ts_oldest",
-          "description": "Value passed for oldest was invalid"
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "invalid_ts_latest",
+            "description": "Value passed for latest was invalid"
+          },
+          {
+            "name": "invalid_ts_oldest",
+            "description": "Value passed for oldest was invalid"
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.info",
@@ -381,54 +381,54 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.invite",
@@ -473,86 +473,86 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "user_not_found",
-          "description": "Value passed for user was invalid."
-        },
-        {
-          "name": "cant_invite_self",
-          "description": "Authenticated user cannot invite themselves to a channel."
-        },
-        {
-          "name": "not_in_channel",
-          "description": "Authenticated user is not in the channel."
-        },
-        {
-          "name": "already_in_channel",
-          "description": "Invited user is already in the channel."
-        },
-        {
-          "name": "is_archived",
-          "description": "Channel has been archived."
-        },
-        {
-          "name": "cant_invite",
-          "description": "User cannot be invited to this channel."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_ultra_restricted",
-          "description": "This method cannot be called by a single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "user_not_found",
+            "description": "Value passed for user was invalid."
+          },
+          {
+            "name": "cant_invite_self",
+            "description": "Authenticated user cannot invite themselves to a channel."
+          },
+          {
+            "name": "not_in_channel",
+            "description": "Authenticated user is not in the channel."
+          },
+          {
+            "name": "already_in_channel",
+            "description": "Invited user is already in the channel."
+          },
+          {
+            "name": "is_archived",
+            "description": "Channel has been archived."
+          },
+          {
+            "name": "cant_invite",
+            "description": "User cannot be invited to this channel."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_ultra_restricted",
+            "description": "This method cannot be called by a single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.join",
@@ -591,78 +591,78 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "name_taken",
-          "description": "A channel cannot be created with the given name."
-        },
-        {
-          "name": "restricted_action",
-          "description": "A team preference prevents the authenticated user from creating channels."
-        },
-        {
-          "name": "no_channel",
-          "description": "Value passed for name was empty."
-        },
-        {
-          "name": "is_archived",
-          "description": "Channel has been archived."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "name_taken",
+            "description": "A channel cannot be created with the given name."
+          },
+          {
+            "name": "restricted_action",
+            "description": "A team preference prevents the authenticated user from creating channels."
+          },
+          {
+            "name": "no_channel",
+            "description": "Value passed for name was empty."
+          },
+          {
+            "name": "is_archived",
+            "description": "Channel has been archived."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.kick",
@@ -704,86 +704,86 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "user_not_found",
-          "description": "Value passed for user was invalid."
-        },
-        {
-          "name": "cant_kick_self",
-          "description": "Authenticated user can't kick themselves from a channel."
-        },
-        {
-          "name": "not_in_channel",
-          "description": "User was not in the channel."
-        },
-        {
-          "name": "cant_kick_from_general",
-          "description": "User cannot be removed from #general."
-        },
-        {
-          "name": "cant_kick_from_last_channel",
-          "description": "User cannot be removed from the last channel they're in."
-        },
-        {
-          "name": "restricted_action",
-          "description": "A team preference prevents the authenticated user from kicking."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "user_not_found",
+            "description": "Value passed for user was invalid."
+          },
+          {
+            "name": "cant_kick_self",
+            "description": "Authenticated user can't kick themselves from a channel."
+          },
+          {
+            "name": "not_in_channel",
+            "description": "User was not in the channel."
+          },
+          {
+            "name": "cant_kick_from_general",
+            "description": "User cannot be removed from #general."
+          },
+          {
+            "name": "cant_kick_from_last_channel",
+            "description": "User cannot be removed from the last channel they're in."
+          },
+          {
+            "name": "restricted_action",
+            "description": "A team preference prevents the authenticated user from kicking."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.leave",
@@ -819,70 +819,70 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "is_archived",
-          "description": "Channel has been archived."
-        },
-        {
-          "name": "cant_leave_general",
-          "description": "Authenticated user cannot leave the general channel"
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "is_archived",
+            "description": "Channel has been archived."
+          },
+          {
+            "name": "cant_leave_general",
+            "description": "Authenticated user cannot leave the general channel"
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.list",
@@ -924,50 +924,50 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
         },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.mark",
@@ -1009,62 +1009,62 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "invalid_timestamp",
-          "description": "Value passed for timestamp was invalid."
-        },
-        {
-          "name": "not_in_channel",
-          "description": "Caller is not a member of the channel."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "invalid_timestamp",
+            "description": "Value passed for timestamp was invalid."
+          },
+          {
+            "name": "not_in_channel",
+            "description": "Caller is not a member of the channel."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.rename",
@@ -1123,78 +1123,78 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "not_in_channel",
-          "description": "Caller is not a member of the channel."
-        },
-        {
-          "name": "not_authorized",
-          "description": "Caller cannot rename this channel"
-        },
-        {
-          "name": "invalid_name",
-          "description": "New name is invalid"
-        },
-        {
-          "name": "name_taken",
-          "description": "New channel name is taken"
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "not_in_channel",
+            "description": "Caller is not a member of the channel."
+          },
+          {
+            "name": "not_authorized",
+            "description": "Caller cannot rename this channel"
+          },
+          {
+            "name": "invalid_name",
+            "description": "New name is invalid"
+          },
+          {
+            "name": "name_taken",
+            "description": "New channel name is taken"
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.replies",
@@ -1245,62 +1245,62 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value for channel was missing or invalid."
         },
-        {
-          "name": "thread_not_found",
-          "description": "Value for thread_ts was missing or invalid."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value for channel was missing or invalid."
+          },
+          {
+            "name": "thread_not_found",
+            "description": "Value for thread_ts was missing or invalid."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.setPurpose",
@@ -1345,70 +1345,70 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "not_in_channel",
-          "description": "Authenticated user is not in the channel."
-        },
-        {
-          "name": "is_archived",
-          "description": "Channel has been archived."
-        },
-        {
-          "name": "too_long",
-          "description": "Purpose was longer than 250 characters."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "not_in_channel",
+            "description": "Authenticated user is not in the channel."
+          },
+          {
+            "name": "is_archived",
+            "description": "Channel has been archived."
+          },
+          {
+            "name": "too_long",
+            "description": "Purpose was longer than 250 characters."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.setTopic",
@@ -1453,70 +1453,70 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "not_in_channel",
-          "description": "Authenticated user is not in the channel."
-        },
-        {
-          "name": "is_archived",
-          "description": "Channel has been archived."
-        },
-        {
-          "name": "too_long",
-          "description": "Topic was longer than 250 characters."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "not_in_channel",
+            "description": "Authenticated user is not in the channel."
+          },
+          {
+            "name": "is_archived",
+            "description": "Channel has been archived."
+          },
+          {
+            "name": "too_long",
+            "description": "Topic was longer than 250 characters."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "channels.unarchive",
@@ -1552,66 +1552,66 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "channel_not_found",
-          "description": "Value passed for channel was invalid."
         },
-        {
-          "name": "not_archived",
-          "description": "Channel is not archived."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "user_is_bot",
-          "description": "This method cannot be called by a bot user."
-        },
-        {
-          "name": "user_is_restricted",
-          "description": "This method cannot be called by a restricted user or single channel guest."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "not_archived",
+            "description": "Channel is not archived."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "user_is_bot",
+            "description": "This method cannot be called by a bot user."
+          },
+          {
+            "name": "user_is_restricted",
+            "description": "This method cannot be called by a restricted user or single channel guest."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     }
   ]
 }

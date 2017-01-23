@@ -45,54 +45,54 @@
               "type": "string"
             }
           }
-        }
-      },
-      "errors": [
-        {
-          "name": "invalid_client_id",
-          "description": "Value passed for client_id was invalid."
         },
-        {
-          "name": "bad_client_secret",
-          "description": "Value passed for client_secret was invalid."
-        },
-        {
-          "name": "invalid_code",
-          "description": "Value passed for code was invalid."
-        },
-        {
-          "name": "bad_redirect_uri",
-          "description": "Value passed for redirect_uri did not match the redirect_uri in the original request."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "invalid_client_id",
+            "description": "Value passed for client_id was invalid."
+          },
+          {
+            "name": "bad_client_secret",
+            "description": "Value passed for client_secret was invalid."
+          },
+          {
+            "name": "invalid_code",
+            "description": "Value passed for code was invalid."
+          },
+          {
+            "name": "bad_redirect_uri",
+            "description": "Value passed for redirect_uri did not match the redirect_uri in the original request."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     }
   ]
 }

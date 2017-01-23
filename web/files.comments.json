@@ -51,62 +51,62 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "file_not_found",
-          "description": "The requested file could not be found."
         },
-        {
-          "name": "file_deleted",
-          "description": "The requested file was previously deleted."
-        },
-        {
-          "name": "no_comment",
-          "description": "The comment field was empty."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "file_not_found",
+            "description": "The requested file could not be found."
+          },
+          {
+            "name": "file_deleted",
+            "description": "The requested file was previously deleted."
+          },
+          {
+            "name": "no_comment",
+            "description": "The comment field was empty."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "files.comments.delete",
@@ -148,62 +148,62 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "file_not_found",
-          "description": "The requested file could not be found."
         },
-        {
-          "name": "file_deleted",
-          "description": "The requested file was previously deleted."
-        },
-        {
-          "name": "cant_delete",
-          "description": "The requested comment could not be deleted."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "file_not_found",
+            "description": "The requested file could not be found."
+          },
+          {
+            "name": "file_deleted",
+            "description": "The requested file was previously deleted."
+          },
+          {
+            "name": "cant_delete",
+            "description": "The requested comment could not be deleted."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     },
     {
       "name": "files.comments.edit",
@@ -254,70 +254,70 @@
           "required": [
             "ok"
           ]
-        }
-      },
-      "errors": [
-        {
-          "name": "file_not_found",
-          "description": "The requested file could not be found."
         },
-        {
-          "name": "file_deleted",
-          "description": "The requested file was previously deleted."
-        },
-        {
-          "name": "no_comment",
-          "description": "The comment field was empty."
-        },
-        {
-          "name": "edit_window_closed",
-          "description": "The timeframe for editing the comment has expired."
-        },
-        {
-          "name": "cant_edit",
-          "description": "The requested file could not be found."
-        },
-        {
-          "name": "not_authed",
-          "description": "No authentication token provided."
-        },
-        {
-          "name": "invalid_auth",
-          "description": "Invalid authentication token."
-        },
-        {
-          "name": "account_inactive",
-          "description": "Authentication token is for a deleted user or team."
-        },
-        {
-          "name": "invalid_arg_name",
-          "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
-        },
-        {
-          "name": "invalid_array_arg",
-          "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
-        },
-        {
-          "name": "invalid_charset",
-          "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
-        },
-        {
-          "name": "invalid_form_data",
-          "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
-        },
-        {
-          "name": "invalid_post_type",
-          "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
-        },
-        {
-          "name": "missing_post_type",
-          "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
-        },
-        {
-          "name": "request_timeout",
-          "description": "The method was called via a POST request, but the POST data was either missing or truncated."
-        }
-      ]
+        "errors": [
+          {
+            "name": "file_not_found",
+            "description": "The requested file could not be found."
+          },
+          {
+            "name": "file_deleted",
+            "description": "The requested file was previously deleted."
+          },
+          {
+            "name": "no_comment",
+            "description": "The comment field was empty."
+          },
+          {
+            "name": "edit_window_closed",
+            "description": "The timeframe for editing the comment has expired."
+          },
+          {
+            "name": "cant_edit",
+            "description": "The requested file could not be found."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
     }
   ]
 }
