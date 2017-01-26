@@ -183,10 +183,10 @@
               "type": "boolean"
             },
             "user": {
-              "$ref": "../objects/user.json#/user"
+              "$ref": "../objects/user.json"
             },
             "team": {
-              "$ref": "../objects/team.json#/team"
+              "$ref": "../objects/team.json"
             },
             "error": {
               "type": "string"
@@ -272,7 +272,7 @@
               "type": "boolean"
             },
             "user": {
-              "$ref": "../objects/user.json#/user"
+              "$ref": "../objects/user.json"
             },
             "error": {
               "type": "string"
@@ -364,7 +364,7 @@
             "members": {
               "type": "array",
               "items": {
-                "$ref": "../objects/user.json#/user"
+                "$ref": "../objects/user.json"
               }
             },
             "error": {

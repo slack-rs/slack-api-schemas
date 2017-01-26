@@ -69,11 +69,11 @@
                 "matches": {
                   "type": "array",
                   "items": {
-                    "$ref": "../objects/message.json#/message"
+                    "$ref": "../objects/message.json"
                   }
                 },
                 "paging": {
-                  "$ref": "../objects/paging.json#/paging"
+                  "$ref": "../objects/paging.json"
                 }
               },
               "id": "messages",
@@ -89,11 +89,11 @@
                 "matches": {
                   "type": "array",
                   "items": {
-                    "$ref": "../objects/file.json#/file"
+                    "$ref": "../objects/file.json"
                   }
                 },
                 "paging": {
-                  "$ref": "../objects/paging.json#/paging"
+                  "$ref": "../objects/paging.json"
                 }
               },
               "id": "files",
@@ -225,12 +225,12 @@
                   "type": "number"
                 },
                 "paging": {
-                  "$ref": "../objects/paging.json#/paging"
+                  "$ref": "../objects/paging.json"
                 },
                 "matches": {
                   "type": "array",
                   "items": {
-                    "$ref": "../objects/file.json#/file"
+                    "$ref": "../objects/file.json"
                   }
                 }
               }
@@ -358,12 +358,12 @@
                   "type": "number"
                 },
                 "paging": {
-                  "$ref": "../objects/paging.json#/paging"
+                  "$ref": "../objects/paging.json"
                 },
                 "matches": {
                   "type": "array",
                   "items": {
-                    "$ref": "../objects/message.json#/message"
+                    "$ref": "../objects/message.json"
                   }
                 }
               }

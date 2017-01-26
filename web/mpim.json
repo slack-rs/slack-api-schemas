@@ -148,7 +148,7 @@
             "messages": {
               "type": "array",
               "items": {
-                "$ref": "../objects/message.json#/message"
+                "$ref": "../objects/message.json"
               }
             },
             "has_more": {
@@ -242,7 +242,7 @@
             "groups": {
               "type": "array",
               "items": {
-                "$ref": "../objects/mpim.json#/mpim"
+                "$ref": "../objects/mpim.json"
               }
             },
             "error": {
@@ -418,7 +418,7 @@
               "type": "boolean"
             },
             "group": {
-              "$ref": "../objects/mpim.json#/mpim"
+              "$ref": "../objects/mpim.json"
             },
             "error": {
               "type": "string"
@@ -520,11 +520,11 @@
             "messages": {
               "type": "array",
               "items": {
-                "$ref": "../objects/message.json#/message"
+                "$ref": "../objects/message.json"
               }
             },
             "thread_info": {
-              "$ref": "../objects/thread_info.json#/thread_info"
+              "$ref": "../objects/thread_info.json"
             },
             "error": {
               "type": "string"

@@ -174,7 +174,7 @@
                         "type": "string"
                       },
                       "message": {
-                        "$ref": "../objects/message.json#/message"
+                        "$ref": "../objects/message.json"
                       }
                     },
                     "id": "message",
@@ -191,7 +191,7 @@
                         "type": "string"
                       },
                       "file": {
-                        "$ref": "../objects/file.json#/file"
+                        "$ref": "../objects/file.json"
                       }
                     },
                     "id": "file",
@@ -207,10 +207,10 @@
                         "type": "string"
                       },
                       "file": {
-                        "$ref": "../objects/file.json#/file"
+                        "$ref": "../objects/file.json"
                       },
                       "comment": {
-                        "$ref": "../objects/file_comment.json#/file_comment"
+                        "$ref": "../objects/file_comment.json"
                       }
                     },
                     "id": "fileComment",
@@ -272,7 +272,7 @@
               }
             },
             "paging": {
-              "$ref": "../objects/paging.json#/paging"
+              "$ref": "../objects/paging.json"
             },
             "error": {
               "type": "string"

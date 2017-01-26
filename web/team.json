@@ -92,7 +92,7 @@
               }
             },
             "paging": {
-              "$ref": "../objects/paging.json#/paging"
+              "$ref": "../objects/paging.json"
             },
             "error": {
               "type": "string"
@@ -277,7 +277,7 @@
               "type": "boolean"
             },
             "team": {
-              "$ref": "../objects/team.json#/team"
+              "$ref": "../objects/team.json"
             },
             "error": {
               "type": "string"
@@ -440,7 +440,7 @@
               }
             },
             "paging": {
-              "$ref": "../objects/paging.json#/paging"
+              "$ref": "../objects/paging.json"
             },
             "error": {
               "type": "string"

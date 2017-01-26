@@ -54,7 +54,7 @@
               "type": "boolean"
             },
             "usergroup": {
-              "$ref": "../objects/usergroup.json#/usergroup"
+              "$ref": "../objects/usergroup.json"
             },
             "error": {
               "type": "string"
@@ -150,7 +150,7 @@
               "type": "boolean"
             },
             "usergroup": {
-              "$ref": "../objects/usergroup.json#/usergroup"
+              "$ref": "../objects/usergroup.json"
             },
             "error": {
               "type": "string"
@@ -246,7 +246,7 @@
               "type": "boolean"
             },
             "usergroup": {
-              "$ref": "../objects/usergroup.json#/usergroup"
+              "$ref": "../objects/usergroup.json"
             },
             "error": {
               "type": "string"
@@ -350,7 +350,7 @@
             "usergroups": {
               "type": "array",
               "items": {
-                "$ref": "../objects/usergroup.json#/usergroup"
+                "$ref": "../objects/usergroup.json"
               }
             },
             "error": {
@@ -471,7 +471,7 @@
               "type": "boolean"
             },
             "usergroup": {
-              "$ref": "../objects/usergroup.json#/usergroup"
+              "$ref": "../objects/usergroup.json"
             },
             "error": {
               "type": "string"

@@ -42,7 +42,7 @@
               "type": "boolean"
             },
             "comment": {
-              "$ref": "../objects/file_comment.json#/file_comment"
+              "$ref": "../objects/file_comment.json"
             },
             "error": {
               "type": "string"
@@ -245,7 +245,7 @@
               "type": "boolean"
             },
             "comment": {
-              "$ref": "../objects/file_comment.json#/file_comment"
+              "$ref": "../objects/file_comment.json"
             },
             "error": {
               "type": "string"

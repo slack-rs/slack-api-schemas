@@ -137,7 +137,7 @@
               "type": "boolean"
             },
             "channel": {
-              "$ref": "../objects/channel.json#/channel"
+              "$ref": "../objects/channel.json"
             },
             "error": {
               "type": "string"
@@ -274,7 +274,7 @@
             "messages": {
               "type": "array",
               "items": {
-                "$ref": "../objects/message.json#/message"
+                "$ref": "../objects/message.json"
               }
             },
             "has_more": {
@@ -372,7 +372,7 @@
               "type": "boolean"
             },
             "channel": {
-              "$ref": "../objects/channel.json#/channel"
+              "$ref": "../objects/channel.json"
             },
             "error": {
               "type": "string"
@@ -464,7 +464,7 @@
               "type": "boolean"
             },
             "channel": {
-              "$ref": "../objects/channel.json#/channel"
+              "$ref": "../objects/channel.json"
             },
             "error": {
               "type": "string"
@@ -582,7 +582,7 @@
               "type": "boolean"
             },
             "channel": {
-              "$ref": "../objects/channel.json#/channel"
+              "$ref": "../objects/channel.json"
             },
             "error": {
               "type": "string"
@@ -914,7 +914,7 @@
             "channels": {
               "type": "array",
               "items": {
-                "$ref": "../objects/channel.json#/channel"
+                "$ref": "../objects/channel.json"
               }
             },
             "error": {
@@ -1232,11 +1232,11 @@
             "messages": {
               "type": "array",
               "items": {
-                "$ref": "../objects/message.json#/message"
+                "$ref": "../objects/message.json"
               }
             },
             "thread_info": {
-              "$ref": "../objects/thread_info.json#/thread_info"
+              "$ref": "../objects/thread_info.json"
             },
             "error": {
               "type": "string"
