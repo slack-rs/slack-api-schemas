@@ -176,7 +176,7 @@
                         "type": "string"
                       },
                       "message": {
-                        "$ref": "objects/message.json#/message"
+                        "$ref": "../objects/message.json#/message"
                       },
                       "created": {
                         "type": "number"
@@ -201,7 +201,7 @@
                         "type": "string"
                       },
                       "file": {
-                        "$ref": "objects/file.json#/file"
+                        "$ref": "../objects/file.json#/file"
                       },
                       "created": {
                         "type": "number"
@@ -225,10 +225,10 @@
                         "type": "string"
                       },
                       "file": {
-                        "$ref": "objects/file.json#/file"
+                        "$ref": "../objects/file.json#/file"
                       },
                       "comment": {
-                        "$ref": "objects/file_comment.json#/file_comment"
+                        "$ref": "../objects/file_comment.json#/file_comment"
                       },
                       "created": {
                         "type": "number"

@@ -42,7 +42,7 @@
               "type": "boolean"
             },
             "reminder": {
-              "$ref": "objects/reminder.json#/reminder"
+              "$ref": "../objects/reminder.json#/reminder"
             },
             "error": {
               "type": "string"
@@ -334,7 +334,7 @@
               "type": "boolean"
             },
             "reminder": {
-              "$ref": "objects/reminder.json#/reminder"
+              "$ref": "../objects/reminder.json#/reminder"
             },
             "error": {
               "type": "string"
@@ -420,7 +420,7 @@
             "reminders": {
               "type": "array",
               "items": {
-                "$ref": "objects/reminder.json#/reminder"
+                "$ref": "../objects/reminder.json#/reminder"
               }
             },
             "error": {

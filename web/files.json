@@ -133,16 +133,16 @@
               "type": "boolean"
             },
             "file": {
-              "$ref": "objects/file.json#/file"
+              "$ref": "../objects/file.json#/file"
             },
             "comments": {
               "type": "array",
               "items": {
-                "$ref": "objects/file_comment.json#/file_comment"
+                "$ref": "../objects/file_comment.json#/file_comment"
               }
             },
             "paging": {
-              "$ref": "objects/paging.json#/paging"
+              "$ref": "../objects/paging.json#/paging"
             },
             "error": {
               "type": "string"
@@ -270,11 +270,11 @@
             "files": {
               "type": "array",
               "items": {
-                "$ref": "objects/file.json#/file"
+                "$ref": "../objects/file.json#/file"
               }
             },
             "paging": {
-              "$ref": "objects/paging.json#/paging"
+              "$ref": "../objects/paging.json#/paging"
             },
             "error": {
               "type": "string"
@@ -368,7 +368,7 @@
               "type": "boolean"
             },
             "file": {
-              "$ref": "objects/file.json#/file"
+              "$ref": "../objects/file.json#/file"
             },
             "error": {
               "type": "string"
@@ -462,7 +462,7 @@
               "type": "boolean"
             },
             "file": {
-              "$ref": "objects/file.json#/file"
+              "$ref": "../objects/file.json#/file"
             },
             "error": {
               "type": "string"
@@ -596,7 +596,7 @@
               "type": "boolean"
             },
             "file": {
-              "$ref": "objects/file.json#/file"
+              "$ref": "../objects/file.json#/file"
             },
             "error": {
               "type": "string"

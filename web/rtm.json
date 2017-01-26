@@ -45,45 +45,45 @@
               "type": "string"
             },
             "self": {
-              "$ref": "objects/user.json#/user"
+              "$ref": "../objects/user.json#/user"
             },
             "team": {
-              "$ref": "objects/team.json#/team"
+              "$ref": "../objects/team.json#/team"
             },
             "users": {
               "type": "array",
               "items": {
-                "$ref": "objects/user.json#/user"
+                "$ref": "../objects/user.json#/user"
               }
             },
             "channels": {
               "type": "array",
               "items": {
-                "$ref": "objects/channel.json#/channel"
+                "$ref": "../objects/channel.json#/channel"
               }
             },
             "groups": {
               "type": "array",
               "items": {
-                "$ref": "objects/group.json#/group"
+                "$ref": "../objects/group.json#/group"
               }
             },
             "mpims": {
               "type": "array",
               "items": {
-                "$ref": "objects/mpim.json#/mpim"
+                "$ref": "../objects/mpim.json#/mpim"
               }
             },
             "ims": {
               "type": "array",
               "items": {
-                "$ref": "objects/im.json#/im"
+                "$ref": "../objects/im.json#/im"
               }
             },
             "bots": {
               "type": "array",
               "items": {
-                "$ref": "objects/bot.json#/bot"
+                "$ref": "../objects/bot.json#/bot"
               }
             },
             "error": {

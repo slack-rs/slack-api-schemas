@@ -152,7 +152,7 @@
             "messages": {
               "type": "array",
               "items": {
-                "$ref": "objects/message.json#/message"
+                "$ref": "../objects/message.json#/message"
               }
             },
             "has_more": {
@@ -246,7 +246,7 @@
             "ims": {
               "type": "array",
               "items": {
-                "$ref": "objects/im.json#/im"
+                "$ref": "../objects/im.json#/im"
               }
             },
             "error": {
@@ -432,7 +432,7 @@
               "type": "boolean"
             },
             "channel": {
-              "$ref": "objects/im.json#/im"
+              "$ref": "../objects/im.json#/im"
             },
             "error": {
               "type": "string"
@@ -534,11 +534,11 @@
             "messages": {
               "type": "array",
               "items": {
-                "$ref": "objects/message.json#/message"
+                "$ref": "../objects/message.json#/message"
               }
             },
             "thread_info": {
-              "$ref": "objects/thread_info.json#/thread_info"
+              "$ref": "../objects/thread_info.json#/thread_info"
             },
             "error": {
               "type": "string"

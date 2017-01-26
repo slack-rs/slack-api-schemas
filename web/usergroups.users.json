@@ -141,7 +141,7 @@
               "type": "boolean"
             },
             "usergroup": {
-              "$ref": "objects/usergroup.json#/usergroup"
+              "$ref": "../objects/usergroup.json#/usergroup"
             },
             "error": {
               "type": "string"

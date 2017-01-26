@@ -336,7 +336,7 @@
               "type": "string"
             },
             "message": {
-              "$ref": "objects/message.json#/message"
+              "$ref": "../objects/message.json#/message"
             },
             "error": {
               "type": "string"

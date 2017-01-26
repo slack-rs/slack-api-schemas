@@ -1,0 +1,740 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "message",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "bot_id": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "icons": {
+          "type": "object",
+          "properties": {
+            "image_36": {
+              "type": "string"
+            },
+            "image_48": {
+              "type": "string"
+            },
+            "image_72": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "title": "bot_message"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "channel_archive"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "channel_join"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "channel_leave"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "old_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "channel_name"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "channel_purpose"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "channel_topic"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        }
+      },
+      "title": "channel_unarchive"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "file": {
+          "$ref": "file.json"
+        },
+        "comment": {
+          "$ref": "file_comment.json"
+        }
+      },
+      "title": "file_comment"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "file": {
+          "$ref": "file.json"
+        },
+        "user": {
+          "type": "string"
+        }
+      },
+      "title": "file_mention"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "file": {
+          "$ref": "file.json"
+        },
+        "user": {
+          "type": "string"
+        },
+        "upload": {
+          "type": "boolean"
+        }
+      },
+      "title": "file_share"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "title": "group_archive"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "group_join"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "group_leave"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "old_name": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "group_name"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "group_purpose"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "group_topic"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        }
+      },
+      "title": "group_unarchive"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        }
+      },
+      "title": "me_message"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "message": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "ts": {
+              "type": "string"
+            },
+            "edited": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "ts": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "title": "message_changed"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "deleted_ts": {
+          "type": "string"
+        }
+      },
+      "title": "message_deleted"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "thread_ts": {
+              "type": "string"
+            },
+            "reply_count": {
+              "type": "number"
+            },
+            "replies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "ts": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "ts": {
+              "type": "string"
+            }
+          }
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "event_ts": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        }
+      },
+      "title": "message_replied"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "item_type": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "item": {
+          "type": "object",
+          "properties": {}
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        }
+      },
+      "title": "pinned_item"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "from_url": {
+                "type": "string"
+              },
+              "fallback": {
+                "type": "string"
+              },
+              "ts": {
+                "type": "string"
+              },
+              "author_subname": {
+                "type": "string"
+              },
+              "channel_id": {
+                "type": "string"
+              },
+              "channel_name": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "author_link": {
+                "type": "string"
+              },
+              "author_icon": {
+                "type": "string"
+              },
+              "mrkdwn_in": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "id": {
+                "type": "number"
+              },
+              "footer": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "event_ts": {
+          "type": "string"
+        }
+      },
+      "title": "reply_broadcast"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "item_type": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "item": {
+          "type": "object",
+          "properties": {}
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        }
+      },
+      "title": "unpinned_item"
+    }
+  ]
+}

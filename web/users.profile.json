@@ -36,7 +36,7 @@
               "type": "boolean"
             },
             "profile": {
-              "$ref": "objects/user_profile.json#/user_profile"
+              "$ref": "../objects/user_profile.json#/user_profile"
             },
             "error": {
               "type": "string"
@@ -144,7 +144,7 @@
               "type": "boolean"
             },
             "profile": {
-              "$ref": "objects/user_profile.json#/user_profile"
+              "$ref": "../objects/user_profile.json#/user_profile"
             },
             "error": {
               "type": "string"
