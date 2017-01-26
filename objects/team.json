@@ -41,12 +41,5 @@
       }
     }
   },
-  "id": "team",
-  "required": [
-    "id",
-    "name",
-    "domain",
-    "email_domain",
-    "icon"
-  ]
+  "id": "team"
 }

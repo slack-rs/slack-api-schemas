@@ -23,11 +23,5 @@
       "items": { "$ref": "reaction.json" }
     }
   },
-  "id": "file_comment",
-  "required": [
-    "id",
-    "timestamp",
-    "user",
-    "comment"
-  ]
+  "id": "file_comment"
 }

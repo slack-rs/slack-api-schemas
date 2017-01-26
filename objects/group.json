@@ -53,12 +53,7 @@
           "id": "last_set"
         }
       },
-      "id": "topic",
-      "required": [
-        "value",
-        "creator",
-        "last_set"
-      ]
+      "id": "topic"
     },
     "purpose": {
       "type": "object",
@@ -76,12 +71,7 @@
           "id": "last_set"
         }
       },
-      "id": "purpose",
-      "required": [
-        "value",
-        "creator",
-        "last_set"
-      ]
+      "id": "purpose"
     },
     "last_read": {
       "type": "string",
@@ -99,21 +89,5 @@
       "id": "unread_count_display"
     }
   },
-  "id": "group",
-  "required": [
-    "id",
-    "name",
-    "is_group",
-    "created",
-    "creator",
-    "is_archived",
-    "is_mpim",
-    "members",
-    "topic",
-    "purpose",
-    "last_read",
-    "latest",
-    "unread_count",
-    "unread_count_display"
-  ]
+  "id": "group"
 }

@@ -76,32 +76,12 @@
           "id": "groups"
         }
       },
-      "id": "prefs",
-      "required": [
-        "channels",
-        "groups"
-      ]
+      "id": "prefs"
     },
     "user_count": {
       "type": "string",
       "id": "user_count"
     }
   },
-  "id": "usergroup",
-  "required": [
-    "id",
-    "team_id",
-    "is_usergroup",
-    "name",
-    "description",
-    "handle",
-    "is_external",
-    "date_create",
-    "date_update",
-    "date_delete",
-    "created_by",
-    "updated_by",
-    "prefs",
-    "user_count"
-  ]
+  "id": "usergroup"
 }

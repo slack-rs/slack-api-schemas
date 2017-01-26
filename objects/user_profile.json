@@ -63,22 +63,5 @@
       "additionalProperties": false
     }
   },
-  "id": "user_profile",
-  "required": [
-    "first_name",
-    "last_name",
-    "real_name",
-    "email",
-    "skype",
-    "phone",
-    "image_24",
-    "image_32",
-    "image_48",
-    "image_72",
-    "image_192",
-    "image_512",
-    "image_1024",
-    "image_original",
-    "fields"
-  ]
+  "id": "user_profile"
 }

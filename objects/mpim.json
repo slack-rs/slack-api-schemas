@@ -49,18 +49,5 @@
       "id": "unread_count_display"
     }
   },
-  "id": "mpim",
-  "required": [
-    "id",
-    "name",
-    "is_mpim",
-    "is_group",
-    "created",
-    "creator",
-    "members",
-    "last_read",
-    "latest",
-    "unread_count",
-    "unread_count_display"
-  ]
+  "id": "mpim"
 }

@@ -24,14 +24,5 @@
       "type": "number"
     }
   },
-  "id": "reminder",
-  "required": [
-    "id",
-    "creator",
-    "user",
-    "text",
-    "recurring",
-    "time",
-    "complete_ts"
-  ]
+  "id": "reminder"
 }

@@ -7,11 +7,5 @@
     "page": { "type": "integer" },
     "pages": { "type": "integer" }
   },
-  "id": "paging",
-  "required": [
-    "count",
-    "total",
-    "page",
-    "pages"
-  ]
+  "id": "paging"
 }

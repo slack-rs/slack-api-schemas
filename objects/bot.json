@@ -34,20 +34,8 @@
           "id": "image_72"
         }
       },
-      "id": "icons",
-      "required": [
-        "image_36",
-        "image_48",
-        "image_72"
-      ]
+      "id": "icons"
     }
   },
-  "id": "bot",
-  "required": [
-    "id",
-    "deleted",
-    "name",
-    "app_id",
-    "icons"
-  ]
+  "id": "bot"
 }

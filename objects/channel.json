@@ -53,12 +53,7 @@
           "id": "last_set"
         }
       },
-      "id": "topic",
-      "required": [
-        "value",
-        "creator",
-        "last_set"
-      ]
+      "id": "topic"
     },
     "purpose": {
       "type": "object",
@@ -76,12 +71,7 @@
           "id": "last_set"
         }
       },
-      "id": "purpose",
-      "required": [
-        "value",
-        "creator",
-        "last_set"
-      ]
+      "id": "purpose"
     },
     "is_member": {
       "type": "boolean",
@@ -103,22 +93,5 @@
       "id": "unread_count_display"
     }
   },
-  "id": "channel",
-  "required": [
-    "id",
-    "name",
-    "is_channel",
-    "created",
-    "creator",
-    "is_archived",
-    "is_general",
-    "members",
-    "topic",
-    "purpose",
-    "is_member",
-    "last_read",
-    "latest",
-    "unread_count",
-    "unread_count_display"
-  ]
+  "id": "channel"
 }

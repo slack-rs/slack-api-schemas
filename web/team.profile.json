@@ -71,16 +71,7 @@
                       "is_hidden": {
                         "type": "number"
                       }
-                    },
-                    "required": [
-                      "id",
-                      "ordering",
-                      "label",
-                      "hint",
-                      "type",
-                      "possible_values",
-                      "options"
-                    ]
+                    }
                   }
                 }
               }

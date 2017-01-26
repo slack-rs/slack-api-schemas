@@ -76,19 +76,7 @@
                   "region": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "user_id",
-                  "username",
-                  "date_first",
-                  "date_last",
-                  "count",
-                  "ip",
-                  "user_agent",
-                  "isp",
-                  "country",
-                  "region"
-                ]
+                }
               }
             },
             "paging": {
@@ -426,17 +414,7 @@
                   "reason": {
                     "type": "string"
                   }
-                },
-                "required": [
-                  "user_id",
-                  "user_name",
-                  "date",
-                  "change_type",
-                  "scope",
-                  "service_id",
-                  "service_type",
-                  "channel"
-                ]
+                }
               }
             },
             "paging": {

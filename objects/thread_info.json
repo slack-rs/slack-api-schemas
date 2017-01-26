@@ -5,9 +5,5 @@
     "count": { "type": "integer" },
     "complete": { "type": "boolean" }
   },
-  "id": "thread_info",
-  "required": [
-    "count",
-    "complete"
-  ]
+  "id": "thread_info"
 }

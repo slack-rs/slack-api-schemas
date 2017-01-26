@@ -50,19 +50,5 @@
       "id": "two_factor_type"
     }
   },
-  "id": "user",
-  "required": [
-    "id",
-    "name",
-    "deleted",
-    "color",
-    "profile",
-    "is_admin",
-    "is_owner",
-    "is_primary_owner",
-    "is_restricted",
-    "is_ultra_restricted",
-    "has_2fa",
-    "two_factor_type"
-  ]
+  "id": "user"
 }

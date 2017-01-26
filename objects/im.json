@@ -23,12 +23,5 @@
       "id": "is_user_deleted"
     }
   },
-  "id": "im",
-  "required": [
-    "id",
-    "is_im",
-    "user",
-    "created",
-    "is_user_deleted"
-  ]
+  "id": "im"
 }
