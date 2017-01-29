@@ -1268,10 +1268,6 @@
             "description": "Authentication token is for a deleted user or team."
           },
           {
-            "name": "user_is_bot",
-            "description": "This method cannot be called by a bot user."
-          },
-          {
             "name": "invalid_arg_name",
             "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
           },

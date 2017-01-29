@@ -189,9 +189,7 @@
                     "required": [
                       "type",
                       "channel",
-                      "message",
-                      "created",
-                      "created_by"
+                      "message"
                     ]
                   },
                   {
@@ -213,9 +211,7 @@
                     "id": "file",
                     "required": [
                       "type",
-                      "file",
-                      "created",
-                      "created_by"
+                      "file"
                     ]
                   },
                   {
@@ -241,9 +237,7 @@
                     "required": [
                       "type",
                       "file",
-                      "comment",
-                      "created",
-                      "created_by"
+                      "comment"
                     ]
                   }
                 ]
