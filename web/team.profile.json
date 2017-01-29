@@ -41,7 +41,7 @@
                         "type": "string"
                       },
                       "ordering": {
-                        "type": "number"
+                        "type": "integer"
                       },
                       "label": {
                         "type": "string"
@@ -69,7 +69,7 @@
                         "additionalProperties": false
                       },
                       "is_hidden": {
-                        "type": "number"
+                        "type": "boolean"
                       }
                     }
                   }

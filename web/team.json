@@ -59,7 +59,7 @@
                     "type": "number"
                   },
                   "count": {
-                    "type": "number"
+                    "type": "integer"
                   },
                   "ip": {
                     "type": "string"

@@ -663,7 +663,7 @@
               "type": "string"
             },
             "reply_count": {
-              "type": "number"
+              "type": "integer"
             },
             "replies": {
               "type": "array",
@@ -775,7 +775,7 @@
                 }
               },
               "id": {
-                "type": "number"
+                "type": "integer"
               },
               "footer": {
                 "type": "string"

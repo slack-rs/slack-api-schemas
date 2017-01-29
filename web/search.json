@@ -222,7 +222,7 @@
               "type": "object",
               "properties": {
                 "total": {
-                  "type": "number"
+                  "type": "integer"
                 },
                 "paging": {
                   "$ref": "../objects/paging.json"
@@ -355,7 +355,7 @@
               "type": "object",
               "properties": {
                 "total": {
-                  "type": "number"
+                  "type": "integer"
                 },
                 "paging": {
                   "$ref": "../objects/paging.json"
