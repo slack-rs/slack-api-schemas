@@ -38,7 +38,11 @@
       "id": "last_read"
     },
     "latest": {
-      "$ref": "message.json"
+      "oneOf": [
+        { "$ref": "message.json", "id": "full" },
+        { "type": "string", "id": "simple" }
+      ],
+      "id": "latest"
     },
     "unread_count": {
       "type": "integer",
