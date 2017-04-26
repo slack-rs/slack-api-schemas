@@ -42,25 +42,37 @@
       "type": "string"
     },
     "fields": {
-      "type": "object",
-      "properties": {},
-      "patternProperties": {
-        "^.+$": {
+      "oneOf": [
+        {
+          "title": "fields",
           "type": "object",
-          "properties": {
-            "value": {
-                "type": "string"
-            },
-            "alt": {
-                "type": "string"
-            },
-            "label": {
-                "type": "string"
+          "properties": {},
+          "patternProperties": {
+            "^.+$": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "type": "string"
+                },
+                "alt": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                }
+              }
             }
+          },
+          "additionalProperties": false
+        },
+        {
+          "title": "Empty",
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
-      },
-      "additionalProperties": false
+      ]
     }
   },
   "id": "user_profile"
