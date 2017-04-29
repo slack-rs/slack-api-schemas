@@ -51,10 +51,6 @@
             "description": "You cannot archive the general channel"
           },
           {
-            "name": "last_ra_channel",
-            "description": "You cannot archive the last channel for a multi-channel guest"
-          },
-          {
             "name": "restricted_action",
             "description": "A team preference prevents the authenticated user from archiving."
           },
@@ -96,11 +92,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -125,6 +125,12 @@
           "type": "string",
           "optional": false,
           "description": "Name of channel to create"
+        },
+        {
+          "name": "validate",
+          "type": "boolean",
+          "optional": true,
+          "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria."
         }
       ],
       "response": {
@@ -159,6 +165,26 @@
           {
             "name": "no_channel",
             "description": "Value passed for name was empty."
+          },
+          {
+            "name": "invalid_name_required",
+            "description": "Value passed for name was empty."
+          },
+          {
+            "name": "invalid_name_punctuation",
+            "description": "Value passed for name contained only punctuation."
+          },
+          {
+            "name": "invalid_name_maxlength",
+            "description": "Value passed for name exceeded max length."
+          },
+          {
+            "name": "invalid_name_specials",
+            "description": "Value passed for name contained unallowed special characters or upper case characters."
+          },
+          {
+            "name": "invalid_name",
+            "description": "Value passed for name was invalid."
           },
           {
             "name": "not_authed",
@@ -198,11 +224,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -331,11 +361,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -417,11 +451,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -504,6 +542,10 @@
             "description": "User cannot be invited to this channel."
           },
           {
+            "name": "ura_max_channels",
+            "description": "URA is already in the maximum number of channels."
+          },
+          {
             "name": "not_authed",
             "description": "No authentication token provided."
           },
@@ -541,11 +583,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -570,6 +616,12 @@
           "type": "channel_id",
           "optional": false,
           "description": "Name of channel to join"
+        },
+        {
+          "name": "validate",
+          "type": "boolean",
+          "optional": true,
+          "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria."
         }
       ],
       "response": {
@@ -614,6 +666,26 @@
             "description": "Channel has been archived."
           },
           {
+            "name": "invalid_name_required",
+            "description": "Value passed for name was empty."
+          },
+          {
+            "name": "invalid_name_punctuation",
+            "description": "Value passed for name contained only punctuation."
+          },
+          {
+            "name": "invalid_name_maxlength",
+            "description": "Value passed for name exceeded max length."
+          },
+          {
+            "name": "invalid_name_specials",
+            "description": "Value passed for name contained unallowed special characters or upper case characters."
+          },
+          {
+            "name": "invalid_name",
+            "description": "Value passed for name was invalid."
+          },
+          {
             "name": "not_authed",
             "description": "No authentication token provided."
           },
@@ -651,11 +723,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -727,10 +803,6 @@
             "description": "User cannot be removed from #general."
           },
           {
-            "name": "cant_kick_from_last_channel",
-            "description": "User cannot be removed from the last channel they're in."
-          },
-          {
             "name": "restricted_action",
             "description": "A team preference prevents the authenticated user from kicking."
           },
@@ -772,11 +844,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -871,11 +947,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -899,7 +979,13 @@
           "name": "exclude_archived",
           "type": "boolean",
           "optional": true,
-          "description": "Don't return archived channels."
+          "description": "Exclude archived channels from the list"
+        },
+        {
+          "name": "exclude_members",
+          "type": "boolean",
+          "optional": true,
+          "description": "Exclude the members collection from each channel"
         }
       ],
       "response": {
@@ -956,11 +1042,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -1053,11 +1143,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -1088,6 +1182,12 @@
           "type": "string",
           "optional": false,
           "description": "New name for channel."
+        },
+        {
+          "name": "validate",
+          "type": "boolean",
+          "optional": true,
+          "description": "Whether to return errors on invalid channel name instead of modifying it to meet the specified criteria."
         }
       ],
       "response": {
@@ -1139,11 +1239,27 @@
           },
           {
             "name": "invalid_name",
-            "description": "New name is invalid"
+            "description": "Value passed for name was invalid."
           },
           {
             "name": "name_taken",
             "description": "New channel name is taken"
+          },
+          {
+            "name": "invalid_name_required",
+            "description": "Value passed for name was empty."
+          },
+          {
+            "name": "invalid_name_punctuation",
+            "description": "Value passed for name contained only punctuation."
+          },
+          {
+            "name": "invalid_name_maxlength",
+            "description": "Value passed for name exceeded max length."
+          },
+          {
+            "name": "invalid_name_specials",
+            "description": "Value passed for name contained unallowed special characters or upper case characters."
           },
           {
             "name": "not_authed",
@@ -1183,11 +1299,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -1285,11 +1405,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -1393,11 +1517,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -1501,11 +1629,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -1596,11 +1728,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",

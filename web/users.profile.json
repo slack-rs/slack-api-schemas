@@ -27,7 +27,7 @@
         }
       ],
       "response": {
-        "sample": "{\"ok\":true,\"profile\":{\"first_name\":\"John\",\"last_name\":\"Smith\",\"email\":\"john@smith.com\",\"skype\":\"johnsmith\",\"image_24\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_24.jpg\",\"image_32\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_32.jpg\",\"image_48\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_48.jpg\",\"image_72\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_72.jpg\",\"image_192\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_192.jpg\",\"image_512\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_512.jpg\",\"image_1024\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_1024.jpg\",\"image_original\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_original.jpg\",\"fields\":{\"Xf06054AAA\":{\"value\":\"San Francisco\",\"alt\":\"Giants, yo!\",\"label\":\"Favorite Baseball Team\"},\"Xf06054BBB\":{\"value\":\"Barista\",\"alt\":\"I make the coffee & the tea!\",\"label\":\"Position\"}}}}",
+        "sample": "{\"ok\":true,\"profile\":{\"status_text\":\"riding a train\",\"status_emoji\":\":mountain_railway:\",\"first_name\":\"John\",\"last_name\":\"Smith\",\"email\":\"john@smith.com\",\"skype\":\"johnsmith\",\"image_24\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_24.jpg\",\"image_32\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_32.jpg\",\"image_48\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_48.jpg\",\"image_72\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_72.jpg\",\"image_192\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_192.jpg\",\"image_512\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_512.jpg\",\"image_1024\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_1024.jpg\",\"image_original\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_original.jpg\",\"fields\":{\"Xf06054AAA\":{\"value\":\"San Francisco\",\"alt\":\"Giants, yo!\",\"label\":\"Favorite Baseball Team\"},\"Xf06054BBB\":{\"value\":\"Barista\",\"alt\":\"I make the coffee & the tea!\",\"label\":\"Position\"}}}}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -85,11 +85,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -135,7 +139,7 @@
         }
       ],
       "response": {
-        "sample": "{\"ok\":true,\"profile\":{\"first_name\":\"John\",\"last_name\":\"Smith\",\"email\":\"john@smith.com\",\"skype\":\"johnsmith\",\"image_24\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_24.jpg\",\"image_32\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_32.jpg\",\"image_48\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_48.jpg\",\"image_72\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_72.jpg\",\"image_192\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_192.jpg\",\"image_512\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_512.jpg\",\"image_1024\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_1024.jpg\",\"image_original\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_original.jpg\",\"fields\":{\"Xf06054AAA\":{\"value\":\"San Francisco\",\"alt\":\"Giants, yo!\",\"label\":\"Favorite Baseball Team\"},\"Xf06054BBB\":{\"value\":\"Barista\",\"alt\":\"I make the coffee & the tea!\",\"label\":\"Position\"}}}}",
+        "sample": "{\"ok\":true,\"profile\":{\"avatar_hash\":\"ge3b51ca72ze\",\"status_text\":\"riding a train\",\"status_emoji\":\":mountain_railway:\",\"first_name\":\"John\",\"last_name\":\"Smith\",\"email\":\"john@smith.com\",\"skype\":\"johnsmith\",\"image_24\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_24.jpg\",\"image_32\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_32.jpg\",\"image_48\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_48.jpg\",\"image_72\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_72.jpg\",\"image_192\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_192.jpg\",\"image_512\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_512.jpg\",\"image_1024\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_1024.jpg\",\"image_original\":\"https://s3.amazonaws.com/slack-files/avatars/2015-11-16/123456_original.jpg\",\"fields\":{\"Xf06054AAA\":{\"value\":\"San Francisco\",\"alt\":\"Giants, yo!\",\"label\":\"Favorite Baseball Team\"},\"Xf06054BBB\":{\"value\":\"Barista\",\"alt\":\"I make the coffee & the tea!\",\"label\":\"Position\"}}}}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -213,11 +217,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",

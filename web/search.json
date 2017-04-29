@@ -35,7 +35,7 @@
           "name": "highlight",
           "type": "boolean",
           "optional": true,
-          "description": "Pass a value of 1 to enable query highlight markers (see below)."
+          "description": "Pass a value of true to enable query highlight markers (see below)."
         },
         {
           "name": "count",
@@ -145,11 +145,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -191,7 +195,7 @@
           "name": "highlight",
           "type": "boolean",
           "optional": true,
-          "description": "Pass a value of 1 to enable query highlight markers (see below)."
+          "description": "Pass a value of true to enable query highlight markers (see below)."
         },
         {
           "name": "count",
@@ -278,11 +282,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -324,7 +332,7 @@
           "name": "highlight",
           "type": "boolean",
           "optional": true,
-          "description": "Pass a value of 1 to enable query highlight markers (see below)."
+          "description": "Pass a value of true to enable query highlight markers (see below)."
         },
         {
           "name": "count",
@@ -411,11 +419,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",

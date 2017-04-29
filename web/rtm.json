@@ -3,6 +3,117 @@
   "description": "",
   "methods": [
     {
+      "name": "rtm.connect",
+      "description": "Starts a Real Time Messaging session.",
+      "documentationUrl": "https://api.slack.com/methods/rtm.connect",
+      "params": [
+        {
+          "name": "token",
+          "type": "auth_token",
+          "optional": false,
+          "description": "Authentication token.\nRequires token type: session or oauth or bot or app\nRequires scope: client"
+        }
+      ],
+      "response": {
+        "sample": "{\"ok\":true,\"url\":\"wss://ms9.slack-msgs.com/websocket/2I5yBpcvk\",\"team\":{\"id\":\"T654321\",\"name\":\"Librarian Society of Soledad\",\"domain\":\"libsocos\",\"enterprise_id\":\"E234567\",\"enterprise_name\":\"Intercontinental Librarian Society\"},\"self\":{\"id\":\"W123456\",\"name\":\"brautigan\"}}",
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "url": {
+              "type": "string"
+            },
+            "team": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "domain": {
+                  "type": "string"
+                },
+                "enterprise_id": {
+                  "type": "string"
+                },
+                "enterprise_name": {
+                  "type": "string"
+                }
+              }
+            },
+            "self": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Invalid authentication token."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or team."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          }
+        ]
+      }
+    },
+    {
       "name": "rtm.start",
       "description": "Starts a Real Time Messaging session.",
       "documentationUrl": "https://api.slack.com/methods/rtm.start",
@@ -15,21 +126,27 @@
         },
         {
           "name": "simple_latest",
-          "type": "string",
+          "type": "boolean",
           "optional": true,
           "description": "Return timestamp only for latest message object of each channel (improves performance)."
         },
         {
           "name": "no_unreads",
-          "type": "string",
+          "type": "boolean",
           "optional": true,
           "description": "Skip unread counts for each channel (improves performance)."
         },
         {
           "name": "mpim_aware",
-          "type": "string",
+          "type": "boolean",
           "optional": true,
           "description": "Returns MPIMs to the client in the API response."
+        },
+        {
+          "name": "no_latest",
+          "type": "boolean",
+          "optional": true,
+          "description": "Exclude latest timestamps for channels, groups, mpims, and ims. Automatically sets no_unreads to 1"
         }
       ],
       "response": {
@@ -129,11 +246,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",

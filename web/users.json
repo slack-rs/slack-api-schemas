@@ -66,11 +66,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -148,11 +152,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -231,11 +239,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -263,7 +275,7 @@
         }
       ],
       "response": {
-        "sample": "{\"ok\":true,\"user\":{\"id\":\"U023BECGF\",\"name\":\"bobby\",\"deleted\":false,\"color\":\"9f69e7\",\"profile\":{\"first_name\":\"Bobby\",\"last_name\":\"Tables\",\"real_name\":\"Bobby Tables\",\"email\":\"bobby@slack.com\",\"skype\":\"my-skype-name\",\"phone\":\"+1 (123) 456 7890\",\"image_24\":\"https://...\",\"image_32\":\"https://...\",\"image_48\":\"https://...\",\"image_72\":\"https://...\",\"image_192\":\"https://...\"},\"is_admin\":true,\"is_owner\":true,\"has_2fa\":true}}",
+        "sample": "{\"ok\":true,\"user\":{\"id\":\"U023BECGF\",\"name\":\"bobby\",\"deleted\":false,\"color\":\"9f69e7\",\"profile\":{\"avatar_hash\":\"ge3b51ca72de\",\"current_status\":\":mountain_railway: riding a train\",\"first_name\":\"Bobby\",\"last_name\":\"Tables\",\"real_name\":\"Bobby Tables\",\"email\":\"bobby@slack.com\",\"skype\":\"my-skype-name\",\"phone\":\"+1 (123) 456 7890\",\"image_24\":\"https://...\",\"image_32\":\"https://...\",\"image_48\":\"https://...\",\"image_72\":\"https://...\",\"image_192\":\"https://...\"},\"is_admin\":true,\"is_owner\":true,\"updated\":1490054400,\"has_2fa\":true}}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -321,11 +333,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -353,7 +369,7 @@
         }
       ],
       "response": {
-        "sample": "{\"ok\":true,\"members\":[{\"id\":\"U023BECGF\",\"team_id\":\"T021F9ZE2\",\"name\":\"bobby\",\"deleted\":false,\"status\":null,\"color\":\"9f69e7\",\"real_name\":\"Bobby Tables\",\"tz\":\"America/Los_Angeles\",\"tz_label\":\"Pacific Daylight Time\",\"tz_offset\":-25200,\"profile\":{\"avatar_hash\":\"ge3b51ca72de\",\"first_name\":\"Bobby\",\"last_name\":\"Tables\",\"real_name\":\"Bobby Tables\",\"email\":\"bobby@slack.com\",\"skype\":\"my-skype-name\",\"phone\":\"+1 (123) 456 7890\",\"image_24\":\"https://...\",\"image_32\":\"https://...\",\"image_48\":\"https://...\",\"image_72\":\"https://...\",\"image_192\":\"https://...\"},\"is_admin\":true,\"is_owner\":true,\"has_2fa\":false}]}",
+        "sample": "{\"ok\":true,\"members\":[{\"id\":\"U023BECGF\",\"team_id\":\"T021F9ZE2\",\"name\":\"bobby\",\"deleted\":false,\"status\":null,\"color\":\"9f69e7\",\"real_name\":\"Bobby Tables\",\"tz\":\"America/Los_Angeles\",\"tz_label\":\"Pacific Daylight Time\",\"tz_offset\":-25200,\"profile\":{\"avatar_hash\":\"ge3b51ca72de\",\"current_status\":\":mountain_railway: riding a train\",\"first_name\":\"Bobby\",\"last_name\":\"Tables\",\"real_name\":\"Bobby Tables\",\"email\":\"bobby@slack.com\",\"skype\":\"my-skype-name\",\"phone\":\"+1 (123) 456 7890\",\"image_24\":\"https://...\",\"image_32\":\"https://...\",\"image_48\":\"https://...\",\"image_72\":\"https://...\",\"image_192\":\"https://...\"},\"is_admin\":true,\"is_owner\":true,\"updated\":1490054400,\"has_2fa\":false}]}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -406,11 +422,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -479,11 +499,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -592,11 +616,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
@@ -675,11 +703,15 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
             "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
           },
           {
             "name": "request_timeout",
