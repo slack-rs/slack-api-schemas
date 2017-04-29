@@ -1,0 +1,13 @@
+{
+  "name": "api_scraper",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "async": "^1.5.2",
+    "cheerio": "^0.22.0",
+    "dot": "^1.0.3",
+    "generate-schema": "^2.3.1",
+    "minimist": "^1.2.0",
+    "request": "^2.64.0"
+  }
+}
