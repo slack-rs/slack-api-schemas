@@ -398,13 +398,15 @@
                       },
                       "message": {
                         "$ref": "../objects/message.json"
+                      },
+                      "ts": {
+                        "type": "string"
                       }
                     },
                     "id": "message",
                     "required": [
                       "type",
-                      "channel",
-                      "message"
+                      "channel"
                     ]
                   },
                   {
