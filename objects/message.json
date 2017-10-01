@@ -14,11 +14,29 @@
         "user": {
           "type": "string"
         },
+        "team": {
+          "type": "string"
+        },
+        "source_team": {
+          "type": "string"
+        },
         "text": {
           "type": "string"
         },
         "ts": {
           "type": "string"
+        },
+        "thread_ts": {
+          "type": "string"
+        },
+        "event_ts": {
+          "type": "string"
+        },
+        "bot_id": {
+          "type": "string"
+        },
+        "reply_broadcast": {
+          "type": "boolean"
         },
         "edited": {
           "type": "object",
@@ -586,6 +604,9 @@
         "ts": {
           "type": "string"
         },
+        "event_ts": {
+          "type": "string"
+        },
         "message": {
           "type": "object",
           "properties": {
@@ -600,6 +621,104 @@
             },
             "ts": {
               "type": "string"
+            },
+            "thread_ts": {
+              "type": "string"
+            },
+            "parent_user_id": {
+              "type": "string"
+            },
+            "bot_id": {
+              "type": "string"
+            },
+            "reply_count": {
+              "type": "integer"
+            },
+            "unread_count": {
+              "type": "integer"
+            },
+            "last_read": {
+              "type": "string"
+            },
+            "subscribed": {
+              "type": "boolean"
+            },
+            "replies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "ts": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "edited": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "ts": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "previous_message": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "ts": {
+              "type": "string"
+            },
+            "thread_ts": {
+              "type": "string"
+            },
+            "parent_user_id": {
+              "type": "string"
+            },
+            "bot_id": {
+              "type": "string"
+            },
+            "reply_count": {
+              "type": "integer"
+            },
+            "unread_count": {
+              "type": "integer"
+            },
+            "last_read": {
+              "type": "string"
+            },
+            "subscribed": {
+              "type": "boolean"
+            },
+            "replies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "ts": {
+                    "type": "string"
+                  }
+                }
+              }
             },
             "edited": {
               "type": "object",
@@ -637,6 +756,72 @@
         },
         "deleted_ts": {
           "type": "string"
+        },
+        "event_ts": {
+          "type": "string"
+        },
+        "previous_message": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "ts": {
+              "type": "string"
+            },
+            "thread_ts": {
+              "type": "string"
+            },
+            "parent_user_id": {
+              "type": "string"
+            },
+            "bot_id": {
+              "type": "string"
+            },
+            "reply_count": {
+              "type": "integer"
+            },
+            "unread_count": {
+              "type": "integer"
+            },
+            "last_read": {
+              "type": "string"
+            },
+            "subscribed": {
+              "type": "boolean"
+            },
+            "replies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "ts": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "edited": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "ts": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       },
       "title": "message_deleted"
@@ -659,11 +844,29 @@
             "text": {
               "type": "string"
             },
+            "ts": {
+              "type": "string"
+            },
             "thread_ts": {
+              "type": "string"
+            },
+            "parent_user_id": {
+              "type": "string"
+            },
+            "bot_id": {
               "type": "string"
             },
             "reply_count": {
               "type": "integer"
+            },
+            "unread_count": {
+              "type": "integer"
+            },
+            "last_read": {
+              "type": "string"
+            },
+            "subscribed": {
+              "type": "boolean"
             },
             "replies": {
               "type": "array",
@@ -679,8 +882,16 @@
                 }
               }
             },
-            "ts": {
-              "type": "string"
+            "edited": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "ts": {
+                  "type": "string"
+                }
+              }
             }
           }
         },
@@ -697,6 +908,9 @@
           "type": "string"
         },
         "ts": {
+          "type": "string"
+        },
+        "thread_ts": {
           "type": "string"
         }
       },
