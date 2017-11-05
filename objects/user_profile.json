@@ -17,6 +17,12 @@
     "phone": {
       "type": "string"
     },
+    "status_emoji": {
+      "type": "string"
+    },
+    "display_name_normalized": {
+      "type": "string"
+    },
     "image_24": {
       "type": "string"
     },
@@ -35,10 +41,31 @@
     "image_512": {
       "type": "string"
     },
-    "image_1024": {
+    "image_original": {
       "type": "string"
     },
-    "image_original": {
+    "display_name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "real_name_normalized": {
+      "type": "string"
+    },
+    "guest_channels": {
+      "type": "string"
+    },
+    "real_name": {
+      "type": "string"
+    },
+    "avatar_hash": {
+      "type": "string"
+    },
+    "status_text": {
+      "type": "string"
+    },
+    "team": {
       "type": "string"
     },
     "fields": {
