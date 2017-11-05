@@ -147,6 +147,18 @@
           "type": "boolean",
           "optional": true,
           "description": "Exclude latest timestamps for channels, groups, mpims, and ims. Automatically sets no_unreads to 1"
+        },
+        {
+          "name": "batch_presence_aware",
+          "type": "boolean",
+          "optional": true,
+          "description": "Only deliver presence events when requested by subscription. See [presence subscriptions](/docs/presence-and-status#subscriptions)."
+        },
+        {
+          "name": "include_locale",
+          "type": "boolean",
+          "optional": true,
+          "description": "Set this to `true` to receive the locale for users and channels. Defaults to `false`"
         }
       ],
       "response": {
