@@ -50,31 +50,31 @@
       "id": "two_factor_type"
     },
     "updated": {
-        "type": "number"
+      "type": "number"
     },
     "tz": {
-        "type": "string"
+      "type": "string"
     },
     "is_app_user": {
-        "type": "boolean"
+      "type": "boolean"
     },
     "is_bot": {
-        "type": "boolean"
+      "type": "boolean"
     },
     "tz_label": {
-        "type": "string"
+      "type": "string"
     },
     "real_name": {
-        "type": "string"
+      "type": "string"
     },
     "locale": {
-        "type": "string"
+      "type": "string"
     },
     "team_id": {
-        "type": "string"
+      "type": "string"
     },
     "tz_offset": {
-        "type": "number"
+      "type": "number"
     }
   },
   "id": "user"
