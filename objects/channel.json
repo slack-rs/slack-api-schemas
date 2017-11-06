@@ -91,6 +91,52 @@
     "unread_count_display": {
       "type": "integer",
       "id": "unread_count_display"
+    },
+    "name_normalized": {
+      "type": "string"
+    },
+    "is_org_shared": {
+      "type": "boolean"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "is_moved": {
+      "type": "integer"
+    },
+    "accepted_user": {
+      "type": "string"
+    },
+    "is_pending_ext_shared": {
+      "type": "boolean"
+    },
+    "is_mpim": {
+      "type": "boolean"
+    },
+    "is_read_only": {
+      "type": "boolean"
+    },
+    "is_private": {
+      "type": "boolean"
+    },
+    "previous_names": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "num_members": {
+      "type": "integer"
+    },
+    "is_shared": {
+      "type": "boolean"
+    },
+      "unread_count": {
+      "type": "integer"
+    },
+    "unlinked": {
+      "type": "integer",
+      "description": "Field to determine whether a channel has ever been shared/disconnected in the past"
     }
   },
   "id": "channel"
