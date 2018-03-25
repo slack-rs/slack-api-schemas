@@ -73,7 +73,21 @@ function sanitizeResponse(methodName, response) {
     response = response.substring(0, response.length - 1);
   }
 
-  return response.trim() ? JSON.stringify(JSON.parse(response)) : "";
+  if (!response.trim()) {
+    return "";
+  }
+
+  // balance number of closing braces in case sample is missing a curly brace
+  // (only works for "pretty-printed" samples, but those are the only samples
+  // with this problem at this time)
+  const totalOpen = (response.match(/\{\s*(\n|$)/g) || []).length;
+  const totalClose = (response.match(/\},?\s*(\n|$)/g) || []).length;
+  if (totalOpen > totalClose) {
+    console.log(`Balancing {} in object fields in response for ${methodName}`);
+    response = response + Array(totalOpen - totalClose + 1).join("}");
+  }
+
+  return JSON.stringify(JSON.parse(response));
 }
 
 function schema(path, injectedSchema) {
@@ -874,7 +888,13 @@ async.parallel([
         })
       });
       messageTypes.forEach((messageType) => {
-        const messageSchema = GenerateSchema.json(JSON.parse(sanitizeResponse(messageType.name, messageType.sample)));
+        const responseJSON = sanitizeResponse(messageType.name, messageType.sample);
+        if (responseJSON.length == 0) {
+          console.log(`Skipping ${messageType.name} (has no JSON sample)`);
+          return;
+        }
+
+        const messageSchema = GenerateSchema.json(JSON.parse(responseJSON));
         messageSchema.title = messageType.name;
         messageSchema["$schema"] = undefined;
         if (messageType.name === "bot_message") {
@@ -935,10 +955,6 @@ async.parallel([
         // if (messageType.name === "unpinned_item") {
         //   messageSchema.properties.item = { "$ref": "objects/pinned_item.json" };
         // }
-        if (messageType.name === "reply_broadcast") {
-          messageSchema.properties.attachments.items.required = undefined;
-          messageSchema.properties.attachments.items.properties.id = {"type": "integer"};
-        }
         schema.oneOf.push(messageSchema);
       });
       fs.writeFileSync(`${schema_dir}/objects/message.json`, JSON.stringify(schema, null, 2));
