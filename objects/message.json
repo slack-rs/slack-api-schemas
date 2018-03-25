@@ -14,29 +14,11 @@
         "user": {
           "type": "string"
         },
-        "team": {
-          "type": "string"
-        },
-        "source_team": {
-          "type": "string"
-        },
         "text": {
           "type": "string"
         },
         "ts": {
           "type": "string"
-        },
-        "thread_ts": {
-          "type": "string"
-        },
-        "event_ts": {
-          "type": "string"
-        },
-        "bot_id": {
-          "type": "string"
-        },
-        "reply_broadcast": {
-          "type": "boolean"
         },
         "edited": {
           "type": "object",
@@ -174,12 +156,6 @@
         },
         "user": {
           "type": "string"
-        },
-        "members": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
         }
       },
       "title": "channel_archive"
@@ -200,6 +176,9 @@
           "type": "string"
         },
         "text": {
+          "type": "string"
+        },
+        "inviter": {
           "type": "string"
         }
       },
@@ -604,9 +583,6 @@
         "ts": {
           "type": "string"
         },
-        "event_ts": {
-          "type": "string"
-        },
         "message": {
           "type": "object",
           "properties": {
@@ -621,104 +597,6 @@
             },
             "ts": {
               "type": "string"
-            },
-            "thread_ts": {
-              "type": "string"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
-              "type": "string"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "type": "string"
-                  }
-                }
-              }
-            },
-            "edited": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "ts": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        },
-        "previous_message": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "user": {
-              "type": "string"
-            },
-            "text": {
-              "type": "string"
-            },
-            "ts": {
-              "type": "string"
-            },
-            "thread_ts": {
-              "type": "string"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
-              "type": "string"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "type": "string"
-                  }
-                }
-              }
             },
             "edited": {
               "type": "object",
@@ -756,72 +634,6 @@
         },
         "deleted_ts": {
           "type": "string"
-        },
-        "event_ts": {
-          "type": "string"
-        },
-        "previous_message": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "user": {
-              "type": "string"
-            },
-            "text": {
-              "type": "string"
-            },
-            "ts": {
-              "type": "string"
-            },
-            "thread_ts": {
-              "type": "string"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
-              "type": "string"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "type": "string"
-                  }
-                }
-              }
-            },
-            "edited": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "ts": {
-                  "type": "string"
-                }
-              }
-            }
-          }
         }
       },
       "title": "message_deleted"
@@ -844,29 +656,11 @@
             "text": {
               "type": "string"
             },
-            "ts": {
-              "type": "string"
-            },
             "thread_ts": {
-              "type": "string"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
               "type": "string"
             },
             "reply_count": {
               "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
             },
             "replies": {
               "type": "array",
@@ -882,16 +676,8 @@
                 }
               }
             },
-            "edited": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "ts": {
-                  "type": "string"
-                }
-              }
+            "ts": {
+              "type": "string"
             }
           }
         },
@@ -908,9 +694,6 @@
           "type": "string"
         },
         "ts": {
-          "type": "string"
-        },
-        "thread_ts": {
           "type": "string"
         }
       },
@@ -950,73 +733,74 @@
     {
       "type": "object",
       "properties": {
-        "attachments": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "from_url": {
-                "type": "string"
-              },
-              "fallback": {
-                "type": "string"
-              },
-              "ts": {
-                "type": "string"
-              },
-              "author_subname": {
-                "type": "string"
-              },
-              "channel_id": {
-                "type": "string"
-              },
-              "channel_name": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "author_link": {
-                "type": "string"
-              },
-              "author_icon": {
-                "type": "string"
-              },
-              "mrkdwn_in": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "id": {
-                "type": "integer"
-              },
-              "footer": {
-                "type": "string"
-              }
-            }
-          }
-        },
         "type": {
           "type": "string"
         },
-        "subtype": {
-          "type": "string"
-        },
-        "user": {
-          "type": "string"
-        },
-        "ts": {
-          "type": "string"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "event_ts": {
-          "type": "string"
+        "message": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "thread_ts": {
+              "type": "string"
+            },
+            "root": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "thread_ts": {
+                  "type": "string"
+                },
+                "reply_count": {
+                  "type": "number"
+                },
+                "replies": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "string"
+                      },
+                      "ts": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "unread_count": {
+                  "type": "number"
+                },
+                "ts": {
+                  "type": "string"
+                }
+              }
+            },
+            "subtype": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "ts": {
+              "type": "string"
+            }
+          }
         }
       },
-      "title": "reply_broadcast"
+      "title": "thread_broadcast"
     },
     {
       "type": "object",
