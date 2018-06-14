@@ -99,7 +99,7 @@
       "type": "boolean"
     },
     "priority": {
-      "type": "integer"
+      "type": "number"
     },
     "is_moved": {
       "type": "integer"
