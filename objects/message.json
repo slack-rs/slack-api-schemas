@@ -140,6 +140,15 @@
         "username": {
           "type": "string"
         },
+        "team": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "thread_ts": {
+          "type": "string"
+        },
         "icons": {
           "type": "object",
           "properties": {
@@ -149,8 +158,81 @@
             "image_48": {
               "type": "string"
             },
+            "image_64": {
+              "type": "string"
+            },
             "image_72": {
               "type": "string"
+            },
+            "emoji": {
+              "type": "string"
+            }
+          }
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "fallback": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              },
+              "pretext": {
+                "type": "string"
+              },
+              "author_name": {
+                "type": "string"
+              },
+              "author_link": {
+                "type": "string"
+              },
+              "author_icon": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "title_link": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "fields": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "title": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    },
+                    "short": {
+                      "type": "boolean"
+                    }
+                  }
+                }
+              },
+              "image_url": {
+                "type": "string"
+              },
+              "thumb_url": {
+                "type": "string"
+              },
+              "footer": {
+                "type": "string"
+              },
+              "footer_icon": {
+                "type": "string"
+              },
+              "ts": {
+                "type": "number"
+              }
             }
           }
         }
