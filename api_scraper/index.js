@@ -873,7 +873,7 @@ async.parallel([
             ]
         })
       });
-      messageTypes.forEach((messageType) => {
+      messageTypes.filter((messageType) => messageType.sample !== "").forEach((messageType) => {
         const messageSchema = GenerateSchema.json(JSON.parse(sanitizeResponse(messageType.name, messageType.sample)));
         messageSchema.title = messageType.name;
         messageSchema["$schema"] = undefined;
