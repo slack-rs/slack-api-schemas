@@ -205,17 +205,13 @@
                 },
                 "channel": {
                   "type": "string"
-                },
-                "message": {
-                  "$ref": "../objects/message.json"
                 }
               },
               "id": "message",
               "required": [
                 "ok",
                 "type",
-                "channel",
-                "message"
+                "channel"
               ]
             },
             {
@@ -395,16 +391,12 @@
                       },
                       "channel": {
                         "type": "string"
-                      },
-                      "message": {
-                        "$ref": "../objects/message.json"
                       }
                     },
                     "id": "message",
                     "required": [
                       "type",
-                      "channel",
-                      "message"
+                      "channel"
                     ]
                   },
                   {
