@@ -34,7 +34,7 @@
               "properties": {},
               "patternProperties": {
                 "^.+$": {
-                  "type": "boolean"
+                  "type": "string"
                 }
               },
               "additionalProperties": false
