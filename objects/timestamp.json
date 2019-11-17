@@ -3,16 +3,13 @@
   "title": "ts",
   "oneOf": [
     {
-      "type": "string",
-      "title": "string"
+      "type": "string"
     },
     {
-      "type": "number",
-      "title": "number"
+      "type": "number"
     },
     {
-      "type": "integer",
-      "title": "integer"
+      "type": "integer"
     }
   ]
 }
