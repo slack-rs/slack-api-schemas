@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "ts",
+  "oneOf": [
+    {
+      "type": "string",
+      "title": "string"
+    },
+    {
+      "type": "number",
+      "title": "number"
+    },
+    {
+      "type": "integer",
+      "title": "integer"
+    }
+  ]
+}
