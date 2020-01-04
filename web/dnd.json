@@ -112,10 +112,10 @@
               "type": "boolean"
             },
             "next_dnd_start_ts": {
-              "type": "number"
+              "$ref": "../objects/timestamp.json"
             },
             "next_dnd_end_ts": {
-              "type": "number"
+              "$ref": "../objects/timestamp.json"
             },
             "snooze_enabled": {
               "type": "boolean"
@@ -219,16 +219,16 @@
               "type": "boolean"
             },
             "next_dnd_start_ts": {
-              "type": "number"
+              "$ref": "../objects/timestamp.json"
             },
             "next_dnd_end_ts": {
-              "type": "number"
+              "$ref": "../objects/timestamp.json"
             },
             "snooze_enabled": {
               "type": "boolean"
             },
             "snooze_endtime": {
-              "type": "number"
+              "$ref": "../objects/timestamp.json"
             },
             "snooze_remaining": {
               "type": "number"
@@ -324,7 +324,7 @@
               "type": "boolean"
             },
             "snooze_endtime": {
-              "type": "number"
+              "$ref": "../objects/timestamp.json"
             },
             "snooze_remaining": {
               "type": "number"

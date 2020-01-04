@@ -18,10 +18,10 @@
       "type": "boolean"
     },
     "time": {
-      "type": "number"
+      "$ref": "timestamp.json"
     },
     "complete_ts": {
-      "type": "number"
+      "$ref": "timestamp.json"
     }
   },
   "id": "reminder"

@@ -11,7 +11,7 @@
       "id": "created"
     },
     "timestamp": {
-      "type": "integer",
+      "$ref": "timestamp.json",
       "id": "timestamp"
     },
     "name": {
