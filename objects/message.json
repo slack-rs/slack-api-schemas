@@ -1032,6 +1032,33 @@
     {
       "type": "object",
       "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "$ref": "timestamp.json"
+        },
+        "user": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "reminder_add"
+    },
+    {
+      "type": "object",
+      "properties": {
         "attachments": {
           "type": "array",
           "items": {
