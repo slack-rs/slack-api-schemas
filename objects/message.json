@@ -1103,6 +1103,76 @@
     {
       "type": "object",
       "properties": {
+        "root": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "ts": {
+              "$ref": "timestamp.json"
+            },
+            "thread_ts": {
+              "$ref": "timestamp.json"
+            },
+            "reply_count": {
+              "type": "integer"
+            },
+            "reply_users_count": {
+              "type": "integer"
+            },
+            "latest_reply": {
+              "$ref": "timestamp.json"
+            },
+            "reply_users": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "replies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "ts": {
+                    "$ref": "timestamp.json"
+                  }
+                }
+              }
+            },
+            "subscriped": {
+              "type": "boolean"
+            }
+          }
+        },
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "ts": {
+          "$ref": "timestamp.json"
+        },
+        "thread_ts": {
+          "$ref": "timestamp.json"
+        }
+      },
+      "title": "thread_broadcast"
+    },
+    {
+      "type": "object",
+      "properties": {
         "type": {
           "type": "string"
         },
