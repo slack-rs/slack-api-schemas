@@ -316,6 +316,9 @@
         },
         "text": {
           "type": "string"
+        },
+        "inviter": {
+          "type": "string"
         }
       },
       "title": "channel_join"
