@@ -1200,6 +1200,125 @@
         }
       },
       "title": "unpinned_item"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "no_notifications": {
+          "type": "boolean"
+        },
+        "permalink": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "ts": {
+          "$ref": "timestamp.json"
+        },
+        "user": {
+          "type": "string"
+        },
+        "root": {
+          "type": "object",
+          "properties": {
+            "app_id": {
+              "type": "string"
+            },
+            "channels": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "created_by": {
+              "type": "string"
+            },
+            "date_end": {
+              "$ref": "timestamp.json"
+            },
+            "date_start": {
+              "$ref": "timestamp.json"
+            },
+            "display_id": {
+              "type": "string"
+            },
+            "external_unique_id": {
+              "type": "string"
+            },
+            "has_ended": {
+              "type": "boolean"
+            },
+            "id": {
+              "type": "string"
+            },
+            "is_dm_call": {
+              "type": "boolean"
+            },
+            "media_server": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "participant_history": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "participants": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "participants_camera_off": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "participants_camera_on": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "participants_screenshare_off": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "participants_screenshare_on": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "was_accepted": {
+              "type": "boolean"
+            },
+            "was_missed": {
+              "type": "boolean"
+            },
+            "was_rejected": {
+              "type": "boolean"
+            }
+          }
+        }
+      },
+      "title": "sh_room_created"
     }
   ]
 }
