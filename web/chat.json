@@ -45,7 +45,7 @@
               "type": "string"
             },
             "ts": {
-              "type": "string"
+              "$ref": "../objects/timestamp.json"
             },
             "error": {
               "type": "string"
@@ -156,7 +156,7 @@
               "type": "string"
             },
             "ts": {
-              "type": "string"
+              "$ref": "../objects/timestamp.json"
             },
             "error": {
               "type": "string"
@@ -338,7 +338,7 @@
               "type": "boolean"
             },
             "ts": {
-              "type": "string"
+              "$ref": "../objects/timestamp.json"
             },
             "channel": {
               "type": "string"
@@ -602,7 +602,7 @@
               "type": "string"
             },
             "ts": {
-              "type": "string"
+              "$ref": "../objects/timestamp.json"
             },
             "text": {
               "type": "string"
