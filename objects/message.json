@@ -161,6 +161,72 @@
         "subtype": {
           "type": "string"
         },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "$ref": "timestamp.json"
+        },
+        "user": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "bot_id": {
+          "type": "string"
+        },
+        "bot_link": {
+          "type": "string"
+        }
+      },
+      "title": "bot_enable"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "$ref": "timestamp.json"
+        },
+        "user": {
+          "type": "string"
+        },
+        "team": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        },
+        "bot_id": {
+          "type": "string"
+        },
+        "bot_link": {
+          "type": "string"
+        }
+      },
+      "title": "bot_remove"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
         "ts": {
           "$ref": "timestamp.json"
         },
@@ -1402,6 +1468,9 @@
           "type": "string"
         },
         "ts": {
+          "$ref": "timestamp.json"
+        },
+        "thread_ts": {
           "$ref": "timestamp.json"
         }
       },
