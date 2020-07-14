@@ -73,7 +73,21 @@ function sanitizeResponse(methodName, response) {
     response = response.substring(0, response.length - 1);
   }
 
-  return response.trim() ? JSON.stringify(JSON.parse(response)) : "";
+  if (!response.trim()) {
+    return "";
+  }
+
+  // balance number of closing braces in case sample is missing a curly brace
+  // (only works for "pretty-printed" samples, but those are the only samples
+  // with this problem at this time)
+  const totalOpen = (response.match(/\{\s*(\n|$)/g) || []).length;
+  const totalClose = (response.match(/\},?\s*(\n|$)/g) || []).length;
+  if (totalOpen > totalClose) {
+    console.log(`Balancing {} in object fields in response for ${methodName}`);
+    response = response + Array(totalOpen - totalClose + 1).join("}");
+  }
+
+  return JSON.stringify(JSON.parse(response));
 }
 
 function schema(path, injectedSchema) {
@@ -688,7 +702,7 @@ function getParamTypeFromExample(method, name, example) {
   const known_value = KNOWN_PARAM_TYPES.has(method)
     ? KNOWN_PARAM_TYPES.get(method).get(name)
     : null;
-  
+
   if (known_value !== null) {
     return known_value;
   } else {
@@ -809,12 +823,12 @@ async.parallel([
     parseSlackApi((modules) => {
       modules.forEach(mod => {
         if (mod.name === "chat") {
-          mod.methods.find(method => method.name === "chat.update").response.sample 
+          mod.methods.find(method => method.name === "chat.update").response.sample
             = '{ "ok": true, "channel": "C024BE91L", "ts": "1401383885.000061", "text": "Updated Text" }';
         }
         if (mod.name === "files") {
           mod.methods.find(method => method.name === "files.sharedPublicURL").response.sample = '{"ok":true,"file":{"id":"F2147483862","timestamp":1356032811,"name":"file.htm","title":"My HTML file","mimetype":"text/plain","filetype":"text","pretty_type":"Text","user":"U2147483697","mode":"hosted","editable":true,"is_external":false,"external_type":"","size":12345,"url":"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/1.png","url_download":"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/download/1.png","url_private":"https://slack.com/files-pri/T024BE7LD-F024BERPE/1.png","url_private_download":"https://slack.com/files-pri/T024BE7LD-F024BERPE/download/1.png","thumb_64":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_64.png","thumb_80":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_80.png","thumb_360":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.png","thumb_360_gif":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.gif","thumb_360_w":100,"thumb_360_h":100,"permalink":"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png","permalink_public":"https://slack-files.com/T024BE7LD-F024BERPE-8004f909b1","edit_link":"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png/edit","preview":"&lt;!DOCTYPE html&gt;\\n&lt;html&gt;\\n&lt;meta charset=\'utf-8\'&gt;","preview_highlight":"&lt;div class=\\"sssh-code\\"&gt;&lt;div class=\\"sssh-line\\"&gt;&lt;pre&gt;&lt;!DOCTYPE html","lines":123,"lines_more":118,"is_public":false,"public_url_shared":false,"channels":["C024BE7LT"],"groups":["G12345"],"initial_comment":{},"num_stars":7,"is_starred":true}}';
-          mod.methods.find(method => method.name === "files.revokePublicURL").response.sample 
+          mod.methods.find(method => method.name === "files.revokePublicURL").response.sample
             = '{"ok":true,"file":{"id":"F2147483862","timestamp":1356032811,"name":"file.htm","title":"My HTML file","mimetype":"text/plain","filetype":"text","pretty_type":"Text","user":"U2147483697","mode":"hosted","editable":true,"is_external":false,"external_type":"","size":12345,"url":"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/1.png","url_download":"https://slack-files.com/files-pub/T024BE7LD-F024BERPE-09acb6/download/1.png","url_private":"https://slack.com/files-pri/T024BE7LD-F024BERPE/1.png","url_private_download":"https://slack.com/files-pri/T024BE7LD-F024BERPE/download/1.png","thumb_64":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_64.png","thumb_80":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_80.png","thumb_360":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.png","thumb_360_gif":"https://slack-files.com/files-tmb/T024BE7LD-F024BERPE-c66246/1_360.gif","thumb_360_w":100,"thumb_360_h":100,"permalink":"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png","permalink_public":"https://slack-files.com/T024BE7LD-F024BERPE-8004f909b1","edit_link":"https://tinyspeck.slack.com/files/cal/F024BERPE/1.png/edit","preview":"&lt;!DOCTYPE html&gt;\\n&lt;html&gt;\\n&lt;meta charset=\'utf-8\'&gt;","preview_highlight":"&lt;div class=\\"sssh-code\\"&gt;&lt;div class=\\"sssh-line\\"&gt;&lt;pre&gt;&lt;!DOCTYPE html","lines":123,"lines_more":118,"is_public":false,"public_url_shared":false,"channels":["C024BE7LT"],"groups":["G12345"],"initial_comment":{},"num_stars":7,"is_starred":true}}';
         }
         mod.methods.forEach(method => {
@@ -874,7 +888,13 @@ async.parallel([
         })
       });
       messageTypes.forEach((messageType) => {
-        const messageSchema = GenerateSchema.json(JSON.parse(sanitizeResponse(messageType.name, messageType.sample)));
+        const responseJSON = sanitizeResponse(messageType.name, messageType.sample);
+        if (responseJSON.length == 0) {
+          console.log(`Skipping ${messageType.name} (has no JSON sample)`);
+          return;
+        }
+
+        const messageSchema = GenerateSchema.json(JSON.parse(responseJSON));
         messageSchema.title = messageType.name;
         messageSchema["$schema"] = undefined;
         if (messageType.name === "bot_message") {
@@ -924,7 +944,7 @@ async.parallel([
         //         "title": "file"
         //       },
         //       {
-                
+
         //       },
         //       {
 
@@ -935,10 +955,6 @@ async.parallel([
         // if (messageType.name === "unpinned_item") {
         //   messageSchema.properties.item = { "$ref": "objects/pinned_item.json" };
         // }
-        if (messageType.name === "reply_broadcast") {
-          messageSchema.properties.attachments.items.required = undefined;
-          messageSchema.properties.attachments.items.properties.id = {"type": "integer"};
-        }
         schema.oneOf.push(messageSchema);
       });
       fs.writeFileSync(`${schema_dir}/objects/message.json`, JSON.stringify(schema, null, 2));
