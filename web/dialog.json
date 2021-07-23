@@ -1,11 +1,11 @@
 {
-  "name": "bots",
+  "name": "dialog",
   "description": "",
   "methods": [
     {
-      "name": "bots.info",
-      "description": "Gets information about a bot user.",
-      "documentationUrl": "https://api.slack.com/methods/bots.info",
+      "name": "dialog.open",
+      "description": "Open a dialog with a user",
+      "documentationUrl": "https://api.slack.com/methods/dialog.open",
       "params": [
         {
           "name": "token",
@@ -14,16 +14,16 @@
           "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
-          "name": "bot",
-          "type": "bot",
-          "optional": true,
-          "description": "Bot user to get info on"
+          "name": "dialog",
+          "type": "string",
+          "optional": false,
+          "description": "The dialog definition. This must be a JSON-encoded string."
         },
         {
-          "name": "team_id",
-          "type": "team",
-          "optional": true,
-          "description": "encoded team id or enterprise id where the bot exists, required if org token is used"
+          "name": "trigger_id",
+          "type": "string",
+          "optional": false,
+          "description": "Exchange a trigger to post to the user."
         }
       ],
       "response": {
@@ -34,45 +34,53 @@
             "ok": {
               "type": "boolean"
             },
-            "bot": {
+            "error": {
+              "type": "string"
+            },
+            "response_metadata": {
               "type": "object",
               "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "deleted": {
-                  "type": "boolean"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "updated": {
-                  "type": "number"
-                },
-                "app_id": {
-                  "type": "string"
-                },
-                "user_id": {
-                  "type": "string"
-                },
-                "icons": {
-                  "type": "object",
-                  "properties": {
-                    "image_36": {
-                      "type": "string"
-                    },
-                    "image_48": {
-                      "type": "string"
-                    },
-                    "image_72": {
-                      "type": "string"
-                    }
+                "messages": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
                   }
                 }
               }
             },
-            "error": {
+            "callback_id": {
               "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "submit_label": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "elements": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": {
+                    "type": "string"
+                  },
+                  "label": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "type",
+                  "label",
+                  "name"
+                ]
+              }
             }
           },
           "required": [
@@ -81,20 +89,40 @@
         },
         "errors": [
           {
-            "name": "bot_not_found",
-            "description": "Value passed for bot was invalid."
+            "name": "validation_errors",
+            "description": "The provided dialog could not be validated."
           },
           {
-            "name": "bots_not_found",
-            "description": "At least one value passed for bots was invalid."
+            "name": "trigger_exchanged",
+            "description": "The provided trigger_id has already been exchanged."
           },
           {
-            "name": "missing_argument",
-            "description": "A required argument is missing."
+            "name": "failed_sending_dialog",
+            "description": "Something exceptional occurred and the dialog could not be sent."
           },
           {
-            "name": "user_removed_from_team [hidden]",
-            "description": "user removed from team (generated)"
+            "name": "missing_dialog",
+            "description": "No dialog argument was presented."
+          },
+          {
+            "name": "app_missing_action_url",
+            "description": "The app associated with the used token doesn't have a Action URL configured in its interactive components settings."
+          },
+          {
+            "name": "cannot_create_dialog",
+            "description": "Something exceptional occurred and the dialog could not be created."
+          },
+          {
+            "name": "missing_trigger",
+            "description": "No trigger_id argument was presented."
+          },
+          {
+            "name": "trigger_expired",
+            "description": "The provided trigger_id was presented after the 3 second limit."
+          },
+          {
+            "name": "invalid_trigger",
+            "description": "The provided trigger_id is invalid or cannot be used by this token."
           },
           {
             "name": "not_authed",
@@ -147,10 +175,6 @@
           {
             "name": "enterprise_is_restricted",
             "description": "The method cannot be called from an Enterprise."
-          },
-          {
-            "name": "team_access_not_granted",
-            "description": "The token used is not granted the specific workspace access required to complete this request."
           },
           {
             "name": "invalid_arguments",

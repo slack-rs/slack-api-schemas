@@ -1,11 +1,11 @@
 {
-  "name": "search",
+  "name": "workflows",
   "description": "",
   "methods": [
     {
-      "name": "search.all",
-      "description": "Searches for messages and files matching a query.",
-      "documentationUrl": "https://api.slack.com/methods/search.all",
+      "name": "workflows.stepCompleted",
+      "description": "Indicate that an app's step in a workflow completed execution.",
+      "documentationUrl": "https://api.slack.com/methods/workflows.stepCompleted",
       "params": [
         {
           "name": "token",
@@ -14,147 +14,56 @@
           "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
-          "name": "query",
+          "name": "workflow_step_execute_id",
           "type": "string",
           "optional": false,
-          "description": "Search query. May contains booleans, etc."
+          "description": "Context identifier that maps to the correct workflow step execution."
         },
         {
-          "name": "count",
-          "type": "integer",
+          "name": "outputs",
+          "type": "object",
           "optional": true,
-          "description": "Number of items to return per page.Default: 20"
-        },
-        {
-          "name": "highlight",
-          "type": "boolean",
-          "optional": true,
-          "description": "Pass a value of true to enable query highlight markers (see below)."
-        },
-        {
-          "name": "page",
-          "type": "integer",
-          "optional": true,
-          "description": "Page number of results to return.Default: 1"
-        },
-        {
-          "name": "sort",
-          "type": "string",
-          "optional": true,
-          "description": "Return matches sorted by either score or timestamp.Default: score"
-        },
-        {
-          "name": "sort_dir",
-          "type": "string",
-          "optional": true,
-          "description": "Change sort direction to ascending (asc) or descending (desc).Default: desc"
-        },
-        {
-          "name": "team_id",
-          "type": "string",
-          "optional": true,
-          "description": "encoded team id to search in, required if org token is used"
+          "description": "Key-value object of outputs from your step. Keys of this object reflect the configured key properties of your outputs array from your workflow_step object."
         }
       ],
       "response": {
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
-          "type": "object",
-          "properties": {
-            "files": {
-              "$schema": "http://json-schema.org/draft-04/schema#",
-              "type": "object",
-              "properties": {
-                "matches": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../objects/file.json"
-                  }
-                },
-                "paging": {
-                  "$ref": "../objects/paging.json"
-                }
-              },
-              "id": "files",
-              "required": [
-                "matches",
-                "paging"
-              ]
-            },
-            "messages": {
-              "$schema": "http://json-schema.org/draft-04/schema#",
-              "type": "object",
-              "properties": {
-                "matches": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../objects/message.json"
-                  }
-                },
-                "paging": {
-                  "$ref": "../objects/paging.json"
-                }
-              },
-              "id": "messages",
-              "required": [
-                "matches",
-                "paging"
-              ]
-            },
-            "ok": {
-              "type": "boolean"
-            },
-            "posts": {
-              "type": "object",
-              "properties": {
-                "matches": {
-                  "type": "array",
-                  "items": {}
-                },
-                "total": {
-                  "type": "number"
-                }
-              }
-            },
-            "query": {
-              "type": "string"
-            },
-            "error": {
-              "type": "string"
-            },
-            "needed": {
-              "type": "string"
-            },
-            "provided": {
-              "type": "string"
-            },
-            "matches": {
-              "type": "array",
-              "items": {}
-            },
-            "paging": {
-              "type": "object",
-              "properties": {
-                "count": {
-                  "type": "number"
-                },
-                "total": {
-                  "type": "number"
-                },
-                "page": {
-                  "type": "number"
-                },
-                "pages": {
-                  "type": "number"
-                }
-              }
-            }
-          },
-          "required": [
-            "ok"
-          ]
+          "type": "undefined"
         },
         "errors": [
+          {
+            "name": "not_found",
+            "description": "Error returned when the context_id is invalid."
+          },
+          {
+            "name": "invalid_outputs",
+            "description": "The outputs provided do not match those specified at step configuration."
+          },
+          {
+            "name": "channel_not_found",
+            "description": "Error returned when the value for an output of type channel could not be found."
+          },
+          {
+            "name": "user_not_found",
+            "description": "Error returned when the value for an output of type user could not be found."
+          },
+          {
+            "name": "invalid_step_status",
+            "description": "Error returned when the current status of this step is not 'started'."
+          },
+          {
+            "name": "invalid_token",
+            "description": "Error returned when the token used is invalid."
+          },
+          {
+            "name": "trigger_exchanged",
+            "description": "Error returned when the provided workflow_step_execute_id has already been used."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          },
           {
             "name": "not_authed",
             "description": "No authentication token provided."
@@ -210,10 +119,6 @@
           {
             "name": "is_bot",
             "description": "This method cannot be called by a bot user."
-          },
-          {
-            "name": "team_access_not_granted",
-            "description": "The token used is not granted the specific workspace access required to complete this request."
           },
           {
             "name": "invalid_arguments",
@@ -278,18 +183,14 @@
           {
             "name": "fatal_error",
             "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
-          },
-          {
-            "name": "internal_error",
-            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
     },
     {
-      "name": "search.files",
-      "description": "Searches for files matching a query.",
-      "documentationUrl": "https://api.slack.com/methods/search.files",
+      "name": "workflows.stepFailed",
+      "description": "Indicate that an app's step in a workflow failed to execute.",
+      "documentationUrl": "https://api.slack.com/methods/workflows.stepFailed",
       "params": [
         {
           "name": "token",
@@ -298,108 +199,44 @@
           "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
-          "name": "query",
+          "name": "error",
+          "type": "object",
+          "optional": false,
+          "description": "A JSON-based object with a message property that should contain a human readable error message."
+        },
+        {
+          "name": "workflow_step_execute_id",
           "type": "string",
           "optional": false,
-          "description": "Search query."
-        },
-        {
-          "name": "count",
-          "type": "integer",
-          "optional": true,
-          "description": "Number of items to return per page.Default: 20"
-        },
-        {
-          "name": "highlight",
-          "type": "boolean",
-          "optional": true,
-          "description": "Pass a value of true to enable query highlight markers (see below)."
-        },
-        {
-          "name": "page",
-          "type": "integer",
-          "optional": true,
-          "description": "Page number of results to return.Default: 1"
-        },
-        {
-          "name": "sort",
-          "type": "string",
-          "optional": true,
-          "description": "Return matches sorted by either score or timestamp.Default: score"
-        },
-        {
-          "name": "sort_dir",
-          "type": "string",
-          "optional": true,
-          "description": "Change sort direction to ascending (asc) or descending (desc).Default: desc"
-        },
-        {
-          "name": "team_id",
-          "type": "string",
-          "optional": true,
-          "description": "encoded team id to search in, required if org token is used"
+          "description": "Context identifier that maps to the correct workflow step execution."
         }
       ],
       "response": {
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
-          "type": "object",
-          "properties": {
-            "files": {
-              "type": "object",
-              "properties": {
-                "matches": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../objects/file.json"
-                  }
-                },
-                "pagination": {
-                  "type": "object",
-                  "properties": {
-                    "first": {
-                      "type": "number"
-                    },
-                    "last": {
-                      "type": "number"
-                    },
-                    "page": {
-                      "type": "number"
-                    },
-                    "page_count": {
-                      "type": "number"
-                    },
-                    "per_page": {
-                      "type": "number"
-                    },
-                    "total_count": {
-                      "type": "number"
-                    }
-                  }
-                },
-                "paging": {
-                  "$ref": "../objects/paging.json"
-                },
-                "total": {
-                  "type": "integer"
-                }
-              }
-            },
-            "ok": {
-              "type": "boolean"
-            },
-            "query": {
-              "type": "string"
-            },
-            "error": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "ok"
-          ]
+          "type": "undefined"
         },
         "errors": [
+          {
+            "name": "not_found",
+            "description": "Error returned when the workflow_step_execute_id is invalid."
+          },
+          {
+            "name": "invalid_outputs",
+            "description": "The outputs provided do not match those specified at step configuration."
+          },
+          {
+            "name": "trigger_exchanged",
+            "description": "Error returned when the provided workflow_step_execute_id has already been used."
+          },
+          {
+            "name": "invalid_token",
+            "description": "Error returned when the token used is invalid."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          },
           {
             "name": "not_authed",
             "description": "No authentication token provided."
@@ -455,10 +292,6 @@
           {
             "name": "is_bot",
             "description": "This method cannot be called by a bot user."
-          },
-          {
-            "name": "team_access_not_granted",
-            "description": "The token used is not granted the specific workspace access required to complete this request."
           },
           {
             "name": "invalid_arguments",
@@ -523,18 +356,14 @@
           {
             "name": "fatal_error",
             "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
-          },
-          {
-            "name": "internal_error",
-            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
     },
     {
-      "name": "search.messages",
-      "description": "Searches for messages matching a query.",
-      "documentationUrl": "https://api.slack.com/methods/search.messages",
+      "name": "workflows.updateStep",
+      "description": "Update the configuration for a workflow step.",
+      "documentationUrl": "https://api.slack.com/methods/workflows.updateStep",
       "params": [
         {
           "name": "token",
@@ -543,114 +372,78 @@
           "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
-          "name": "query",
+          "name": "workflow_step_edit_id",
           "type": "string",
           "optional": false,
-          "description": "Search query."
+          "description": "A context identifier provided with view_submission payloads used to call back to workflows.updateStep."
         },
         {
-          "name": "count",
-          "type": "integer",
+          "name": "inputs",
+          "type": "object",
           "optional": true,
-          "description": "Number of items to return per page.Default: 20"
+          "description": "A JSON key-value map of inputs required from a user during configuration. This is the data your app expects to receive when the workflow step starts. Please note: the embedded variable format is set and replaced by the workflow system. You cannot create custom variables that will be replaced at runtime. Read more about variables in workflow steps here."
         },
         {
-          "name": "cursor",
+          "name": "outputs",
+          "type": "array",
+          "optional": true,
+          "description": "An JSON array of output objects used during step execution. This is the data your app agrees to provide when your workflow step was executed."
+        },
+        {
+          "name": "step_image_url",
           "type": "string",
           "optional": true,
-          "description": "Use this when getting results with cursormark pagination. For first call send * for subsequent calls, send the value of next_cursor returned in the previous call's results"
+          "description": "An optional field that can be used to override app image that is shown in the Workflow Builder."
         },
         {
-          "name": "highlight",
-          "type": "boolean",
-          "optional": true,
-          "description": "Pass a value of true to enable query highlight markers (see below)."
-        },
-        {
-          "name": "page",
-          "type": "integer",
-          "optional": true,
-          "description": "Page number of results to return.Default: 1"
-        },
-        {
-          "name": "sort",
+          "name": "step_name",
           "type": "string",
           "optional": true,
-          "description": "Return matches sorted by either score or timestamp.Default: score"
-        },
-        {
-          "name": "sort_dir",
-          "type": "string",
-          "optional": true,
-          "description": "Change sort direction to ascending (asc) or descending (desc).Default: desc"
-        },
-        {
-          "name": "team_id",
-          "type": "string",
-          "optional": true,
-          "description": "encoded team id to search in, required if org token is used"
+          "description": "An optional field that can be used to override the step name that is shown in the Workflow Builder."
         }
       ],
       "response": {
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
-          "type": "object",
-          "properties": {
-            "messages": {
-              "type": "object",
-              "properties": {
-                "matches": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "../objects/message.json"
-                  }
-                },
-                "pagination": {
-                  "type": "object",
-                  "properties": {
-                    "first": {
-                      "type": "number"
-                    },
-                    "last": {
-                      "type": "number"
-                    },
-                    "page": {
-                      "type": "number"
-                    },
-                    "page_count": {
-                      "type": "number"
-                    },
-                    "per_page": {
-                      "type": "number"
-                    },
-                    "total_count": {
-                      "type": "number"
-                    }
-                  }
-                },
-                "paging": {
-                  "$ref": "../objects/paging.json"
-                },
-                "total": {
-                  "type": "integer"
-                }
-              }
-            },
-            "ok": {
-              "type": "boolean"
-            },
-            "query": {
-              "type": "string"
-            },
-            "error": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "ok"
-          ]
+          "type": "undefined"
         },
         "errors": [
+          {
+            "name": "not_found",
+            "description": "Error returned when the context_id is invalid"
+          },
+          {
+            "name": "invalid_payload",
+            "description": "Error returned when the payload is invalid"
+          },
+          {
+            "name": "invalid_inputs",
+            "description": "Error returned when an input is missing the required value key"
+          },
+          {
+            "name": "invalid_trigger",
+            "description": "Error returned when the provided workflow_step_edit_id does not match any steps in the workflow"
+          },
+          {
+            "name": "unsupported_context_type",
+            "description": "The context_type is unsupported"
+          },
+          {
+            "name": "trigger_expired",
+            "description": "Error returned when there was a timeout between view submission and workflows.updateStep call"
+          },
+          {
+            "name": "invalid_step_image_url [hidden]",
+            "description": "The provided `step_image_url` is invalid"
+          },
+          {
+            "name": "invalid_token",
+            "description": "Error returned when the token used is invalid."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          },
           {
             "name": "not_authed",
             "description": "No authentication token provided."
@@ -706,10 +499,6 @@
           {
             "name": "is_bot",
             "description": "This method cannot be called by a bot user."
-          },
-          {
-            "name": "team_access_not_granted",
-            "description": "The token used is not granted the specific workspace access required to complete this request."
           },
           {
             "name": "invalid_arguments",
@@ -774,10 +563,6 @@
           {
             "name": "fatal_error",
             "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
-          },
-          {
-            "name": "internal_error",
-            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
