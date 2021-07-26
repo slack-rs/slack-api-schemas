@@ -1,0 +1,22 @@
+[package]
+name = "slack-api-schemas"
+version = "0.1.0"
+edition = "2018"
+description = "parse slackapi docs and openapi specs into one schema"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0"
+Inflector = "0.11"
+clap = "2.32"
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { version = "1", features = ["full"] }
+rustfmt = "0.10"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+scraper = "0.12"
+
+[dev-dependencies]
+tokio-test = "0.4.2"
