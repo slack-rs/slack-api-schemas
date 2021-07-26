@@ -1077,6 +1077,7 @@ async.parallel([
             method.response.sample = sanitizeResponseSample(method.name, method.response.sample)[0];
             method.response.schema = parseResponseSampleToSchema(method.name, method.response.sample);
           }
+          console.log(method.name, method.response.schema);
         });
         const filepath = `${schema_dir}/web/${mod.name}.json`;
         fs.writeFileSync(filepath, JSON.stringify(mod, null, 2));
