@@ -1,0 +1,26 @@
+[package]
+description = "parse slackapi docs and openapi specs into one schema"
+edition = "2018"
+name = "slack-api-schemas"
+version = "0.1.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+Inflector = "0.11"
+anyhow = "1.0"
+clap = "2.32"
+color-eyre = "0.5.11"
+openapi-merge = { git = "https://github.com/cognitedata/openapi-merge.git" }
+reqwest = { version = "0.11", features = ["json"] }
+rustfmt = "0.10"
+scraper = "0.12"
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+vfs = "0.5.1"
+
+[dev-dependencies]
+proptest = "1.0.0"
+tokio-test = "0.4.2"

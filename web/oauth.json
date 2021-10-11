@@ -4,8 +4,278 @@
   "methods": [
     {
       "name": "oauth.access",
-      "description": "Exchanges a temporary OAuth code for an API token.",
+      "description": "Exchanges a temporary OAuth verifier code for an access token.",
       "documentationUrl": "https://api.slack.com/methods/oauth.access",
+      "params": [
+        {
+          "name": "client_id",
+          "type": "string",
+          "optional": true,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "client_secret",
+          "type": "string",
+          "optional": true,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "optional": true,
+          "description": "The code param returned via the OAuth callback."
+        },
+        {
+          "name": "redirect_uri",
+          "type": "string",
+          "optional": true,
+          "description": "This must match the originally submitted URI (if one was sent)."
+        },
+        {
+          "name": "single_channel",
+          "type": "boolean",
+          "optional": true,
+          "description": "Request the user to add your app only to a single channel. Only valid with a legacy workspace app.Default: false"
+        }
+      ],
+      "response": {
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "access_token": {
+              "type": "string"
+            },
+            "scope": {
+              "type": "string"
+            },
+            "team_name": {
+              "type": "string"
+            },
+            "team_id": {
+              "type": "string"
+            },
+            "enterprise_id": {
+              "type": "null"
+            },
+            "incoming_webhook": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "channel": {
+                  "type": "string"
+                },
+                "configuration_url": {
+                  "type": "string"
+                }
+              }
+            },
+            "bot": {
+              "type": "object",
+              "properties": {
+                "bot_user_id": {
+                  "type": "string"
+                },
+                "bot_access_token": {
+                  "type": "string"
+                }
+              }
+            },
+            "ok": {
+              "type": "boolean"
+            },
+            "token_type": {
+              "type": "string"
+            },
+            "app_id": {
+              "type": "string"
+            },
+            "app_user_id": {
+              "type": "string"
+            },
+            "authorizing_user": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                },
+                "app_home": {
+                  "type": "string"
+                }
+              }
+            },
+            "installer_user": {
+              "type": "object",
+              "properties": {
+                "user_id": {
+                  "type": "string"
+                },
+                "app_home": {
+                  "type": "string"
+                }
+              }
+            },
+            "scopes": {
+              "type": "object",
+              "properties": {
+                "app_home": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "team": {
+                  "type": "array",
+                  "items": {}
+                },
+                "channel": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "group": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "mpim": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "im": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "user": {
+                  "type": "array",
+                  "items": {}
+                }
+              }
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "invalid_client_id",
+            "description": "Value passed for client_id was invalid."
+          },
+          {
+            "name": "bad_client_secret",
+            "description": "Value passed for client_secret was invalid."
+          },
+          {
+            "name": "invalid_code",
+            "description": "Value passed for code was invalid."
+          },
+          {
+            "name": "bad_redirect_uri",
+            "description": "Value passed for redirect_uri did not match the redirect_uri in the original request."
+          },
+          {
+            "name": "oauth_authorization_url_mismatch",
+            "description": "The OAuth flow was initiated on an incorrect version of the authorization url. The flow must be initiated via /oauth/authorize."
+          },
+          {
+            "name": "code_already_used",
+            "description": "Value passed for code was already exchanged."
+          },
+          {
+            "name": "missing_resource",
+            "description": "Missing permission resource."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "invalid_token",
+            "description": "Invalid refresh token."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed an array as an argument. Please only input valid strings."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          }
+        ]
+      }
+    },
+    {
+      "name": "oauth.token",
+      "description": "Exchanges a temporary OAuth verifier code for a workspace token.",
+      "documentationUrl": "https://api.slack.com/methods/oauth.token",
       "params": [
         {
           "name": "client_id",
@@ -30,21 +300,76 @@
           "type": "string",
           "optional": true,
           "description": "This must match the originally submitted URI (if one was sent)."
+        },
+        {
+          "name": "single_channel",
+          "type": "boolean",
+          "optional": true,
+          "description": "Request the user to add your app only to a single channel.Default: false"
         }
       ],
       "response": {
-        "sample": "{\"access_token\":\"xoxp-23984754863-2348975623103\",\"scope\":\"read\"}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
           "properties": {
+            "ok": {
+              "type": "boolean"
+            },
             "access_token": {
               "type": "string"
             },
-            "scope": {
+            "token_type": {
+              "type": "string"
+            },
+            "app_id": {
+              "type": "string"
+            },
+            "app_user_id": {
+              "type": "string"
+            },
+            "installer_user_id": {
+              "type": "string"
+            },
+            "authorizing_user_id": {
+              "type": "string"
+            },
+            "team_name": {
+              "type": "string"
+            },
+            "team_id": {
+              "type": "string"
+            },
+            "permissions": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "scopes": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "resource_type": {
+                    "type": "string"
+                  },
+                  "resource_id": {
+                    "type": "number"
+                  }
+                }
+              }
+            },
+            "single_channel_id": {
+              "type": "string"
+            },
+            "error": {
               "type": "string"
             }
-          }
+          },
+          "required": [
+            "ok"
+          ]
         },
         "errors": [
           {
@@ -64,12 +389,24 @@
             "description": "Value passed for redirect_uri did not match the redirect_uri in the original request."
           },
           {
+            "name": "code_already_used [hidden]",
+            "description": "code already used (generated)"
+          },
+          {
+            "name": "authed_user_not_found",
+            "description": "Slack user could not be found from auth info"
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
             "name": "invalid_arg_name",
-            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
           },
           {
             "name": "invalid_array_arg",
-            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+            "description": "The method was passed an array as an argument. Please only input valid strings."
           },
           {
             "name": "invalid_charset",
@@ -81,7 +418,7 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
@@ -89,11 +426,282 @@
           },
           {
             "name": "team_added_to_org",
-            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
           },
           {
             "name": "request_timeout",
             "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          }
+        ]
+      }
+    },
+    {
+      "name": "oauth.v2.access",
+      "description": "Exchanges a temporary OAuth verifier code for an access token.",
+      "documentationUrl": "https://api.slack.com/methods/oauth.v2.access",
+      "params": [
+        {
+          "name": "client_id",
+          "type": "string",
+          "optional": true,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "client_secret",
+          "type": "string",
+          "optional": true,
+          "description": "Issued when you created your application."
+        },
+        {
+          "name": "code",
+          "type": "string",
+          "optional": true,
+          "description": "The code param returned via the OAuth callback."
+        },
+        {
+          "name": "grant_type",
+          "type": "string",
+          "optional": true,
+          "description": "The grant_type param as described in the OAuth spec.Default: authorization_code"
+        },
+        {
+          "name": "redirect_uri",
+          "type": "string",
+          "optional": true,
+          "description": "This must match the originally submitted URI (if one was sent)."
+        },
+        {
+          "name": "refresh_token",
+          "type": "string",
+          "optional": true,
+          "description": "The refresh_token param as described in the OAuth spec."
+        }
+      ],
+      "response": {
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "access_token": {
+              "type": "string"
+            },
+            "token_type": {
+              "type": "string"
+            },
+            "scope": {
+              "type": "string"
+            },
+            "bot_user_id": {
+              "type": "string"
+            },
+            "app_id": {
+              "type": "string"
+            },
+            "team": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              }
+            },
+            "enterprise": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              }
+            },
+            "authed_user": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "access_token": {
+                  "type": "string"
+                },
+                "token_type": {
+                  "type": "string"
+                },
+                "expires_in": {
+                  "type": "number"
+                },
+                "refresh_token": {
+                  "type": "string"
+                }
+              }
+            },
+            "expires_in": {
+              "type": "number"
+            },
+            "refresh_token": {
+              "type": "string"
+            },
+            "is_enterprise_install": {
+              "type": "boolean"
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "invalid_grant_type",
+            "description": "Value passed for grant_type was invalid."
+          },
+          {
+            "name": "invalid_client_id",
+            "description": "Value passed for client_id was invalid."
+          },
+          {
+            "name": "bad_client_secret",
+            "description": "Value passed for client_secret was invalid."
+          },
+          {
+            "name": "invalid_code",
+            "description": "Value passed for code was invalid."
+          },
+          {
+            "name": "bad_redirect_uri",
+            "description": "Value passed for redirect_uri did not match the redirect_uri in the original request."
+          },
+          {
+            "name": "oauth_authorization_url_mismatch",
+            "description": "The OAuth flow was initiated on an incorrect version of the authorization url. The flow must be initiated via /oauth/v2/authorize ."
+          },
+          {
+            "name": "preview_feature_not_available",
+            "description": "Returned when the API method is not yet available on the team in context."
+          },
+          {
+            "name": "cannot_install_an_org_installed_app",
+            "description": "Returned when the the org-installed app cannot be installed on a workspace."
+          },
+          {
+            "name": "no_scopes",
+            "description": "Missing scope in the request."
+          },
+          {
+            "name": "invalid_refresh_token",
+            "description": "The given refresh token is invalid."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed an array as an argument. Please only input valid strings."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }

@@ -1,11 +1,11 @@
 {
-  "name": "bots",
+  "name": "migration",
   "description": "",
   "methods": [
     {
-      "name": "bots.info",
-      "description": "Gets information about a bot user.",
-      "documentationUrl": "https://api.slack.com/methods/bots.info",
+      "name": "migration.exchange",
+      "description": "For Enterprise Grid workspaces, map local user IDs to global user IDs",
+      "documentationUrl": "https://api.slack.com/methods/migration.exchange",
       "params": [
         {
           "name": "token",
@@ -14,16 +14,22 @@
           "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
-          "name": "bot",
-          "type": "bot",
-          "optional": true,
-          "description": "Bot user to get info on"
+          "name": "users",
+          "type": "array",
+          "optional": false,
+          "description": "A comma-separated list of user ids, up to 400 per request"
         },
         {
           "name": "team_id",
-          "type": "team",
+          "type": "string",
           "optional": true,
-          "description": "encoded team id or enterprise id where the bot exists, required if org token is used"
+          "description": "Specify team_id starts with T in case of Org Token"
+        },
+        {
+          "name": "to_old",
+          "type": "boolean",
+          "optional": true,
+          "description": "Specify true to convert W global user IDs to workspace-specific U IDs. Defaults to false.Default:"
         }
       ],
       "response": {
@@ -34,41 +40,36 @@
             "ok": {
               "type": "boolean"
             },
-            "bot": {
+            "team_id": {
+              "type": "string"
+            },
+            "enterprise_id": {
+              "type": "string"
+            },
+            "user_id_map": {
               "type": "object",
               "properties": {
-                "id": {
+                "U06UBSUN5": {
                   "type": "string"
                 },
-                "deleted": {
-                  "type": "boolean"
-                },
-                "name": {
+                "U06UEB62U": {
                   "type": "string"
                 },
-                "updated": {
-                  "type": "number"
-                },
-                "app_id": {
+                "U06UBSVB3": {
                   "type": "string"
                 },
-                "user_id": {
+                "U06UBSVDX": {
                   "type": "string"
                 },
-                "icons": {
-                  "type": "object",
-                  "properties": {
-                    "image_36": {
-                      "type": "string"
-                    },
-                    "image_48": {
-                      "type": "string"
-                    },
-                    "image_72": {
-                      "type": "string"
-                    }
-                  }
+                "W06UAZ65Q": {
+                  "type": "string"
                 }
+              }
+            },
+            "invalid_user_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
               }
             },
             "error": {
@@ -81,20 +82,12 @@
         },
         "errors": [
           {
-            "name": "bot_not_found",
-            "description": "Value passed for bot was invalid."
+            "name": "not_enterprise_team",
+            "description": "The workspace associated with the token is not part of an Enterprise organization. User IDs have not changed and there is nothing to map."
           },
           {
-            "name": "bots_not_found",
-            "description": "At least one value passed for bots was invalid."
-          },
-          {
-            "name": "missing_argument",
-            "description": "A required argument is missing."
-          },
-          {
-            "name": "user_removed_from_team [hidden]",
-            "description": "user removed from team (generated)"
+            "name": "too_many_users",
+            "description": "Too many user IDs provided in users. Up to 400 user IDs are allowed per request."
           },
           {
             "name": "not_authed",

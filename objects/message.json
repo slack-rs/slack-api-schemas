@@ -14,29 +14,11 @@
         "user": {
           "type": "string"
         },
-        "team": {
-          "type": "string"
-        },
-        "source_team": {
-          "type": "string"
-        },
         "text": {
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
-        },
-        "thread_ts": {
-          "$ref": "timestamp.json"
-        },
-        "event_ts": {
-          "$ref": "timestamp.json"
-        },
-        "bot_id": {
           "type": "string"
-        },
-        "reply_broadcast": {
-          "type": "boolean"
         },
         "edited": {
           "type": "object",
@@ -45,7 +27,7 @@
               "type": "string"
             },
             "ts": {
-              "$ref": "timestamp.json"
+              "type": "string"
             }
           }
         },
@@ -111,7 +93,7 @@
                 "type": "string"
               },
               "ts": {
-                "$ref": "timestamp.json"
+                "type": "number"
               }
             }
           }
@@ -128,140 +110,8 @@
         "subtype": {
           "type": "string"
         },
-        "channel": {
-          "type": "string"
-        },
         "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
           "type": "string"
-        },
-        "team": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        },
-        "bot_id": {
-          "type": "string"
-        },
-        "bot_link": {
-          "type": "string"
-        }
-      },
-      "title": "bot_add"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
-          "type": "string"
-        },
-        "team": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        },
-        "bot_id": {
-          "type": "string"
-        },
-        "bot_link": {
-          "type": "string"
-        }
-      },
-      "title": "bot_disable"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
-          "type": "string"
-        },
-        "team": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        },
-        "bot_id": {
-          "type": "string"
-        },
-        "bot_link": {
-          "type": "string"
-        }
-      },
-      "title": "bot_enable"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
-          "type": "string"
-        },
-        "team": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        },
-        "bot_id": {
-          "type": "string"
-        },
-        "bot_link": {
-          "type": "string"
-        }
-      },
-      "title": "bot_remove"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
         },
         "text": {
           "type": "string"
@@ -272,15 +122,6 @@
         "username": {
           "type": "string"
         },
-        "team": {
-          "type": "string"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "thread_ts": {
-          "$ref": "timestamp.json"
-        },
         "icons": {
           "type": "object",
           "properties": {
@@ -290,81 +131,8 @@
             "image_48": {
               "type": "string"
             },
-            "image_64": {
-              "type": "string"
-            },
             "image_72": {
               "type": "string"
-            },
-            "emoji": {
-              "type": "string"
-            }
-          }
-        },
-        "attachments": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "fallback": {
-                "type": "string"
-              },
-              "color": {
-                "type": "string"
-              },
-              "pretext": {
-                "type": "string"
-              },
-              "author_name": {
-                "type": "string"
-              },
-              "author_link": {
-                "type": "string"
-              },
-              "author_icon": {
-                "type": "string"
-              },
-              "title": {
-                "type": "string"
-              },
-              "title_link": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "fields": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "title": {
-                      "type": "string"
-                    },
-                    "value": {
-                      "type": "string"
-                    },
-                    "short": {
-                      "type": "boolean"
-                    }
-                  }
-                }
-              },
-              "image_url": {
-                "type": "string"
-              },
-              "thumb_url": {
-                "type": "string"
-              },
-              "footer": {
-                "type": "string"
-              },
-              "footer_icon": {
-                "type": "string"
-              },
-              "ts": {
-                "$ref": "timestamp.json"
-              }
             }
           }
         }
@@ -380,23 +148,226 @@
         "subtype": {
           "type": "string"
         },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "text": {
+        "channel": {
           "type": "string"
         },
         "user": {
           "type": "string"
         },
-        "members": {
-          "type": "array",
-          "items": {
-            "type": "string"
+        "text": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        }
+      },
+      "title": "me_message"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "message": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "ts": {
+              "type": "string"
+            },
+            "edited": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "ts": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
-      "title": "channel_archive"
+      "title": "message_changed"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "deleted_ts": {
+          "type": "string"
+        }
+      },
+      "title": "message_deleted"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "text": {
+              "type": "string"
+            },
+            "thread_ts": {
+              "type": "string"
+            },
+            "reply_count": {
+              "type": "integer"
+            },
+            "replies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "string"
+                  },
+                  "ts": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "ts": {
+              "type": "string"
+            }
+          }
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "hidden": {
+          "type": "boolean"
+        },
+        "channel": {
+          "type": "string"
+        },
+        "event_ts": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        }
+      },
+      "title": "message_replied"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "message": {
+          "type": "object",
+          "properties": {
+            "text": {
+              "type": "string"
+            },
+            "type": {
+              "type": "string"
+            },
+            "thread_ts": {
+              "type": "string"
+            },
+            "root": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "thread_ts": {
+                  "type": "string"
+                },
+                "reply_count": {
+                  "type": "number"
+                },
+                "replies": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "string"
+                      },
+                      "ts": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "unread_count": {
+                  "type": "number"
+                },
+                "ts": {
+                  "type": "string"
+                }
+              }
+            },
+            "subtype": {
+              "type": "string"
+            },
+            "user": {
+              "type": "string"
+            },
+            "ts": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "title": "thread_broadcast"
     },
     {
       "type": "object",
@@ -408,7 +379,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
+          "type": "string"
         },
         "user": {
           "type": "string"
@@ -432,7 +403,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
+          "type": "string"
         },
         "user": {
           "type": "string"
@@ -453,7 +424,55 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "channel_topic"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "channel_purpose"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
         },
         "user": {
           "type": "string"
@@ -480,19 +499,16 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
-          "type": "string"
-        },
-        "purpose": {
           "type": "string"
         },
         "text": {
           "type": "string"
+        },
+        "user": {
+          "type": "string"
         }
       },
-      "title": "channel_purpose"
+      "title": "channel_archive"
     },
     {
       "type": "object",
@@ -504,31 +520,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
           "type": "string"
-        },
-        "topic": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        }
-      },
-      "title": "channel_topic"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
         },
         "text": {
           "type": "string"
@@ -549,109 +541,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
-        },
-        "text": {
           "type": "string"
-        },
-        "file": {
-          "$ref": "file.json"
-        },
-        "comment": {
-          "$ref": "file_comment.json"
-        }
-      },
-      "title": "file_comment"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "text": {
-          "type": "string"
-        },
-        "file": {
-          "$ref": "file.json"
-        },
-        "user": {
-          "type": "string"
-        }
-      },
-      "title": "file_mention"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "text": {
-          "type": "string"
-        },
-        "file": {
-          "$ref": "file.json"
-        },
-        "user": {
-          "type": "string"
-        },
-        "upload": {
-          "type": "boolean"
-        }
-      },
-      "title": "file_share"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "text": {
-          "type": "string"
-        },
-        "user": {
-          "type": "string"
-        },
-        "members": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        }
-      },
-      "title": "group_archive"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
         },
         "user": {
           "type": "string"
@@ -672,7 +562,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
+          "type": "string"
         },
         "user": {
           "type": "string"
@@ -693,7 +583,55 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "group_topic"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "title": "group_purpose"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
+          "type": "string"
         },
         "user": {
           "type": "string"
@@ -720,19 +658,22 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
-          "type": "string"
-        },
-        "purpose": {
           "type": "string"
         },
         "text": {
           "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       },
-      "title": "group_purpose"
+      "title": "group_archive"
     },
     {
       "type": "object",
@@ -744,31 +685,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
           "type": "string"
-        },
-        "topic": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        }
-      },
-      "title": "group_topic"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
         },
         "text": {
           "type": "string"
@@ -785,23 +702,178 @@
         "type": {
           "type": "string"
         },
-        "subtype": {
+        "text": {
+          "type": "string"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "created": {
+                "type": "number"
+              },
+              "timestamp": {
+                "type": "number"
+              },
+              "name": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "mimetype": {
+                "type": "string"
+              },
+              "filetype": {
+                "type": "string"
+              },
+              "pretty_type": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              },
+              "editable": {
+                "type": "boolean"
+              },
+              "size": {
+                "type": "number"
+              },
+              "mode": {
+                "type": "string"
+              },
+              "is_external": {
+                "type": "boolean"
+              },
+              "external_type": {
+                "type": "string"
+              },
+              "is_public": {
+                "type": "boolean"
+              },
+              "public_url_shared": {
+                "type": "boolean"
+              },
+              "display_as_bot": {
+                "type": "boolean"
+              },
+              "username": {
+                "type": "string"
+              },
+              "url_private": {
+                "type": "string"
+              },
+              "url_private_download": {
+                "type": "string"
+              },
+              "thumb_64": {
+                "type": "string"
+              },
+              "thumb_80": {
+                "type": "string"
+              },
+              "thumb_360": {
+                "type": "string"
+              },
+              "thumb_360_w": {
+                "type": "number"
+              },
+              "thumb_360_h": {
+                "type": "number"
+              },
+              "thumb_480": {
+                "type": "string"
+              },
+              "thumb_480_w": {
+                "type": "number"
+              },
+              "thumb_480_h": {
+                "type": "number"
+              },
+              "thumb_160": {
+                "type": "string"
+              },
+              "image_exif_rotation": {
+                "type": "number"
+              },
+              "original_w": {
+                "type": "number"
+              },
+              "original_h": {
+                "type": "number"
+              },
+              "pjpeg": {
+                "type": "string"
+              },
+              "permalink": {
+                "type": "string"
+              },
+              "permalink_public": {
+                "type": "string"
+              },
+              "has_rich_preview": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "user": {
+          "type": "string"
+        },
+        "upload": {
+          "type": "boolean"
+        },
+        "display_as_bot": {
+          "type": "boolean"
+        },
+        "bot_id": {
+          "type": "null"
+        },
+        "ts": {
           "type": "string"
         },
         "channel": {
           "type": "string"
         },
-        "user": {
+        "event_ts": {
+          "type": "string"
+        },
+        "channel_type": {
+          "type": "string"
+        },
+        "file": {
+          "$ref": "file.json"
+        }
+      },
+      "title": "file_share"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "ts": {
           "type": "string"
         },
         "text": {
           "type": "string"
         },
-        "ts": {
-          "$ref": "timestamp.json"
+        "file": {
+          "$ref": "file.json"
+        },
+        "comment": {
+          "$ref": "file_comment.json"
         }
       },
-      "title": "me_message"
+      "title": "file_comment"
     },
     {
       "type": "object",
@@ -812,326 +884,20 @@
         "subtype": {
           "type": "string"
         },
-        "hidden": {
-          "type": "boolean"
-        },
-        "channel": {
+        "ts": {
           "type": "string"
         },
-        "ts": {
-          "$ref": "timestamp.json"
+        "text": {
+          "type": "string"
         },
-        "event_ts": {
-          "$ref": "timestamp.json"
+        "file": {
+          "$ref": "file.json"
         },
-        "message": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "user": {
-              "type": "string"
-            },
-            "text": {
-              "type": "string"
-            },
-            "ts": {
-              "$ref": "timestamp.json"
-            },
-            "thread_ts": {
-              "$ref": "timestamp.json"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
-              "type": "string"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "$ref": "timestamp.json"
-                  }
-                }
-              }
-            },
-            "edited": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "ts": {
-                  "$ref": "timestamp.json"
-                }
-              }
-            }
-          }
-        },
-        "previous_message": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "user": {
-              "type": "string"
-            },
-            "text": {
-              "type": "string"
-            },
-            "ts": {
-              "$ref": "timestamp.json"
-            },
-            "thread_ts": {
-              "$ref": "timestamp.json"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
-              "type": "string"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "$ref": "timestamp.json"
-                  }
-                }
-              }
-            },
-            "edited": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "ts": {
-                  "$ref": "timestamp.json"
-                }
-              }
-            }
-          }
+        "user": {
+          "type": "string"
         }
       },
-      "title": "message_changed"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "hidden": {
-          "type": "boolean"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "deleted_ts": {
-          "$ref": "timestamp.json"
-        },
-        "event_ts": {
-          "$ref": "timestamp.json"
-        },
-        "previous_message": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "user": {
-              "type": "string"
-            },
-            "text": {
-              "type": "string"
-            },
-            "ts": {
-              "$ref": "timestamp.json"
-            },
-            "thread_ts": {
-              "$ref": "timestamp.json"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
-              "type": "string"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "$ref": "timestamp.json"
-                  }
-                }
-              }
-            },
-            "edited": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "ts": {
-                  "$ref": "timestamp.json"
-                }
-              }
-            }
-          }
-        }
-      },
-      "title": "message_deleted"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "message": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "user": {
-              "type": "string"
-            },
-            "text": {
-              "type": "string"
-            },
-            "ts": {
-              "$ref": "timestamp.json"
-            },
-            "thread_ts": {
-              "$ref": "timestamp.json"
-            },
-            "parent_user_id": {
-              "type": "string"
-            },
-            "bot_id": {
-              "type": "string"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "unread_count": {
-              "type": "integer"
-            },
-            "last_read": {
-              "type": "string"
-            },
-            "subscribed": {
-              "type": "boolean"
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "$ref": "timestamp.json"
-                  }
-                }
-              }
-            },
-            "edited": {
-              "type": "object",
-              "properties": {
-                "user": {
-                  "type": "string"
-                },
-                "ts": {
-                  "$ref": "timestamp.json"
-                }
-              }
-            }
-          }
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "hidden": {
-          "type": "boolean"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "event_ts": {
-          "$ref": "timestamp.json"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "thread_ts": {
-          "$ref": "timestamp.json"
-        }
-      },
-      "title": "message_replied"
+      "title": "file_mention"
     },
     {
       "type": "object",
@@ -1159,7 +925,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
+          "type": "string"
         }
       },
       "title": "pinned_item"
@@ -1173,174 +939,6 @@
         "subtype": {
           "type": "string"
         },
-        "channel": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "user": {
-          "type": "string"
-        },
-        "team": {
-          "type": "string"
-        },
-        "text": {
-          "type": "string"
-        }
-      },
-      "title": "reminder_add"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "attachments": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "from_url": {
-                "type": "string"
-              },
-              "fallback": {
-                "type": "string"
-              },
-              "ts": {
-                "$ref": "timestamp.json"
-              },
-              "author_subname": {
-                "type": "string"
-              },
-              "channel_id": {
-                "type": "string"
-              },
-              "channel_name": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "author_link": {
-                "type": "string"
-              },
-              "author_icon": {
-                "type": "string"
-              },
-              "mrkdwn_in": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "id": {
-                "type": "integer"
-              },
-              "footer": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "user": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "channel": {
-          "type": "string"
-        },
-        "event_ts": {
-          "$ref": "timestamp.json"
-        }
-      },
-      "title": "reply_broadcast"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "root": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string"
-            },
-            "text": {
-              "type": "string"
-            },
-            "ts": {
-              "$ref": "timestamp.json"
-            },
-            "thread_ts": {
-              "$ref": "timestamp.json"
-            },
-            "reply_count": {
-              "type": "integer"
-            },
-            "reply_users_count": {
-              "type": "integer"
-            },
-            "latest_reply": {
-              "$ref": "timestamp.json"
-            },
-            "reply_users": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "replies": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user": {
-                    "type": "string"
-                  },
-                  "ts": {
-                    "$ref": "timestamp.json"
-                  }
-                }
-              }
-            },
-            "subscriped": {
-              "type": "boolean"
-            }
-          }
-        },
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
-        "user": {
-          "type": "string"
-        },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
-        "thread_ts": {
-          "$ref": "timestamp.json"
-        }
-      },
-      "title": "thread_broadcast"
-    },
-    {
-      "type": "object",
-      "properties": {
-        "type": {
-          "type": "string"
-        },
-        "subtype": {
-          "type": "string"
-        },
         "user": {
           "type": "string"
         },
@@ -1358,7 +956,7 @@
           "type": "string"
         },
         "ts": {
-          "$ref": "timestamp.json"
+          "type": "string"
         }
       },
       "title": "unpinned_item"
@@ -1372,115 +970,17 @@
         "subtype": {
           "type": "string"
         },
-        "channel": {
-          "type": "string"
-        },
-        "no_notifications": {
-          "type": "boolean"
-        },
-        "permalink": {
+        "ts": {
           "type": "string"
         },
         "text": {
           "type": "string"
         },
-        "ts": {
-          "$ref": "timestamp.json"
-        },
         "user": {
           "type": "string"
-        },
-        "root": {
-          "type": "object",
-          "properties": {
-            "app_id": {
-              "type": "string"
-            },
-            "channels": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "created_by": {
-              "type": "string"
-            },
-            "date_end": {
-              "$ref": "timestamp.json"
-            },
-            "date_start": {
-              "$ref": "timestamp.json"
-            },
-            "display_id": {
-              "type": "string"
-            },
-            "external_unique_id": {
-              "type": "string"
-            },
-            "has_ended": {
-              "type": "boolean"
-            },
-            "id": {
-              "type": "string"
-            },
-            "is_dm_call": {
-              "type": "boolean"
-            },
-            "media_server": {
-              "type": "string"
-            },
-            "name": {
-              "type": "string"
-            },
-            "participant_history": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "participants": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "participants_camera_off": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "participants_camera_on": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "participants_screenshare_off": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "participants_screenshare_on": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "was_accepted": {
-              "type": "boolean"
-            },
-            "was_missed": {
-              "type": "boolean"
-            },
-            "was_rejected": {
-              "type": "boolean"
-            }
-          }
         }
       },
-      "title": "sh_room_created"
+      "title": "ekm_access_denied"
     },
     {
       "type": "object",
@@ -1491,6 +991,9 @@
         "subtype": {
           "type": "string"
         },
+        "ts": {
+          "type": "string"
+        },
         "user": {
           "type": "string"
         },
@@ -1500,14 +1003,14 @@
         "channel": {
           "type": "string"
         },
-        "ts": {
-          "$ref": "timestamp.json"
+        "event_ts": {
+          "type": "string"
         },
-        "thread_ts": {
-          "$ref": "timestamp.json"
+        "channel_type": {
+          "type": "string"
         }
       },
-      "title": "slackbot_response"
+      "title": "channel_posting_permissions"
     }
   ]
 }

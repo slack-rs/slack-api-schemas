@@ -1,6 +1,6 @@
 {
   "name": "chat",
-  "description": "Post chat messages to Slack.",
+  "description": "",
   "methods": [
     {
       "name": "chat.delete",
@@ -9,31 +9,30 @@
       "params": [
         {
           "name": "token",
-          "type": "auth_token",
+          "type": "token",
           "optional": false,
-          "description": "Authentication token.\nRequires scope: chat:write:bot or chat:write:user"
-        },
-        {
-          "name": "ts",
-          "type": "timestamp",
-          "optional": false,
-          "description": "Timestamp of the message to be deleted."
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
           "name": "channel",
-          "type": "channel_id",
+          "type": "string",
           "optional": false,
           "description": "Channel containing the message to be deleted."
+        },
+        {
+          "name": "ts",
+          "type": "string",
+          "optional": false,
+          "description": "Timestamp of the message to be deleted."
         },
         {
           "name": "as_user",
           "type": "boolean",
           "optional": true,
-          "description": "Pass true to delete the message as the authed user. Bot users in this context are considered authed users."
+          "description": "Pass true to delete the message as the authed user with chat:write:user scope. Bot users in this context are considered authed users. If unused or false, the message will be deleted with chat:write:bot scope."
         }
       ],
       "response": {
-        "sample": "{\"ok\":true,\"channel\":\"C024BE91L\",\"ts\":\"1401383885.000061\"}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -45,7 +44,7 @@
               "type": "string"
             },
             "ts": {
-              "$ref": "../objects/timestamp.json"
+              "type": "string"
             },
             "error": {
               "type": "string"
@@ -73,24 +72,84 @@
             "description": "Compliance exports are on, messages can not be deleted"
           },
           {
+            "name": "external_channel_migrating [hidden]",
+            "description": "Channel is undergoing active migration"
+          },
+          {
+            "name": "delete_failed [hidden]",
+            "description": "delete failed (generated)"
+          },
+          {
+            "name": "broadcast_delete_fail [hidden]",
+            "description": "broadcast delete fail (generated)"
+          },
+          {
             "name": "not_authed",
             "description": "No authentication token provided."
           },
           {
             "name": "invalid_auth",
-            "description": "Invalid authentication token."
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
           },
           {
             "name": "account_inactive",
-            "description": "Authentication token is for a deleted user or team."
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
           },
           {
             "name": "invalid_arg_name",
-            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
           },
           {
             "name": "invalid_array_arg",
-            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+            "description": "The method was passed an array as an argument. Please only input valid strings."
           },
           {
             "name": "invalid_charset",
@@ -102,7 +161,7 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
@@ -110,11 +169,411 @@
           },
           {
             "name": "team_added_to_org",
-            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
           },
           {
             "name": "request_timeout",
             "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          }
+        ]
+      }
+    },
+    {
+      "name": "chat.deleteScheduledMessage",
+      "description": "Deletes a pending scheduled message from the queue.",
+      "documentationUrl": "https://api.slack.com/methods/chat.deleteScheduledMessage",
+      "params": [
+        {
+          "name": "token",
+          "type": "token",
+          "optional": false,
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "optional": false,
+          "description": "The channel the scheduled_message is posting to"
+        },
+        {
+          "name": "scheduled_message_id",
+          "type": "string",
+          "optional": false,
+          "description": "scheduled_message_id returned from call to chat.scheduleMessage"
+        },
+        {
+          "name": "as_user",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass true to delete the message as the authed user with chat:write:user scope. Bot users in this context are considered authed users. If unused or false, the message will be deleted with chat:write:bot scope."
+        }
+      ],
+      "response": {
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "invalid_scheduled_message_id",
+            "description": "The scheduled_message_id passed is either an invalid ID, or the scheduled message it's referencing has already been sent or deleted."
+          },
+          {
+            "name": "channel_not_found",
+            "description": "The channel passed is either an invalid ID or does not exist."
+          },
+          {
+            "name": "bad_token",
+            "description": "The provided token was invalid."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed an array as an argument. Please only input valid strings."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          }
+        ]
+      }
+    },
+    {
+      "name": "chat.getPermalink",
+      "description": "Retrieve a permalink URL for a specific extant message",
+      "documentationUrl": "https://api.slack.com/methods/chat.getPermalink",
+      "params": [
+        {
+          "name": "token",
+          "type": "token",
+          "optional": false,
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "optional": false,
+          "description": "The ID of the conversation or channel containing the message"
+        },
+        {
+          "name": "message_ts",
+          "type": "string",
+          "optional": false,
+          "description": "A message's ts value, uniquely identifying it within a channel"
+        }
+      ],
+      "response": {
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "channel": {
+              "type": "string"
+            },
+            "permalink": {
+              "type": "string"
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "message_not_found",
+            "description": "The message identified by message_ts could not be found."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed an array as an argument. Please only input valid strings."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
@@ -126,13 +585,13 @@
       "params": [
         {
           "name": "token",
-          "type": "auth_token",
+          "type": "token",
           "optional": false,
-          "description": "Authentication token.\nRequires scope: chat:write:user"
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
           "name": "channel",
-          "type": "channel_id",
+          "type": "string",
           "optional": false,
           "description": "Channel to send message to. Can be a public channel, private group or IM channel. Can be an encoded ID, or a name."
         },
@@ -144,7 +603,6 @@
         }
       ],
       "response": {
-        "sample": "{\"ok\":true,\"channel\":\"C024BE7LR\",\"ts\":\"1417671948.000006\"}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -156,7 +614,7 @@
               "type": "string"
             },
             "ts": {
-              "$ref": "../objects/timestamp.json"
+              "type": "string"
             },
             "error": {
               "type": "string"
@@ -197,19 +655,67 @@
           },
           {
             "name": "invalid_auth",
-            "description": "Invalid authentication token."
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
           },
           {
             "name": "account_inactive",
-            "description": "Authentication token is for a deleted user or team."
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
           },
           {
             "name": "invalid_arg_name",
-            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
           },
           {
             "name": "invalid_array_arg",
-            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+            "description": "The method was passed an array as an argument. Please only input valid strings."
           },
           {
             "name": "invalid_charset",
@@ -221,7 +727,7 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
@@ -229,11 +735,302 @@
           },
           {
             "name": "team_added_to_org",
-            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
           },
           {
             "name": "request_timeout",
             "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          }
+        ]
+      }
+    },
+    {
+      "name": "chat.postEphemeral",
+      "description": "Sends an ephemeral message to a user in a channel.",
+      "documentationUrl": "https://api.slack.com/methods/chat.postEphemeral",
+      "params": [
+        {
+          "name": "token",
+          "type": "token",
+          "optional": false,
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "optional": false,
+          "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "optional": false,
+          "description": "How this field works and whether it is required depends on other fields you use in your API call. See below for more detail."
+        },
+        {
+          "name": "user",
+          "type": "string",
+          "optional": false,
+          "description": "id of the user who will receive the ephemeral message. The user should be in the channel specified by the channel argument."
+        },
+        {
+          "name": "as_user",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass true to post the message as the authed user. Defaults to true if the chat:write:bot scope is not included. Otherwise, defaults to false."
+        },
+        {
+          "name": "attachments",
+          "type": "string",
+          "optional": true,
+          "description": "A JSON-based array of structured attachments, presented as a URL-encoded string."
+        },
+        {
+          "name": "blocks",
+          "type": "blocks[]",
+          "optional": true,
+          "description": "A JSON-based array of structured blocks, presented as a URL-encoded string."
+        },
+        {
+          "name": "icon_emoji",
+          "type": "string",
+          "optional": true,
+          "description": "Emoji to use as the icon for this message. Overrides icon_url. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
+        },
+        {
+          "name": "icon_url",
+          "type": "string",
+          "optional": true,
+          "description": "URL to an image to use as the icon for this message. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
+        },
+        {
+          "name": "link_names",
+          "type": "boolean",
+          "optional": true,
+          "description": "Find and link channel names and usernames."
+        },
+        {
+          "name": "parse",
+          "type": "string",
+          "optional": true,
+          "description": "Change how messages are treated. Defaults to none. See below."
+        },
+        {
+          "name": "thread_ts",
+          "type": "timestamp",
+          "optional": true,
+          "description": "Provide another message's ts value to post this message in a thread. Avoid using a reply's ts value; use its parent's value instead. Ephemeral messages in threads are only shown if there is already an active thread."
+        },
+        {
+          "name": "username",
+          "type": "string",
+          "optional": true,
+          "description": "Set your bot's user name. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
+        }
+      ],
+      "response": {
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "message_ts": {
+              "type": "string"
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "restricted_action",
+            "description": "A workspace preference prevents the authenticated user from posting."
+          },
+          {
+            "name": "too_many_attachments",
+            "description": "Too many attachments were provided with this message. A maximum of 100 attachments are allowed on a message."
+          },
+          {
+            "name": "is_archived",
+            "description": "Channel has been archived."
+          },
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "msg_too_long",
+            "description": "Message text is too long"
+          },
+          {
+            "name": "no_text",
+            "description": "No message text provided"
+          },
+          {
+            "name": "user_not_in_channel",
+            "description": "Intended recipient is not in the specified channel."
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed an array as an argument. Please only input valid strings."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
@@ -245,27 +1042,63 @@
       "params": [
         {
           "name": "token",
-          "type": "auth_token",
+          "type": "token",
           "optional": false,
-          "description": "Authentication token.\nRequires scope: chat:write:bot or chat:write:user"
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
           "name": "channel",
-          "type": "channel_id",
+          "type": "string",
           "optional": false,
           "description": "Channel, private group, or IM channel to send message to. Can be an encoded ID, or a name. See below for more details."
         },
         {
-          "name": "text",
-          "type": "string",
-          "optional": false,
-          "description": "Text of the message to send. See below for an explanation of formatting. This field is usually required, unless you're providing only attachments instead."
+          "name": "as_user",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See authorship below."
         },
         {
-          "name": "parse",
+          "name": "attachments",
           "type": "string",
           "optional": true,
-          "description": "Change how messages are treated. Defaults to none. See below."
+          "description": "A JSON-based array of structured attachments, presented as a URL-encoded string."
+        },
+        {
+          "name": "blocks",
+          "type": "blocks[]",
+          "optional": true,
+          "description": "A JSON-based array of structured blocks, presented as a URL-encoded string."
+        },
+        {
+          "name": "container_id",
+          "type": "string",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "draft_id",
+          "type": "string",
+          "optional": true,
+          "description": "The id of the draft associated with the message"
+        },
+        {
+          "name": "file_annotation",
+          "type": "string",
+          "optional": true,
+          "description": ""
+        },
+        {
+          "name": "icon_emoji",
+          "type": "string",
+          "optional": true,
+          "description": "Emoji to use as the icon for this message. Overrides icon_url. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
+        },
+        {
+          "name": "icon_url",
+          "type": "string",
+          "optional": true,
+          "description": "URL to an image to use as the icon for this message. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
         },
         {
           "name": "link_names",
@@ -274,10 +1107,34 @@
           "description": "Find and link channel names and usernames."
         },
         {
-          "name": "attachments",
+          "name": "mrkdwn",
+          "type": "boolean",
+          "optional": true,
+          "description": "Disable Slack markup parsing by setting to false. Enabled by default.Default: true"
+        },
+        {
+          "name": "parse",
           "type": "string",
           "optional": true,
-          "description": "Structured message attachments."
+          "description": "Change how messages are treated. Defaults to none. See below."
+        },
+        {
+          "name": "reply_broadcast",
+          "type": "boolean",
+          "optional": true,
+          "description": "Used in conjunction with thread_ts and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "optional": true,
+          "description": "How this field works and whether it is required depends on other fields you use in your API call. See below for more detail."
+        },
+        {
+          "name": "thread_ts",
+          "type": "string",
+          "optional": true,
+          "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead."
         },
         {
           "name": "unfurl_links",
@@ -296,40 +1153,9 @@
           "type": "string",
           "optional": true,
           "description": "Set your bot's user name. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
-        },
-        {
-          "name": "as_user",
-          "type": "boolean",
-          "optional": true,
-          "description": "Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See authorship below."
-        },
-        {
-          "name": "icon_url",
-          "type": "string",
-          "optional": true,
-          "description": "URL to an image to use as the icon for this message. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
-        },
-        {
-          "name": "icon_emoji",
-          "type": "string",
-          "optional": true,
-          "description": "Emoji to use as the icon for this message. Overrides icon_url. Must be used in conjunction with as_user set to false, otherwise ignored. See authorship below."
-        },
-        {
-          "name": "thread_ts",
-          "type": "timestamp",
-          "optional": true,
-          "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead."
-        },
-        {
-          "name": "reply_broadcast",
-          "type": "boolean",
-          "optional": true,
-          "description": "Used in conjunction with thread_ts and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false."
         }
       ],
       "response": {
-        "sample": "{\"ok\":true,\"ts\":\"1405895017.000506\",\"channel\":\"C024BE91L\",\"message\":{}}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -337,10 +1163,10 @@
             "ok": {
               "type": "boolean"
             },
-            "ts": {
-              "$ref": "../objects/timestamp.json"
-            },
             "channel": {
+              "type": "string"
+            },
+            "ts": {
               "type": "string"
             },
             "message": {
@@ -360,6 +1186,14 @@
             "description": "Value passed for channel was invalid."
           },
           {
+            "name": "duplicate_channel_not_found",
+            "description": "Channel associated with client_msg_id was invalid."
+          },
+          {
+            "name": "duplicate_message_not_found",
+            "description": "No duplicate message exists associated with client_msg_id."
+          },
+          {
             "name": "not_in_channel",
             "description": "Cannot post user messages to a channel they are not in."
           },
@@ -376,12 +1210,132 @@
             "description": "No message text provided"
           },
           {
+            "name": "restricted_action",
+            "description": "A workspace preference prevents the authenticated user from posting."
+          },
+          {
+            "name": "restricted_action_read_only_channel",
+            "description": "Cannot post any message into a read-only channel."
+          },
+          {
+            "name": "restricted_action_thread_only_channel",
+            "description": "Cannot post top-level messages into a thread-only channel."
+          },
+          {
+            "name": "restricted_action_non_threadable_channel",
+            "description": "Cannot post thread replies into a non_threadable channel."
+          },
+          {
+            "name": "restricted_action_thread_locked",
+            "description": "Cannot post replies to a thread that has been locked by admins."
+          },
+          {
             "name": "too_many_attachments",
             "description": "Too many attachments were provided with this message. A maximum of 100 attachments are allowed on a message."
           },
           {
+            "name": "too_many_contact_cards",
+            "description": "Too many contact_cards were provided with this message. A maximum of 10 contact cards are allowed on a message."
+          },
+          {
             "name": "rate_limited",
             "description": "Application has posted too many messages, read the Rate Limit documentation for more information"
+          },
+          {
+            "name": "as_user_not_supported",
+            "description": "The as_user parameter does not function with workspace apps."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "slack_connect_file_link_sharing_blocked",
+            "description": "Admin has disabled Slack File sharing in all Slack Connect communications"
+          },
+          {
+            "name": "ekm_failure [hidden]",
+            "description": "ekm failure (generated)"
+          },
+          {
+            "name": "user_removed_from_team [hidden]",
+            "description": "user removed from team (generated)"
+          },
+          {
+            "name": "no_bot_user [hidden]",
+            "description": "no bot user (generated)"
+          },
+          {
+            "name": "invalid_attachments [hidden]",
+            "description": "invalid attachments (generated)"
+          },
+          {
+            "name": "service_required [hidden]",
+            "description": "service required (generated)"
+          },
+          {
+            "name": "msg_too_large [hidden]",
+            "description": "msg too large (generated)"
+          },
+          {
+            "name": "invalid_blocks [hidden]",
+            "description": "invalid blocks (generated)"
+          },
+          {
+            "name": "msg_blocks_too_long [hidden]",
+            "description": "msg blocks too long (generated)"
+          },
+          {
+            "name": "metadata_too_large [hidden]",
+            "description": "Metadata exceeds size limit"
+          },
+          {
+            "name": "grpc_getMessageTS_fail [hidden]",
+            "description": "grpc getMessageTS fail (generated)"
+          },
+          {
+            "name": "not_supported [hidden]",
+            "description": "not supported (generated)"
+          },
+          {
+            "name": "invalid_blocks_format [hidden]",
+            "description": "invalid blocks format (generated)"
+          },
+          {
+            "name": "external_channel_migrating [hidden]",
+            "description": "external channel migrating (generated)"
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_thread_ts [hidden]",
+            "description": "invalid thread ts (generated)"
+          },
+          {
+            "name": "invalid_metadata_format [hidden]",
+            "description": "invalid metadata format provided"
+          },
+          {
+            "name": "invalid_metadata_schema [hidden]",
+            "description": "invalid metadata schema provided"
+          },
+          {
+            "name": "invalid_unfurl_format [hidden]",
+            "description": "Invalid unfurl value provided."
+          },
+          {
+            "name": "invalid_unfurl_argument [hidden]",
+            "description": "Invalid unfurl value provided."
+          },
+          {
+            "name": "invalid_unfurl_url_too_long [hidden]",
+            "description": "Unfurl url provided is too long."
+          },
+          {
+            "name": "invalid_unfurl_url_expression [hidden]",
+            "description": "Unfurl value contains an invalid URL."
           },
           {
             "name": "not_authed",
@@ -389,19 +1343,59 @@
           },
           {
             "name": "invalid_auth",
-            "description": "Invalid authentication token."
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
           },
           {
             "name": "account_inactive",
-            "description": "Authentication token is for a deleted user or team."
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
           },
           {
             "name": "invalid_arg_name",
-            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
           },
           {
             "name": "invalid_array_arg",
-            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+            "description": "The method was passed an array as an argument. Please only input valid strings."
           },
           {
             "name": "invalid_charset",
@@ -413,7 +1407,7 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
@@ -421,29 +1415,423 @@
           },
           {
             "name": "team_added_to_org",
-            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
           },
           {
             "name": "request_timeout",
             "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          }
+        ]
+      }
+    },
+    {
+      "name": "chat.scheduleMessage",
+      "description": "Schedules a message to be sent to a channel.",
+      "documentationUrl": "https://api.slack.com/methods/chat.scheduleMessage",
+      "params": [
+        {
+          "name": "token",
+          "type": "token",
+          "optional": false,
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "optional": false,
+          "description": "Channel, private group, or DM channel to send message to. Can be an encoded ID, or a name. See below for more details."
+        },
+        {
+          "name": "post_at",
+          "type": "integer",
+          "optional": false,
+          "description": "Unix EPOCH timestamp of time in future to send the message."
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "optional": false,
+          "description": "How this field works and whether it is required depends on other fields you use in your API call. See below for more detail."
+        },
+        {
+          "name": "as_user",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass true to post the message as the authed user, instead of as a bot. Defaults to false. See chat.postMessage."
+        },
+        {
+          "name": "attachments",
+          "type": "string",
+          "optional": true,
+          "description": "A JSON-based array of structured attachments, presented as a URL-encoded string."
+        },
+        {
+          "name": "blocks",
+          "type": "string",
+          "optional": true,
+          "description": "A JSON-based array of structured blocks, presented as a URL-encoded string."
+        },
+        {
+          "name": "link_names",
+          "type": "boolean",
+          "optional": true,
+          "description": "Find and link channel names and usernames."
+        },
+        {
+          "name": "parse",
+          "type": "string",
+          "optional": true,
+          "description": "Change how messages are treated. Defaults to none. See chat.postMessage."
+        },
+        {
+          "name": "reply_broadcast",
+          "type": "boolean",
+          "optional": true,
+          "description": "Used in conjunction with thread_ts and indicates whether reply should be made visible to everyone in the channel or conversation. Defaults to false."
+        },
+        {
+          "name": "thread_ts",
+          "type": "string",
+          "optional": true,
+          "description": "Provide another message's ts value to make this message a reply. Avoid using a reply's ts value; use its parent instead."
+        },
+        {
+          "name": "unfurl_links",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass true to enable unfurling of primarily text-based content."
+        },
+        {
+          "name": "unfurl_media",
+          "type": "boolean",
+          "optional": true,
+          "description": "Pass false to disable unfurling of media content."
+        }
+      ],
+      "response": {
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "channel": {
+              "type": "string"
+            },
+            "scheduled_message_id": {
+              "type": "string"
+            },
+            "post_at": {
+              "type": "string"
+            },
+            "message": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "bot_id": {
+                  "type": "string"
+                },
+                "attachments": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "text": {
+                        "type": "string"
+                      },
+                      "id": {
+                        "type": "number"
+                      },
+                      "fallback": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "type": {
+                  "type": "string"
+                },
+                "subtype": {
+                  "type": "string"
+                }
+              }
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "invalid_time",
+            "description": "value passed for post_time was invalid."
+          },
+          {
+            "name": "time_in_past",
+            "description": "value passed for post_time was in the past."
+          },
+          {
+            "name": "time_too_far",
+            "description": "value passed for post_time was too far into the future."
+          },
+          {
+            "name": "channel_not_found",
+            "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "metadata_too_large [hidden]",
+            "description": "Metadata exceeds size limit"
+          },
+          {
+            "name": "not_in_channel",
+            "description": "Cannot post user messages to a channel they are not in."
+          },
+          {
+            "name": "is_archived",
+            "description": "Channel has been archived."
+          },
+          {
+            "name": "msg_too_long",
+            "description": "Message text is too long"
+          },
+          {
+            "name": "no_text",
+            "description": "No message text provided"
+          },
+          {
+            "name": "restricted_action",
+            "description": "A workspace preference prevents the authenticated user from posting."
+          },
+          {
+            "name": "restricted_action_read_only_channel",
+            "description": "Cannot post any message into a read-only channel."
+          },
+          {
+            "name": "restricted_action_thread_only_channel",
+            "description": "Cannot post top-level messages into a thread-only channel."
+          },
+          {
+            "name": "restricted_action_non_threadable_channel",
+            "description": "Cannot post thread replies into a non_threadable channel."
+          },
+          {
+            "name": "too_many_attachments",
+            "description": "Too many attachments were provided with this message. A maximum of 100 attachments are allowed on a message."
+          },
+          {
+            "name": "rate_limited",
+            "description": "Application has posted too many messages, read the Rate Limit documentation for more information"
+          },
+          {
+            "name": "slack_connect_file_link_sharing_blocked",
+            "description": "Admin has disabled Slack File sharing in all Slack Connect communications"
+          },
+          {
+            "name": "invalid_blocks [hidden]",
+            "description": "invalid blocks (generated)"
+          },
+          {
+            "name": "restricted_too_many [hidden]",
+            "description": "restricted too many (generated)"
+          },
+          {
+            "name": "invalid_attachments [hidden]",
+            "description": "invalid attachments (generated)"
+          },
+          {
+            "name": "invalid_blocks_format [hidden]",
+            "description": "invalid blocks format (generated)"
+          },
+          {
+            "name": "invalid_metadata_format [hidden]",
+            "description": "invalid metadata format provided"
+          },
+          {
+            "name": "invalid_metadata_schema [hidden]",
+            "description": "invalid metadata schema provided"
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed an array as an argument. Please only input valid strings."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
     },
     {
       "name": "chat.unfurl",
-      "description": "Unfurl a URL that a user posted",
+      "description": "Provide custom unfurl behavior for user-posted URLs",
       "documentationUrl": "https://api.slack.com/methods/chat.unfurl",
       "params": [
         {
           "name": "token",
-          "type": "auth_token",
+          "type": "token",
           "optional": false,
-          "description": "Authentication token.\nRequires scope: links:write"
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
           "name": "channel",
-          "type": "channel_id",
+          "type": "string",
           "optional": false,
           "description": "Channel ID of the message"
         },
@@ -451,23 +1839,40 @@
           "name": "ts",
           "type": "string",
           "optional": false,
-          "description": "Timestamp of the message to add unfurl behavior to"
+          "description": "Timestamp of the message to add unfurl behavior to."
         },
         {
           "name": "unfurls",
           "type": "string",
           "optional": false,
-          "description": "JSON mapping a set of URLs from the message to their unfurl attachments"
+          "description": "URL-encoded JSON map with keys set to URLs featured in the the message, pointing to their unfurl blocks or message attachments."
+        },
+        {
+          "name": "user_auth_blocks",
+          "type": "string",
+          "optional": true,
+          "description": "Provide a JSON based array of structured blocks presented as URL-encoded string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior"
+        },
+        {
+          "name": "user_auth_message",
+          "type": "string",
+          "optional": true,
+          "description": "Provide a simply-formatted string to send as an ephemeral message to the user as invitation to authenticate further and enable full unfurling behavior. Provides two buttons, Not now or Never ask me again."
         },
         {
           "name": "user_auth_required",
           "type": "boolean",
           "optional": true,
-          "description": "Set to true or 1 to indicate the user must install your Slack app to trigger unfurls for this domain"
+          "description": "Set to true or 1 to indicate the user must install your Slack app to trigger unfurls for this domainDefault: 0"
+        },
+        {
+          "name": "user_auth_url",
+          "type": "string",
+          "optional": true,
+          "description": "Send users to this custom URL where they will complete authentication in your app to fully trigger unfurling. Value should be properly URL-encoded."
         }
       ],
       "response": {
-        "sample": "{\"ok\":true}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
@@ -485,28 +1890,144 @@
         },
         "errors": [
           {
+            "name": "missing_channel",
+            "description": "The request is missing the channel parameter"
+          },
+          {
+            "name": "missing_ts",
+            "description": "The request is missing the ts parameter"
+          },
+          {
+            "name": "cannot_find_channel",
+            "description": "The specified channel could not be located for this token."
+          },
+          {
+            "name": "cannot_find_service",
+            "description": "A record of your app being allowed to unfurl for this workspace could not be found."
+          },
+          {
+            "name": "cannot_parse_attachment",
+            "description": "The provided unfurls argument could not be parsed or understood."
+          },
+          {
+            "name": "missing_unfurls",
+            "description": "The request is missing the unfurls parameter."
+          },
+          {
+            "name": "invalid_unfurls_format",
+            "description": "The unfurls parameter cannot be JSON-decoded into a map of URLs to attachments."
+          },
+          {
+            "name": "cannot_unfurl_url",
+            "description": "The URL cannot be unfurled. This error may be returned if you haven't acknowledged a link_shared event tied to the same URL. It is also returned when the domain appears in a workspace's administrative blocklists."
+          },
+          {
+            "name": "cannot_prompt",
+            "description": "The current user has already interacted with and dismissed a prompt for this application."
+          },
+          {
+            "name": "cannot_find_message",
+            "description": "The ts value in the request does not match a message."
+          },
+          {
+            "name": "cannot_unfurl_message",
+            "description": "The URL cannot be unfurled because the URL provided does not appear in the message."
+          },
+          {
+            "name": "invalid_blocks [hidden]",
+            "description": "invalid blocks"
+          },
+          {
+            "name": "cannot_auth_user",
+            "description": "The current user cannot be authenticated."
+          },
+          {
+            "name": "missing_unfurl_id [hidden]",
+            "description": "The request is missing the `unfurl_id` parameter."
+          },
+          {
+            "name": "missing_source [hidden]",
+            "description": "The request is missing the `source` parameter."
+          },
+          {
+            "name": "invalid_unfurl_id [hidden]",
+            "description": "The unfurl ID is invalid."
+          },
+          {
+            "name": "invalid_source [hidden]",
+            "description": "The unfurl source is invalid."
+          },
+          {
             "name": "not_authed",
             "description": "No authentication token provided."
           },
           {
             "name": "invalid_auth",
-            "description": "Invalid authentication token."
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
           },
           {
             "name": "account_inactive",
-            "description": "Authentication token is for a deleted user or team."
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
           },
           {
-            "name": "user_is_bot",
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "is_bot",
             "description": "This method cannot be called by a bot user."
           },
           {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
             "name": "invalid_arg_name",
-            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
           },
           {
             "name": "invalid_array_arg",
-            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+            "description": "The method was passed an array as an argument. Please only input valid strings."
           },
           {
             "name": "invalid_charset",
@@ -518,7 +2039,7 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
@@ -526,11 +2047,43 @@
           },
           {
             "name": "team_added_to_org",
-            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
           },
           {
             "name": "request_timeout",
             "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
@@ -542,78 +2095,70 @@
       "params": [
         {
           "name": "token",
-          "type": "auth_token",
+          "type": "token",
           "optional": false,
-          "description": "Authentication token.\nRequires scope: chat:write:bot or chat:write:user"
-        },
-        {
-          "name": "ts",
-          "type": "timestamp",
-          "optional": false,
-          "description": "Timestamp of the message to be updated."
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
         },
         {
           "name": "channel",
-          "type": "channel_id",
+          "type": "string",
           "optional": false,
           "description": "Channel containing the message to be updated."
         },
         {
-          "name": "text",
+          "name": "ts",
           "type": "string",
           "optional": false,
-          "description": "New text for the message, using the default formatting rules."
-        },
-        {
-          "name": "attachments",
-          "type": "string",
-          "optional": true,
-          "description": "Structured message attachments."
-        },
-        {
-          "name": "parse",
-          "type": "string",
-          "optional": true,
-          "description": "Change how messages are treated. Defaults to client, unlike chat.postMessage. See below."
-        },
-        {
-          "name": "link_names",
-          "type": "boolean",
-          "optional": true,
-          "description": "Find and link channel names and usernames. Defaults to none. This parameter should be used in conjunction with parse. To set link_names to 1, specify a parse mode of full."
+          "description": "Timestamp of the message to be updated."
         },
         {
           "name": "as_user",
           "type": "boolean",
           "optional": true,
           "description": "Pass true to update the message as the authed user. Bot users in this context are considered authed users."
+        },
+        {
+          "name": "attachments",
+          "type": "string",
+          "optional": true,
+          "description": "A JSON-based array of structured attachments, presented as a URL-encoded string. This field is required when not presenting text. If you don't include this field, the message's previous attachments will be retained. To remove previous attachments, include an empty array for this field."
+        },
+        {
+          "name": "blocks",
+          "type": "blocks[]",
+          "optional": true,
+          "description": "A JSON-based array of structured blocks, presented as a URL-encoded string. If you don't include this field, the message's previous blocks will be retained. To remove previous blocks, include an empty array for this field."
+        },
+        {
+          "name": "link_names",
+          "type": "boolean",
+          "optional": true,
+          "description": "Find and link channel names and usernames. Defaults to none. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, none."
+        },
+        {
+          "name": "parse",
+          "type": "string",
+          "optional": true,
+          "description": "Change how messages are treated. Defaults to client, unlike chat.postMessage. Accepts either none or full. If you do not specify a value for this field, the original value set for the message will be overwritten with the default, client."
+        },
+        {
+          "name": "reply_broadcast",
+          "type": "boolean",
+          "optional": true,
+          "description": "Broadcast an existing thread reply to make it visible to everyone in the channel or conversation.Default: false"
+        },
+        {
+          "name": "text",
+          "type": "string",
+          "optional": true,
+          "description": "New text for the message, using the default formatting rules. It's not required when presenting blocks or attachments."
         }
       ],
       "response": {
         "sample": "{\"ok\":true,\"channel\":\"C024BE91L\",\"ts\":\"1401383885.000061\",\"text\":\"Updated Text\"}",
         "schema": {
           "$schema": "http://json-schema.org/draft-04/schema#",
-          "type": "object",
-          "properties": {
-            "ok": {
-              "type": "boolean"
-            },
-            "channel": {
-              "type": "string"
-            },
-            "ts": {
-              "$ref": "../objects/timestamp.json"
-            },
-            "text": {
-              "type": "string"
-            },
-            "error": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "ok"
-          ]
+          "type": "undefined"
         },
         "errors": [
           {
@@ -625,8 +2170,20 @@
             "description": "Authenticated user does not have permission to update this message."
           },
           {
+            "name": "cant_broadcast_message",
+            "description": "Unable to broadcast this message."
+          },
+          {
+            "name": "update_failed",
+            "description": "Internal update failure."
+          },
+          {
             "name": "channel_not_found",
             "description": "Value passed for channel was invalid."
+          },
+          {
+            "name": "team_not_found",
+            "description": "Team associated with the message and channel could not be found."
           },
           {
             "name": "edit_window_closed",
@@ -641,8 +2198,40 @@
             "description": "Too many attachments were provided with this message. A maximum of 100 attachments are allowed on a message."
           },
           {
+            "name": "no_dual_broadcast_content_update",
+            "description": "Can't broadcast an old reply and update the content at the same time."
+          },
+          {
             "name": "no_text",
             "description": "No message text provided"
+          },
+          {
+            "name": "as_user_not_supported",
+            "description": "The as_user parameter does not function with workspace apps."
+          },
+          {
+            "name": "is_inactive",
+            "description": "The message cannot be edited within a frozen, archived or deleted channel."
+          },
+          {
+            "name": "invalid_blocks",
+            "description": "The blocks were invalid for the requesting user."
+          },
+          {
+            "name": "invalid_attachments",
+            "description": "The attachments were invalid."
+          },
+          {
+            "name": "external_channel_migrating",
+            "description": "The channel is in the process of migrating and so the message cannot be updated at this time."
+          },
+          {
+            "name": "slack_connect_file_link_sharing_blocked",
+            "description": "Admin has disabled Slack File sharing in all Slack Connect communications"
+          },
+          {
+            "name": "metadata_too_large [hidden]",
+            "description": "Metadata exceeds size limit"
           },
           {
             "name": "not_authed",
@@ -650,19 +2239,67 @@
           },
           {
             "name": "invalid_auth",
-            "description": "Invalid authentication token."
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
           },
           {
             "name": "account_inactive",
-            "description": "Authentication token is for a deleted user or team."
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
           },
           {
             "name": "invalid_arg_name",
-            "description": "The method was passed an argument whose name falls outside the bounds of common decency. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
           },
           {
             "name": "invalid_array_arg",
-            "description": "The method was passed a PHP-style array argument (e.g. with a name like foo[7]). These are never valid with the Slack API."
+            "description": "The method was passed an array as an argument. Please only input valid strings."
           },
           {
             "name": "invalid_charset",
@@ -674,7 +2311,7 @@
           },
           {
             "name": "invalid_post_type",
-            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/x-www-form-urlencoded multipart/form-data text/plain."
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
           },
           {
             "name": "missing_post_type",
@@ -682,11 +2319,282 @@
           },
           {
             "name": "team_added_to_org",
-            "description": "The team associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
           },
           {
             "name": "request_timeout",
             "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
+          }
+        ]
+      }
+    },
+    {
+      "name": "chat.scheduledMessages.list",
+      "description": "Returns a list of scheduled messages.",
+      "documentationUrl": "https://api.slack.com/methods/chat.scheduledMessages.list",
+      "params": [
+        {
+          "name": "token",
+          "type": "token",
+          "optional": false,
+          "description": "Authentication token bearing required scopes. Tokens should be passed as an HTTP Authorization header or alternatively, as a POST parameter."
+        },
+        {
+          "name": "channel",
+          "type": "string",
+          "optional": true,
+          "description": "The channel of the scheduled messages"
+        },
+        {
+          "name": "cursor",
+          "type": "string",
+          "optional": true,
+          "description": "For pagination purposes, this is the cursor value returned from a previous call to chat.scheduledmessages.list indicating where you want to start this call from."
+        },
+        {
+          "name": "latest",
+          "type": "string",
+          "optional": true,
+          "description": "A UNIX timestamp of the latest value in the time range"
+        },
+        {
+          "name": "limit",
+          "type": "integer",
+          "optional": true,
+          "description": "Maximum number of original entries to return."
+        },
+        {
+          "name": "oldest",
+          "type": "string",
+          "optional": true,
+          "description": "A UNIX timestamp of the oldest value in the time range"
+        },
+        {
+          "name": "team_id",
+          "type": "string",
+          "optional": true,
+          "description": "encoded team id to list channels in, required if org token is used"
+        }
+      ],
+      "response": {
+        "schema": {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "properties": {
+            "ok": {
+              "type": "boolean"
+            },
+            "scheduled_messages": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "channel_id": {
+                    "type": "string"
+                  },
+                  "post_at": {
+                    "type": "number"
+                  },
+                  "date_created": {
+                    "type": "number"
+                  },
+                  "text": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "response_metadata": {
+              "type": "object",
+              "properties": {
+                "next_cursor": {
+                  "type": "string"
+                }
+              }
+            },
+            "error": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "ok"
+          ]
+        },
+        "errors": [
+          {
+            "name": "invalid_channel",
+            "description": "The channel passed is invalid"
+          },
+          {
+            "name": "invalid_ts_latest [hidden]",
+            "description": "invalid ts latest (generated)"
+          },
+          {
+            "name": "invalid_token",
+            "description": "Token is invalid"
+          },
+          {
+            "name": "invalid_cursor",
+            "description": "Provided cursor is invalid"
+          },
+          {
+            "name": "not_authed",
+            "description": "No authentication token provided."
+          },
+          {
+            "name": "invalid_auth",
+            "description": "Some aspect of authentication cannot be validated. Either the provided token is invalid or the request originates from an IP address disallowed from making the request."
+          },
+          {
+            "name": "account_inactive",
+            "description": "Authentication token is for a deleted user or workspace when using a bot token."
+          },
+          {
+            "name": "token_revoked",
+            "description": "Authentication token is for a deleted user or workspace or the app has been removed when using a user token."
+          },
+          {
+            "name": "no_permission",
+            "description": "The workspace token used in this request does not have the permissions necessary to complete the request. Make sure your app is a member of the conversation it's attempting to post a message to."
+          },
+          {
+            "name": "org_login_required",
+            "description": "The workspace is undergoing an enterprise migration and will not be available until migration is complete."
+          },
+          {
+            "name": "ekm_access_denied",
+            "description": "Administrators have suspended the ability to post a message."
+          },
+          {
+            "name": "missing_scope",
+            "description": "The token used is not granted the specific scope permissions required to complete this request."
+          },
+          {
+            "name": "not_allowed_token_type",
+            "description": "The token type used in this request is not allowed."
+          },
+          {
+            "name": "method_deprecated",
+            "description": "The method has been deprecated."
+          },
+          {
+            "name": "deprecated_endpoint",
+            "description": "The endpoint has been deprecated."
+          },
+          {
+            "name": "two_factor_setup_required",
+            "description": "Two factor setup is required."
+          },
+          {
+            "name": "enterprise_is_restricted",
+            "description": "The method cannot be called from an Enterprise."
+          },
+          {
+            "name": "team_access_not_granted",
+            "description": "The token used is not granted the specific workspace access required to complete this request."
+          },
+          {
+            "name": "invalid_arguments",
+            "description": "The method was either called with invalid arguments or some detail about the arguments passed are invalid, which is more likely when using complex arguments like blocks or attachments."
+          },
+          {
+            "name": "invalid_arg_name",
+            "description": "The method was passed an argument whose name falls outside the bounds of accepted or expected values. This includes very long names and names with non-alphanumeric characters other than _. If you get this error, it is typically an indication that you have made a very malformed API call."
+          },
+          {
+            "name": "invalid_array_arg",
+            "description": "The method was passed an array as an argument. Please only input valid strings."
+          },
+          {
+            "name": "invalid_charset",
+            "description": "The method was called via a POST request, but the charset specified in the Content-Type header was invalid. Valid charset names are: utf-8 iso-8859-1."
+          },
+          {
+            "name": "invalid_form_data",
+            "description": "The method was called via a POST request with Content-Type application/x-www-form-urlencoded or multipart/form-data, but the form data was either missing or syntactically invalid."
+          },
+          {
+            "name": "invalid_post_type",
+            "description": "The method was called via a POST request, but the specified Content-Type was invalid. Valid types are: application/json application/x-www-form-urlencoded multipart/form-data text/plain."
+          },
+          {
+            "name": "missing_post_type",
+            "description": "The method was called via a POST request and included a data payload, but the request did not include a Content-Type header."
+          },
+          {
+            "name": "team_added_to_org",
+            "description": "The workspace associated with your request is currently undergoing migration to an Enterprise Organization. Web API and other platform operations will be intermittently unavailable until the transition is complete."
+          },
+          {
+            "name": "invalid_json [hidden]",
+            "description": "The method was called via a `POST` request with `Content-Type` `application/json`, but the body was not valid JSON."
+          },
+          {
+            "name": "json_not_object [hidden]",
+            "description": "The method was called via a `POST` request a valid JSON body, but the JSON value was not an object."
+          },
+          {
+            "name": "ratelimited",
+            "description": "The request has been ratelimited. Refer to the Retry-After header for when to retry the request."
+          },
+          {
+            "name": "accesslimited",
+            "description": "Access to this method is limited on the current network"
+          },
+          {
+            "name": "request_timeout",
+            "description": "The method was called via a POST request, but the POST data was either missing or truncated."
+          },
+          {
+            "name": "upgrade_required [hidden]",
+            "description": "The calling application needs to be upgraded."
+          },
+          {
+            "name": "service_unavailable",
+            "description": "The service is temporarily unavailable"
+          },
+          {
+            "name": "fatal_error",
+            "description": "The server could not complete your operation(s) without encountering a catastrophic error. It's possible some aspect of the operation succeeded before the error was raised."
+          },
+          {
+            "name": "internal_error",
+            "description": "The server could not complete your operation(s) without encountering an error, likely due to a transient issue on our end. It's possible some aspect of the operation succeeded before the error was raised."
           }
         ]
       }
